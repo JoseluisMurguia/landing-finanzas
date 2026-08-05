@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Georacle MVP | Motor de Inteligencia Predictiva</title>
+<meta name="description" content="Georacle: El oráculo de datos espaciales para optimización de negocios y proyecciones económicas.">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+          display: ['Space Grotesk', 'sans-serif'],
+          mono: ['Roboto Mono', 'monospace'],
+        },
+        animation: {
+          'radar-spin': 'radarSpin 4s linear infinite',
+          'ping-slow': 'ping 3s cubic-bezier(0, 0, 0.2, 1) infinite',
+          'float': 'float 6s ease-in-out infinite',
+        },
+        keyframes: {
+          radarSpin: {
+            from: { transform: 'rotate(0deg)' },
+            to: { transform: 'rotate(360deg)' },
+          },
+          float: {
+            '0%, 100%': { transform: 'translateY(0px)' },
+            '50%': { transform: 'translateY(-10px)' },
+          }
+        },
+      },
+    },
+  }
+</script>
+
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+  body {
+    background-color: #020617; /* slate-950 */
+    overflow-x: hidden;
+  }
+  
+  /* Abstract Topography/Grid Background */
+  .bg-topo {
+    background-image: 
+      linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  
+  /* Glassmorphism panels */
+  .glass-panel {
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(51, 65, 85, 0.5);
+  }
+
+  /* Radar scanner effect */
+  .radar-sweep {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, transparent 70%, rgba(168, 85, 247, 0.1) 90%, rgba(168, 85, 247, 0.5) 100%);
+    transform-origin: 0 0;
+    animation: radarSpin 4s linear infinite;
+    pointer-events: none;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #020617; }
+  ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #475569; }
+</style>
+</head>
+
+<body class="text-slate-300 antialiased selection:bg-purple-500/30">
+
+<header class="fixed top-0 w-full z-50 border-b border-slate-800/60 bg-slate-950/70 backdrop-blur-xl transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <div class="flex items-center gap-8">
+      <!-- Back to Landing Page -->
+      <a href="index.html" class="flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-white transition-colors">
+        <i data-lucide="arrow-left" class="h-4 w-4"></i>
+        Atrás
+      </a>
+      
+      <!-- Georacle Logo -->
+      <div class="flex items-center gap-2.5">
+        <span class="relative flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br from-purple-600 to-cyan-500 shadow-[0_0_10px_rgba(168,85,247,0.4)]">
+          <i data-lucide="compass" class="h-4 w-4 text-white"></i>
+        </span>
+        <span class="font-display font-semibold tracking-tight text-white text-lg">Georacle<span class="text-purple-400 font-light text-sm ml-1">MVP</span></span>
+      </div>
+    </div>
+
+    <!-- CTA Navbar -->
+    <a href="#acceso" class="hidden sm:inline-flex items-center gap-2 rounded-full border border-purple-500/50 bg-purple-500/10 px-4 py-1.5 text-sm font-medium text-purple-300 transition-all hover:bg-purple-500/20 hover:shadow-[0_0_15px_rgba(168,85,247,0.3)]">
+      Solicitar API Key
+    </a>
+  </div>
+</header>
+
+<main class="pt-24 pb-16">
+  <section class="max-w-7xl mx-auto px-6 grid xl:grid-cols-2 gap-16 items-center min-h-[80vh]">
+    
+    <!-- Left Column: Value Proposition -->
+    <div class="z-10 order-2 xl:order-1">
+      <div class="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-800/50 px-3 py-1 text-xs font-mono text-slate-300 mb-6">
+        <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        Motor de predicción en línea
+      </div>
+      
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight text-white mb-6">
+        La intuición falla. <br>
+        <span class="bg-gradient-to-r from-purple-400 to-cyan-400 text-transparent bg-clip-text">
+          Los datos espaciales no.
+        </span>
+      </h1>
+      
+      <p class="text-lg text-slate-400 leading-relaxed mb-10 max-w-xl">
+        Georacle es el primer motor analítico diseñado para cruzar variables económicas, tráfico peatonal y saturación de mercado. Predice el Revenue de tu próxima ubicación antes de firmar el contrato.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#simulacion" class="inline-flex justify-center items-center gap-2 rounded-xl bg-white text-slate-950 px-7 py-3.5 font-semibold transition-transform hover:scale-[1.02]">
+          <i data-lucide="layers" class="h-5 w-5"></i>
+          Ver Simulación
+        </a>
+        <a href="#arquitectura" class="inline-flex justify-center items-center gap-2 rounded-xl border border-slate-700 bg-slate-900 px-7 py-3.5 font-semibold text-white transition-all hover:border-slate-500 hover:bg-slate-800">
+          <i data-lucide="cpu" class="h-5 w-5 text-slate-400"></i>
+          Ver Arquitectura
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Column: Visual Tech Mockup -->
+    <div class="z-10 order-1 xl:order-2 relative h-[450px] sm:h-[550px] w-full rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden shadow-[0_0_50px_rgba(168,85,247,0.05)]">
+      
+      <!-- Base Topo Background -->
+      <div class="absolute inset-0 bg-topo opacity-40"></div>
+      
+      <!-- Radar Scanner -->
+      <div class="absolute inset-0 flex items-center justify-center overflow-hidden mix-blend-screen">
+        <div class="h-[600px] w-[600px] rounded-full border border-purple-500/10 relative">
+          <div class="absolute inset-0 rounded-full border border-cyan-500/10 scale-75"></div>
+          <div class="absolute inset-0 rounded-full border border-purple-500/20 scale-50"></div>
+          <div class="radar-sweep"></div>
+        </div>
+      </div>
+
+      <!-- Simulated Data Nodes -->
+      <div class="absolute top-1/4 left-1/4 group cursor-crosshair">
+        <div class="absolute -inset-3 rounded-full bg-emerald-500/20 animate-ping-slow"></div>
+        <div class="relative h-3 w-3 rounded-full bg-emerald-400 shadow-[0_0_15px_#34d399]"></div>
+        <!-- Tooltip -->
+        <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity w-48 glass-panel rounded-xl p-3 pointer-events-none z-20">
+          <p class="text-[10px] text-emerald-400 font-mono tracking-wider mb-1">Zona Óptima A</p>
+          <p class="text-sm font-semibold text-white">Demanda: 84%</p>
+          <div class="h-1 w-full bg-slate-800 rounded-full mt-2 overflow-hidden">
+            <div class="h-full bg-emerald-400 w-[84%]"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute bottom-1/3 right-1/3 group cursor-crosshair">
+        <div class="relative h-3 w-3 rounded-full bg-rose-500 shadow-[0_0_15px_#f43f5e]"></div>
+        <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity w-48 glass-panel rounded-xl p-3 pointer-events-none z-20">
+          <p class="text-[10px] text-rose-400 font-mono tracking-wider mb-1">Riesgo Saturación</p>
+          <p class="text-sm font-semibold text-white">Competidores: 12</p>
+          <p class="text-xs text-slate-400 mt-1">Canibalización alta</p>
+        </div>
+      </div>
+
+      <div class="absolute top-1/2 right-1/4 group cursor-crosshair">
+        <div class="relative h-2.5 w-2.5 rounded-full bg-cyan-400 shadow-[0_0_10px_#22d3ee] animate-pulse"></div>
+        <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity w-48 glass-panel rounded-xl p-3 pointer-events-none z-20">
+          <p class="text-[10px] text-cyan-400 font-mono tracking-wider mb-1">Mercado Emergente</p>
+          <p class="text-sm font-semibold text-white">Crecimiento: +15%</p>
+        </div>
+      </div>
+
+      <!-- Floating HUD Panel -->
+      <div class="absolute bottom-4 left-4 glass-panel rounded-xl p-4 w-56 animate-float" style="animation-delay: -2s;">
+        <div class="flex items-center gap-2 mb-3">
+          <i data-lucide="activity" class="h-4 w-4 text-purple-400"></i>
+          <span class="font-display font-medium text-xs text-white uppercase tracking-wider">Predicción Revenue</span>
+        </div>
+        <p class="font-mono text-2xl text-white font-bold mb-1">$45.2k<span class="text-sm text-slate-500 font-normal">/mes</span></p>
+        <div class="flex items-center gap-1.5 text-xs text-emerald-400 font-medium">
+          <i data-lucide="check-circle-2" class="h-3.5 w-3.5"></i>
+          Confianza del modelo: 94%
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="arquitectura" class="max-w-7xl mx-auto px-6 py-20 border-t border-slate-800/50">
+    <div class="mb-12">
+      <h2 class="font-display text-2xl sm:text-3xl font-bold text-white mb-4">Motor Analítico Georacle</h2>
+      <p class="text-slate-400 max-w-2xl">Arquitectura de datos diseñada para procesar millones de puntos espaciales en tiempo real.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      
+      <!-- Feature 1 -->
+      <div class="glass-panel rounded-2xl p-6 transition-colors hover:bg-slate-800/50">
+        <div class="h-10 w-10 rounded-lg bg-slate-800 flex items-center justify-center border border-slate-700 mb-5">
+          <i data-lucide="database" class="h-5 w-5 text-cyan-400"></i>
+        </div>
+        <h3 class="font-display text-lg font-semibold text-white mb-2">Data Warehousing</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">
+          Ingesta automatizada de datos censales (INEGI/Censo), catastro de empresas y APIs de movilidad urbana.
+        </p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="glass-panel rounded-2xl p-6 transition-colors hover:bg-slate-800/50">
+        <div class="h-10 w-10 rounded-lg bg-slate-800 flex items-center justify-center border border-slate-700 mb-5">
+          <i data-lucide="network" class="h-5 w-5 text-purple-400"></i>
+        </div>
+        <h3 class="font-display text-lg font-semibold text-white mb-2">Modelos de Machine Learning</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">
+          Regresiones espaciales y clustering (K-Means) para identificar zonas gemelas y calcular el potencial de captación.
+        </p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="glass-panel rounded-2xl p-6 transition-colors hover:bg-slate-800/50">
+        <div class="h-10 w-10 rounded-lg bg-slate-800 flex items-center justify-center border border-slate-700 mb-5">
+          <i data-lucide="layout-dashboard" class="h-5 w-5 text-emerald-400"></i>
+        </div>
+        <h3 class="font-display text-lg font-semibold text-white mb-2">Visualización Dinámica</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">
+          Exportación de resultados a Dashboards en PowerBI o Tableau, o integración directa vía API REST a tus sistemas.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="acceso" class="max-w-3xl mx-auto px-6 py-20 text-center">
+    <div class="glass-panel rounded-3xl p-8 sm:p-12 relative overflow-hidden">
+      <!-- Background Ambient Glow -->
+      <div class="absolute inset-0 bg-gradient-to-b from-purple-500/10 to-transparent pointer-events-none"></div>
+      
+      <i data-lucide="key" class="h-8 w-8 text-purple-400 mx-auto mb-4 relative z-10"></i>
+      <h2 class="relative z-10 font-display text-2xl sm:text-3xl font-bold text-white mb-3">
+        Solicita acceso a la Beta
+      </h2>
+      <p class="relative z-10 text-sm text-slate-400 mb-8">
+        El MVP de Georacle está disponible únicamente bajo invitación para empresas y consultores seleccionados.
+      </p>
+
+      <form id="beta-form" class="relative z-10 flex flex-col sm:flex-row gap-3" novalidate>
+        <input type="email" required placeholder="tu@empresa.com" class="flex-1 rounded-xl border border-slate-700 bg-slate-900/80 py-3 px-4 text-sm text-white placeholder-slate-500 outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all">
+        <button type="submit" id="btn-beta" class="rounded-xl bg-purple-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-purple-500 whitespace-nowrap">
+          Unirse a la lista
+        </button>
+      </form>
+      <p id="msg-beta" class="hidden mt-4 text-emerald-400 text-sm font-medium">¡Solicitud recibida! Evaluaremos tu perfil.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="border-t border-slate-800/60 bg-slate-950 py-8 text-center">
+  <div class="flex items-center justify-center gap-2 mb-2">
+    <i data-lucide="compass" class="h-4 w-4 text-slate-600"></i>
+    <p class="text-sm text-slate-600 font-display font-medium">Georacle</p>
+  </div>
+  <p class="text-xs text-slate-700 font-mono">&copy; 2026 Jose Luis Murguia. Construido para dominar los datos.</p>
+</footer>
+
+<script>
+  // Initialize Icons
+  lucide.createIcons();
+
+  // Handle Beta Form Mock
+  const betaForm = document.getElementById('beta-form');
+  const btnBeta = document.getElementById('btn-beta');
+  const msgBeta = document.getElementById('msg-beta');
+
+  betaForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const input = betaForm.querySelector('input');
+    if(input.value) {
+      btnBeta.innerHTML = '<span class="animate-pulse">Verificando...</span>';
+      btnBeta.disabled = true;
+      input.disabled = true;
+      
+      setTimeout(() => {
+        betaForm.classList.add('hidden');
+        msgBeta.classList.remove('hidden');
+      }, 1500);
+    }
+  });
+</script>
+</body>
+</html>
