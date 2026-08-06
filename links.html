@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jose Luis Murguia | Enlaces</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+          display: ['Space Grotesk', 'sans-serif'],
+        },
+        animation: {
+          'glow': 'glow 3s ease-in-out infinite',
+        },
+        keyframes: {
+          glow: {
+            '0%, 100%': { opacity: 0.5 },
+            '50%': { opacity: 1 },
+          }
+        }
+      }
+    }
+  }
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  body {
+    background-color: #020617; /* slate-950 */
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(6, 182, 212, 0.1) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.1) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+  .glass-btn {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(51, 65, 83, 0.5);
+    transition: all 0.3s ease;
+  }
+  .glass-btn:hover {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(34, 211, 238, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.15);
+  }
+  .premium-glow {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
+  }
+</style>
+</head>
+<body class="text-slate-200 antialiased min-h-screen flex flex-col items-center py-12 px-4 sm:px-6 relative overflow-hidden">
+
+  <!-- Efecto de fondo -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none animate-glow"></div>
+
+  <main class="w-full max-w-md relative z-10 flex flex-col items-center">
+    
+    <!-- 1. Perfil -->
+    <div class="relative mb-6 group cursor-pointer">
+      <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 opacity-70 blur group-hover:opacity-100 transition duration-500"></div>
+      <!-- Si tienes una foto, cambia la ruta de la imagen en 'src'. Por ahora, muestra iniciales estilizadas. -->
+      <div class="relative h-24 w-24 rounded-full bg-slate-900 border-2 border-slate-800 flex items-center justify-center overflow-hidden">
+        <span class="font-display font-bold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">JM</span>
+        <!-- <img src="tu-foto.jpg" alt="Jose Luis Murguia" class="h-full w-full object-cover"> -->
+      </div>
+    </div>
+    
+    <h1 class="font-display text-2xl font-bold text-white mb-1">Jose Luis Murguia</h1>
+    <p class="text-sm text-cyan-400 font-medium mb-3">Consultor de Negocios & Data Scientist</p>
+    <p class="text-sm text-slate-400 text-center mb-8 px-4 leading-relaxed">
+      Convirtiendo datos complejos en decisiones rentables mediante sistemas escalables y economía conductual.
+    </p>
+
+    <!-- 2. Enlaces de Alta Prioridad (Lead Magnets & MVP) -->
+    <div class="w-full space-y-4 mb-8">
+      
+      <a href="index.html" class="glass-btn relative w-full flex items-center justify-between p-4 rounded-xl group overflow-hidden premium-glow">
+        <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <div class="flex items-center gap-3 relative z-10">
+          <div class="h-10 w-10 rounded-lg bg-cyan-400/10 flex items-center justify-center text-cyan-400">
+            <i data-lucide="bar-chart-2" class="h-5 w-5"></i>
+          </div>
+          <div class="text-left">
+            <h2 class="text-base font-semibold text-white group-hover:text-cyan-300 transition-colors">Plantilla Dashboard Financiero</h2>
+            <p class="text-xs text-slate-400">Descarga gratuita (Excel/Sheets)</p>
+          </div>
+        </div>
+        <i data-lucide="arrow-up-right" class="h-5 w-5 text-slate-500 group-hover:text-cyan-400 transition-colors relative z-10"></i>
+      </a>
+
+      <a href="georacle.html" class="glass-btn w-full flex items-center justify-between p-4 rounded-xl group">
+        <div class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
+            <i data-lucide="globe" class="h-5 w-5"></i>
+          </div>
+          <div class="text-left">
+            <h2 class="text-base font-semibold text-white group-hover:text-blue-300 transition-colors">GeoOracle MVP</h2>
+            <p class="text-xs text-slate-400">Inteligencia Espacial y Expansión</p>
+          </div>
+        </div>
+        <i data-lucide="arrow-up-right" class="h-5 w-5 text-slate-500 group-hover:text-blue-400 transition-colors"></i>
+      </a>
+
+      <a href="#" class="glass-btn w-full flex items-center justify-between p-4 rounded-xl group">
+        <div class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-lg bg-teal-500/10 flex items-center justify-center text-teal-400">
+            <i data-lucide="crosshair" class="h-5 w-5"></i>
+          </div>
+          <div class="text-left">
+            <h2 class="text-base font-semibold text-white group-hover:text-teal-300 transition-colors">Consultoría Empresarial</h2>
+            <p class="text-xs text-slate-400">Metodología 5=D & Ingeniería de Menús</p>
+          </div>
+        </div>
+        <i data-lucide="arrow-up-right" class="h-5 w-5 text-slate-500 group-hover:text-teal-400 transition-colors"></i>
+      </a>
+    </div>
+
+    <!-- 3. Redes y Contenido -->
+    <div class="flex items-center justify-center gap-4 w-full border-t border-slate-800/60 pt-8">
+      <a href="#" target="_blank" class="h-12 w-12 rounded-full glass-btn flex items-center justify-center text-slate-400 hover:text-white hover:border-cyan-400 transition-all">
+        <i data-lucide="youtube" class="h-5 w-5"></i>
+      </a>
+      <a href="#" target="_blank" class="h-12 w-12 rounded-full glass-btn flex items-center justify-center text-slate-400 hover:text-white hover:border-cyan-400 transition-all">
+        <i data-lucide="github" class="h-5 w-5"></i>
+      </a>
+      <a href="#" target="_blank" class="h-12 w-12 rounded-full glass-btn flex items-center justify-center text-slate-400 hover:text-white hover:border-cyan-400 transition-all">
+        <i data-lucide="linkedin" class="h-5 w-5"></i>
+      </a>
+    </div>
+
+  </main>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
