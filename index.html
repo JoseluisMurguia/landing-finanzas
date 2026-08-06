@@ -3,31 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JM Analytics | La Plantilla que Convierte Datos en Decisiones</title>
-<meta name="description" content="Descarga gratis la plantilla de Dashboard Financiero usada por consultores de datos para proyectar ingresos, costos y flujo de caja en 5 minutos.">
+<title>5=D | La Ecuación que Convierte Datos en Margen</title>
+<meta name="description" content="Descarga gratis la Matriz de Ingeniería de Márgenes 5=D: la plantilla que consultores de datos usan para detectar fugas de rentabilidad, optimizar menús e inventario en minutos.">
 
-<!-- ... existing code ... -->
-<!-- ================= HEADER ================= -->
-<header class="sticky top-0 z-50 border-b border-slate-800/60 bg-slate-950/70 backdrop-blur-xl">
-  <div class="max-w-7xl mx-auto px-6 sm:px-8 h-16 flex items-center justify-between">
-    <div class="flex items-center gap-8">
-      <a href="#top" class="flex items-center gap-2.5 group">
-        <span class="relative flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.5)] transition-transform duration-300 group-hover:scale-105">
-          <i data-lucide="line-chart" class="h-4.5 w-4.5 text-slate-950" style="width:18px;height:18px;"></i>
-        </span>
-        <span class="font-display font-semibold text-lg tracking-tight text-white">JM <span class="text-cyan-400">Analytics</span></span>
-      </a>
-      
-      <!-- NUEVO ENLACE A GEORACLE -->
-      <a href="georacle.html" class="hidden md:flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-purple-400 transition-colors">
-        <i data-lucide="compass" class="h-4 w-4"></i>
-        Georacle MVP
-      </a>
-    </div>
-
-    <a href="#captura"
-       class="hidden sm:inline-flex items-center gap-2 rounded-full border border-slate-700 px-4 py-2 text-sm font-medium text-slate-300 transition-all duration-300 hover:border-cyan-400/60 hover:text-cyan-300 hover:shadow-[0_0_15px_rgba(6,182,212,0.25)]">
-<!-- ... existing code ... --> 
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,6 +28,7 @@
           'glow-pulse': 'glowPulse 3s ease-in-out infinite',
           'grow-bar': 'growBar 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
           'fade-up': 'fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+          'pulse-dot': 'pulseDot 2.2s ease-in-out infinite',
         },
         keyframes: {
           float: {
@@ -68,6 +47,10 @@
             '0%': { opacity: 0, transform: 'translateY(16px)' },
             '100%': { opacity: 1, transform: 'translateY(0)' },
           },
+          pulseDot: {
+            '0%, 100%': { opacity: 1, transform: 'scale(1)' },
+            '50%': { opacity: 0.6, transform: 'scale(1.4)' },
+          },
         },
       },
     },
@@ -78,10 +61,8 @@
 <script src="https://unpkg.com/lucide@latest"></script>
 
 <style>
-  body {
-    background-color: #020617;
-  }
-  /* Grid pattern background */
+  body { background-color: #020617; }
+
   .bg-grid {
     background-image:
       linear-gradient(to right, rgba(148, 163, 184, 0.07) 1px, transparent 1px),
@@ -92,13 +73,8 @@
     -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, #000 40%, transparent 100%);
     mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, #000 40%, transparent 100%);
   }
-  ::selection {
-    background: rgba(34, 211, 238, 0.3);
-    color: #fff;
-  }
-  html {
-    scrollbar-color: #1e293b #020617;
-  }
+  ::selection { background: rgba(34, 211, 238, 0.3); color: #fff; }
+  html { scrollbar-color: #1e293b #020617; }
   ::-webkit-scrollbar { width: 10px; }
   ::-webkit-scrollbar-track { background: #020617; }
   ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 999px; }
@@ -108,15 +84,28 @@
     border: 2.5px solid rgba(2, 6, 23, 0.25);
     border-top-color: #020617;
     border-radius: 50%;
-    width: 18px;
-    height: 18px;
+    width: 18px; height: 18px;
     animation: spin 0.7s linear infinite;
   }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  .reveal {
-    opacity: 0;
+  .reveal { opacity: 0; }
+
+  /* Tilt card */
+  .tilt-card {
+    transform-style: preserve-3d;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
   }
+
+  /* Equation glyph badge */
+  .eq-badge {
+    background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 55%, #8b5cf6 100%);
+    box-shadow: 0 0 18px rgba(34, 211, 238, 0.45);
+  }
+
+  /* Quadrant dots for menu-engineering mockup */
+  .quad-dot { box-shadow: 0 0 8px currentColor; }
 
   @media (prefers-reduced-motion: reduce) {
     * {
@@ -133,16 +122,23 @@
 <!-- ================= HEADER ================= -->
 <header class="sticky top-0 z-50 border-b border-slate-800/60 bg-slate-950/70 backdrop-blur-xl">
   <div class="max-w-7xl mx-auto px-6 sm:px-8 h-16 flex items-center justify-between">
-    <a href="#top" class="flex items-center gap-2.5 group">
-      <span class="relative flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.5)] transition-transform duration-300 group-hover:scale-105">
-        <i data-lucide="line-chart" class="h-4.5 w-4.5 text-slate-950" style="width:18px;height:18px;"></i>
-      </span>
-      <span class="font-display font-semibold text-lg tracking-tight text-white">JM <span class="text-cyan-400">Analytics</span></span>
-    </a>
+    <div class="flex items-center gap-8">
+      <a href="#top" class="flex items-center gap-2.5 group">
+        <span class="eq-badge relative flex h-8 w-8 items-center justify-center rounded-lg transition-transform duration-300 group-hover:scale-105">
+          <span class="text-slate-950 font-display font-bold text-sm leading-none">=</span>
+        </span>
+        <span class="font-display font-bold text-lg tracking-tight text-white">5<span class="text-cyan-400">=</span>D</span>
+      </a>
+
+      <a href="georacle.html" class="hidden md:flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-purple-400 transition-colors">
+        <i data-lucide="compass" class="h-4 w-4"></i>
+        Georacle · Inteligencia Espacial
+      </a>
+    </div>
 
     <a href="#captura"
        class="hidden sm:inline-flex items-center gap-2 rounded-full border border-slate-700 px-4 py-2 text-sm font-medium text-slate-300 transition-all duration-300 hover:border-cyan-400/60 hover:text-cyan-300 hover:shadow-[0_0_15px_rgba(6,182,212,0.25)]">
-      Obtener plantilla
+      Obtener la plantilla
       <i data-lucide="arrow-right" class="h-4 w-4"></i>
     </a>
   </div>
@@ -152,7 +148,6 @@
 
   <!-- ================= HERO ================= -->
   <section class="relative overflow-hidden bg-grid bg-grid-fade">
-    <!-- ambient glows -->
     <div class="pointer-events-none absolute -top-40 left-1/4 h-[32rem] w-[32rem] rounded-full bg-blue-600/20 blur-[120px]"></div>
     <div class="pointer-events-none absolute top-1/3 -right-20 h-[28rem] w-[28rem] rounded-full bg-cyan-400/10 blur-[120px]"></div>
 
@@ -161,18 +156,20 @@
       <!-- Left: Copy + Form -->
       <div class="reveal [animation:fadeUp_0.8s_cubic-bezier(0.16,1,0.3,1)_forwards]">
         <span class="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-400/5 px-4 py-1.5 text-xs sm:text-sm font-medium text-cyan-300">
-          🎁 Plantilla Gratuita &middot; Google Sheets &amp; Excel
+          🎁 Matriz Gratuita &middot; Google Sheets &amp; Excel
         </span>
 
         <h1 class="mt-6 font-display text-4xl sm:text-5xl xl:text-6xl font-bold leading-[1.08] tracking-tight text-white">
-          Convierte hojas de cálculo caóticas en
-          <span class="bg-gradient-to-r from-blue-500 via-cyan-400 to-teal-300 text-transparent bg-clip-text">
-            decisiones financieras exactas
+          Deja de operar por intuición.
+          <span class="bg-gradient-to-r from-blue-500 via-cyan-400 to-violet-400 text-transparent bg-clip-text">
+            Empieza a operar por ecuación.
           </span>
         </h1>
 
         <p class="mt-6 text-base sm:text-lg text-slate-400 leading-relaxed max-w-xl">
-          Descarga el mismo dashboard de proyección de flujo de caja que uso con clientes de consultoría económica: sin fórmulas rotas, sin plantillas genéricas. Solo datos accionables.
+          <span class="font-display text-white font-semibold">5=D</span> es la metodología de optimización paramétrica que cruza
+          <span class="text-slate-200">Demanda + Densidad + Diseño + Datos</span> para producir una sola
+          <span class="text-cyan-300">Decisión</span> libre de sesgos. Descarga la misma matriz de márgenes que uso con clientes de hospitality y retail: sin fórmulas rotas, sin plantillas genéricas.
         </p>
 
         <!-- FORM -->
@@ -205,7 +202,7 @@
 
           <div id="success-msg" class="mt-4 hidden items-center gap-2.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3.5 text-sm font-medium text-emerald-300">
             <i data-lucide="check-circle-2" class="h-5 w-5 shrink-0"></i>
-            <span>¡Listo! Revisa tu bandeja de entrada, tu plantilla va en camino.</span>
+            <span>¡Listo! Revisa tu bandeja de entrada, tu matriz 5=D va en camino.</span>
           </div>
 
           <p class="mt-3 flex items-center gap-1.5 text-xs text-slate-500">
@@ -225,13 +222,13 @@
             <i data-lucide="trending-up" class="h-4.5 w-4.5 text-emerald-400" style="width:18px;height:18px;"></i>
           </div>
           <div>
-            <p class="font-mono text-sm font-medium text-white">+18.4%</p>
-            <p class="text-[11px] text-slate-500">MoM Revenue</p>
+            <p class="font-mono text-sm font-medium text-white" id="metric-momrev">+0.0%</p>
+            <p class="text-[11px] text-slate-500">MoM Margen</p>
           </div>
         </div>
 
         <!-- Main glass dashboard -->
-        <div class="animate-float relative z-10 rounded-2xl border border-slate-700/60 bg-slate-900/50 backdrop-blur-2xl p-5 sm:p-7 shadow-[0_0_40px_rgba(2,6,23,0.6)]">
+        <div id="dash-card" class="tilt-card animate-float relative z-10 rounded-2xl border border-slate-700/60 bg-slate-900/50 backdrop-blur-2xl p-5 sm:p-7 shadow-[0_0_40px_rgba(2,6,23,0.6)]">
           <!-- window dots -->
           <div class="flex items-center justify-between mb-5">
             <div class="flex gap-1.5">
@@ -239,30 +236,47 @@
               <span class="h-2.5 w-2.5 rounded-full bg-amber-400/70"></span>
               <span class="h-2.5 w-2.5 rounded-full bg-emerald-500/70"></span>
             </div>
-            <span class="font-mono text-[11px] text-slate-500">cashflow_projection.xlsx</span>
+            <span class="font-mono text-[11px] text-slate-500">matriz_margen_5d.xlsx</span>
           </div>
 
           <!-- headline metric -->
           <div class="mb-6">
-            <p class="text-xs font-medium uppercase tracking-wider text-slate-500">Flujo de Caja Proyectado</p>
+            <p class="text-xs font-medium uppercase tracking-wider text-slate-500">Margen Ponderado Proyectado</p>
             <div class="mt-1.5 flex items-baseline gap-2">
-              <span class="font-mono text-3xl sm:text-4xl font-semibold text-white">$284,910</span>
+              <span class="font-mono text-3xl sm:text-4xl font-semibold text-white" id="metric-margin">$0</span>
               <span class="inline-flex items-center gap-0.5 rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-xs font-mono font-medium text-emerald-400">
                 <i data-lucide="arrow-up-right" class="h-3 w-3"></i>
-                12.7%
+                14.2%
               </span>
             </div>
           </div>
 
-          <!-- fake bar chart -->
-          <div class="mb-6 flex items-end gap-2.5 h-28">
-            <div class="flex-1 rounded-t-md bg-gradient-to-t from-blue-600/40 to-cyan-400/60" style="height:45%"></div>
-            <div class="flex-1 rounded-t-md bg-gradient-to-t from-blue-600/40 to-cyan-400/60" style="height:65%"></div>
-            <div class="flex-1 rounded-t-md bg-gradient-to-t from-blue-600/40 to-cyan-400/60" style="height:38%"></div>
-            <div class="flex-1 rounded-t-md bg-gradient-to-t from-blue-600/50 to-cyan-400/80" style="height:80%"></div>
-            <div class="flex-1 rounded-t-md bg-gradient-to-t from-blue-600/40 to-cyan-400/60" style="height:58%"></div>
-            <div class="flex-1 rounded-t-md bg-gradient-to-t from-cyan-400 to-teal-300 shadow-[0_0_15px_rgba(34,211,238,0.5)]" style="height:100%"></div>
-            <div class="flex-1 rounded-t-md bg-gradient-to-t from-blue-600/40 to-cyan-400/60" style="height:70%"></div>
+          <!-- Menu Engineering Quadrant (Estrellas / Caballos / Enigmas / Perros) -->
+          <div class="mb-6">
+            <div class="flex items-center justify-between mb-2">
+              <p class="text-[11px] font-medium uppercase tracking-wider text-slate-500">Matriz de Ingeniería de Menú</p>
+              <p class="text-[10px] font-mono text-slate-600">popularidad × rentabilidad</p>
+            </div>
+            <div class="relative grid grid-cols-2 grid-rows-2 gap-1.5 h-32 rounded-lg border border-slate-800 bg-slate-950/60 p-2">
+              <div class="relative rounded-md bg-emerald-500/5 border border-emerald-500/10">
+                <span class="absolute top-1 left-1.5 text-[9px] font-mono text-emerald-400/70">Estrella</span>
+                <span class="quad-dot absolute h-2 w-2 rounded-full bg-emerald-400 text-emerald-400" style="top:35%;left:55%;"></span>
+                <span class="quad-dot absolute h-1.5 w-1.5 rounded-full bg-emerald-400 text-emerald-400" style="top:60%;left:70%;"></span>
+              </div>
+              <div class="relative rounded-md bg-cyan-500/5 border border-cyan-500/10">
+                <span class="absolute top-1 left-1.5 text-[9px] font-mono text-cyan-400/70">Enigma</span>
+                <span class="quad-dot absolute h-1.5 w-1.5 rounded-full bg-cyan-400 text-cyan-400" style="top:45%;left:30%;"></span>
+              </div>
+              <div class="relative rounded-md bg-amber-500/5 border border-amber-500/10">
+                <span class="absolute top-1 left-1.5 text-[9px] font-mono text-amber-400/70">Caballo de Batalla</span>
+                <span class="quad-dot absolute h-2 w-2 rounded-full bg-amber-400 text-amber-400" style="top:55%;left:40%;"></span>
+                <span class="quad-dot absolute h-1.5 w-1.5 rounded-full bg-amber-400 text-amber-400" style="top:30%;left:65%;"></span>
+              </div>
+              <div class="relative rounded-md bg-rose-500/5 border border-rose-500/10">
+                <span class="absolute top-1 left-1.5 text-[9px] font-mono text-rose-400/70">Perro</span>
+                <span class="quad-dot absolute h-1.5 w-1.5 rounded-full bg-rose-400 text-rose-400" style="top:50%;left:60%;"></span>
+              </div>
+            </div>
           </div>
 
           <!-- progress bars -->
@@ -278,7 +292,7 @@
             </div>
             <div>
               <div class="flex justify-between text-xs mb-1.5">
-                <span class="text-slate-400">Runway Financiero</span>
+                <span class="text-slate-400">Rotación de Inventario</span>
                 <span class="font-mono text-slate-300">64%</span>
               </div>
               <div class="h-1.5 w-full rounded-full bg-slate-800 overflow-hidden">
@@ -287,7 +301,7 @@
             </div>
             <div>
               <div class="flex justify-between text-xs mb-1.5">
-                <span class="text-slate-400">Eficiencia de Costos</span>
+                <span class="text-slate-400">Ticket Promedio Optimizado</span>
                 <span class="font-mono text-slate-300">91%</span>
               </div>
               <div class="h-1.5 w-full rounded-full bg-slate-800 overflow-hidden">
@@ -303,34 +317,62 @@
             <i data-lucide="database" class="h-4.5 w-4.5 text-cyan-300" style="width:18px;height:18px;"></i>
           </div>
           <div>
-            <p class="font-mono text-sm font-medium text-white">1,204</p>
-            <p class="text-[11px] text-slate-500">Data points</p>
+            <p class="font-mono text-sm font-medium text-white" id="metric-points">0</p>
+            <p class="text-[11px] text-slate-500">Puntos de datos</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= SOCIAL PROOF ================= -->
+  <!-- ================= THE EQUATION ================= -->
   <section class="border-y border-slate-800/60 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 py-14">
+      <p class="text-center text-xs font-medium uppercase tracking-widest text-slate-500 mb-10">La ecuación detrás de cada decisión</p>
+      <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 font-display">
+        <div class="flex items-center gap-2 rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">
+          <span class="text-cyan-400 font-bold text-lg">D</span><span class="text-sm text-slate-400">emanda</span>
+        </div>
+        <span class="text-slate-600 text-xl font-bold">+</span>
+        <div class="flex items-center gap-2 rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">
+          <span class="text-blue-400 font-bold text-lg">D</span><span class="text-sm text-slate-400">ensidad</span>
+        </div>
+        <span class="text-slate-600 text-xl font-bold">+</span>
+        <div class="flex items-center gap-2 rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">
+          <span class="text-violet-400 font-bold text-lg">D</span><span class="text-sm text-slate-400">iseño</span>
+        </div>
+        <span class="text-slate-600 text-xl font-bold">+</span>
+        <div class="flex items-center gap-2 rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">
+          <span class="text-teal-400 font-bold text-lg">D</span><span class="text-sm text-slate-400">atos</span>
+        </div>
+        <span class="text-cyan-400 text-2xl font-bold">=</span>
+        <div class="flex items-center gap-2 rounded-xl border border-cyan-400/40 bg-cyan-400/5 px-5 py-3 shadow-[0_0_20px_rgba(34,211,238,0.15)]">
+          <span class="text-white font-bold text-lg">D</span><span class="text-sm text-cyan-200">ecisión</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SOCIAL PROOF ================= -->
+  <section class="border-b border-slate-800/60 bg-slate-950">
     <div class="max-w-7xl mx-auto px-6 sm:px-8 py-10">
-      <p class="text-center text-xs font-medium uppercase tracking-widest text-slate-500 mb-7">Metodologías aplicadas en</p>
+      <p class="text-center text-xs font-medium uppercase tracking-widest text-slate-500 mb-7">Metodología 5=D aplicada en</p>
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
         <div class="flex items-center justify-center gap-2 text-slate-500 hover:text-slate-300 transition-colors duration-300">
-          <i data-lucide="bar-chart-3" class="h-5 w-5"></i>
-          <span class="font-display text-sm sm:text-base font-medium">SaaS Metrics</span>
+          <i data-lucide="utensils-crossed" class="h-5 w-5"></i>
+          <span class="font-display text-sm sm:text-base font-medium">Hospitality & F&B</span>
         </div>
         <div class="flex items-center justify-center gap-2 text-slate-500 hover:text-slate-300 transition-colors duration-300">
-          <i data-lucide="utensils-crossed" class="h-5 w-5"></i>
-          <span class="font-display text-sm sm:text-base font-medium">Restaurantes</span>
+          <i data-lucide="store" class="h-5 w-5"></i>
+          <span class="font-display text-sm sm:text-base font-medium">Retail Multi-Sucursal</span>
         </div>
         <div class="flex items-center justify-center gap-2 text-slate-500 hover:text-slate-300 transition-colors duration-300">
           <i data-lucide="wallet" class="h-5 w-5"></i>
-          <span class="font-display text-sm sm:text-base font-medium">Finanzas Personales</span>
+          <span class="font-display text-sm sm:text-base font-medium">Flujos de Inventario</span>
         </div>
         <div class="flex items-center justify-center gap-2 text-slate-500 hover:text-slate-300 transition-colors duration-300">
-          <i data-lucide="factory" class="h-5 w-5"></i>
-          <span class="font-display text-sm sm:text-base font-medium">Manufactura PyME</span>
+          <i data-lucide="building-2" class="h-5 w-5"></i>
+          <span class="font-display text-sm sm:text-base font-medium">Expansión B2B</span>
         </div>
       </div>
     </div>
@@ -340,46 +382,43 @@
   <section class="relative bg-slate-950 py-20 sm:py-28">
     <div class="max-w-7xl mx-auto px-6 sm:px-8">
       <div class="max-w-2xl mx-auto text-center mb-16">
-        <span class="text-xs font-semibold uppercase tracking-widest text-cyan-400">¿Qué incluye?</span>
+        <span class="text-xs font-semibold uppercase tracking-widest text-cyan-400">¿Qué incluye la matriz?</span>
         <h2 class="mt-3 font-display text-3xl sm:text-4xl font-bold text-white tracking-tight">
-          Diseñado para decidir rápido, no para impresionar
+          Diseñada para decidir rápido, no para impresionar
         </h2>
         <p class="mt-4 text-slate-400">
-          Cada componente de la plantilla existe para responder una pregunta financiera concreta.
+          Cada componente existe para responder una pregunta de rentabilidad concreta, sin sesgos cognitivos de por medio.
         </p>
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Card 1 -->
         <div class="group rounded-2xl border border-slate-800 bg-slate-900/40 p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-cyan-400/40 hover:shadow-[0_0_25px_rgba(6,182,212,0.15)]">
           <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-400/20 border border-cyan-400/20 mb-5 transition-transform duration-300 group-hover:scale-110">
-            <i data-lucide="pie-chart" class="h-5 w-5 text-cyan-300"></i>
+            <i data-lucide="grid-2x2" class="h-5 w-5 text-cyan-300"></i>
           </div>
-          <h3 class="font-display text-lg font-semibold text-white mb-2">Visualización Clara</h3>
+          <h3 class="font-display text-lg font-semibold text-white mb-2">Ingeniería de Menús Automatizada</h3>
           <p class="text-sm text-slate-400 leading-relaxed">
-            Gráficos preconfigurados que traducen filas de datos en patrones que se entienden de un vistazo, sin curva de aprendizaje.
+            Clasifica cada producto en Estrella, Caballo de Batalla, Enigma o Perro para saber exactamente dónde subir precio y dónde retirar del catálogo.
           </p>
         </div>
 
-        <!-- Card 2 -->
         <div class="group rounded-2xl border border-slate-800 bg-slate-900/40 p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-cyan-400/40 hover:shadow-[0_0_25px_rgba(6,182,212,0.15)]">
           <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-400/20 border border-cyan-400/20 mb-5 transition-transform duration-300 group-hover:scale-110">
             <i data-lucide="timer" class="h-5 w-5 text-cyan-300"></i>
           </div>
           <h3 class="font-display text-lg font-semibold text-white mb-2">Setup en 5 Minutos</h3>
           <p class="text-sm text-slate-400 leading-relaxed">
-            Copia tus cifras en las celdas marcadas y el resto se calcula solo. Sin macros complejas ni configuración técnica.
+            Copia tus cifras de venta e inventario en las celdas marcadas: el resto se calcula solo. Sin macros complejas ni configuración técnica.
           </p>
         </div>
 
-        <!-- Card 3 -->
         <div class="group rounded-2xl border border-slate-800 bg-slate-900/40 p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-cyan-400/40 hover:shadow-[0_0_25px_rgba(6,182,212,0.15)] sm:col-span-2 lg:col-span-1">
           <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-400/20 border border-cyan-400/20 mb-5 transition-transform duration-300 group-hover:scale-110">
             <i data-lucide="telescope" class="h-5 w-5 text-cyan-300"></i>
           </div>
-          <h3 class="font-display text-lg font-semibold text-white mb-2">Proyecciones a Futuro</h3>
+          <h3 class="font-display text-lg font-semibold text-white mb-2">Proyecciones Paramétricas</h3>
           <p class="text-sm text-slate-400 leading-relaxed">
-            Modelos de escenarios (optimista, base, conservador) para anticipar tu flujo de caja a 3, 6 y 12 meses.
+            Modelos de escenarios (optimista, base, conservador) para anticipar margen e inventario a 3, 6 y 12 meses.
           </p>
         </div>
       </div>
@@ -390,15 +429,15 @@
   <section id="captura" class="relative border-t border-slate-800/60 bg-grid bg-grid-fade py-16 sm:py-20">
     <div class="max-w-3xl mx-auto px-6 sm:px-8 text-center">
       <h2 class="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
-        Tu próxima decisión financiera merece
-        <span class="bg-gradient-to-r from-blue-500 to-cyan-400 text-transparent bg-clip-text">datos, no intuición</span>
+        Cada día sin ecuación es
+        <span class="bg-gradient-to-r from-blue-500 to-cyan-400 text-transparent bg-clip-text">margen que se fuga</span>
       </h2>
-      <p class="mt-4 text-slate-400">Únete a los profesionales que ya dejaron de improvisar en Excel.</p>
+      <p class="mt-4 text-slate-400">Únete a los operadores que ya dejaron de improvisar en Excel.</p>
       <a href="#top"
          onclick="document.getElementById('email-input').focus(); return false;"
          class="mt-7 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-400 px-6 py-3.5 text-sm sm:text-base font-semibold text-slate-950 transition-all duration-300 hover:shadow-[0_0_25px_rgba(6,182,212,0.55)] hover:-translate-y-0.5">
         <i data-lucide="download" class="h-4.5 w-4.5" style="width:18px;height:18px;"></i>
-        Quiero mi plantilla gratis
+        Quiero mi matriz 5=D gratis
       </a>
     </div>
   </section>
@@ -409,14 +448,15 @@
 <footer class="border-t border-slate-800/60 bg-slate-950">
   <div class="max-w-7xl mx-auto px-6 sm:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
     <div class="flex items-center gap-2">
-      <span class="flex h-6 w-6 items-center justify-center rounded-md bg-gradient-to-br from-blue-500 to-cyan-400">
-        <i data-lucide="line-chart" class="h-3.5 w-3.5 text-slate-950"></i>
+      <span class="eq-badge flex h-6 w-6 items-center justify-center rounded-md">
+        <span class="text-slate-950 font-display font-bold text-xs leading-none">=</span>
       </span>
-      <span class="text-sm text-slate-500">&copy; <span id="year"></span> JM Analytics. Todos los derechos reservados.</span>
+      <span class="text-sm text-slate-500">&copy; <span id="year"></span> 5=D. Todos los derechos reservados.</span>
     </div>
     <nav class="flex items-center gap-6 text-sm text-slate-500">
+      <a href="georacle.html" class="transition-colors duration-300 hover:text-cyan-300">Georacle MVP</a>
+      <a href="links.html" class="transition-colors duration-300 hover:text-cyan-300">Enlaces</a>
       <a href="#" class="transition-colors duration-300 hover:text-cyan-300">Política de Privacidad</a>
-      <a href="#" class="transition-colors duration-300 hover:text-cyan-300">Términos de Uso</a>
     </nav>
   </div>
 </footer>
@@ -428,10 +468,46 @@
   // Current year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Reveal-on-load animation trigger (in case classes were static)
+  // Reveal-on-load animation trigger
   document.querySelectorAll('.reveal').forEach((el) => {
     el.style.animationFillMode = 'forwards';
   });
+
+  // ---- Animated counters (data-loading fascination effect) ----
+  function animateCount(el, target, opts = {}) {
+    const { duration = 1400, prefix = '', suffix = '', decimals = 0 } = opts;
+    const start = performance.now();
+    function tick(now) {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const val = target * eased;
+      el.textContent = prefix + val.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  window.addEventListener('load', () => {
+    animateCount(document.getElementById('metric-margin'), 284910, { prefix: '$', duration: 1600 });
+    animateCount(document.getElementById('metric-points'), 1204, { duration: 1200 });
+    animateCount(document.getElementById('metric-momrev'), 14.2, { prefix: '+', suffix: '%', decimals: 1, duration: 1400 });
+  });
+
+  // ---- 3D Tilt effect on dashboard mockup ----
+  const dashCard = document.getElementById('dash-card');
+  if (dashCard && window.matchMedia('(hover: hover)').matches) {
+    dashCard.addEventListener('mousemove', (e) => {
+      const rect = dashCard.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -5;
+      const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 5;
+      dashCard.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.01)`;
+    });
+    dashCard.addEventListener('mouseleave', () => {
+      dashCard.style.transform = 'perspective(1200px) rotateX(0) rotateY(0) scale(1)';
+    });
+  }
 
   // ---- Form submission mock ----
   const form = document.getElementById('lead-form');
@@ -461,18 +537,15 @@
 
     emailInput.classList.remove('border-rose-500/70', 'focus:ring-rose-500/20');
 
-    // Loading state
     submitBtn.disabled = true;
     emailInput.disabled = true;
     btnContent.innerHTML = '<span class="spinner"></span> Procesando...';
 
     setTimeout(function () {
-      // Success state
       formFields.classList.add('hidden');
       successMsg.classList.remove('hidden');
       successMsg.classList.add('flex');
 
-      // Reset button for potential future use
       submitBtn.disabled = false;
       emailInput.disabled = false;
       btnContent.innerHTML = '<i data-lucide="download" style="width:18px;height:18px;"></i> Descargar Ahora';
@@ -480,7 +553,6 @@
     }, 2000);
   });
 
-  // Clear error state as user types
   emailInput.addEventListener('input', function () {
     if (!errorMsg.classList.contains('hidden')) {
       errorMsg.classList.add('hidden');
