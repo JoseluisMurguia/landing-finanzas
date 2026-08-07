@@ -1,153 +1,161 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>5=D | Enlaces</title>
-<meta name="description" content="5=D — metodología de optimización paramétrica y economía conductual aplicada. Accede a la matriz gratuita, Georacle MVP y consultoría.">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: {
-          sans: ['Inter', 'sans-serif'],
-          display: ['Space Grotesk', 'sans-serif'],
-        },
-        animation: {
-          'glow': 'glow 3s ease-in-out infinite',
-        },
-        keyframes: {
-          glow: {
-            '0%, 100%': { opacity: 0.5 },
-            '50%': { opacity: 1 },
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5=D | Enlaces Oficiales</title>
+    
+    <!-- Tipografía de Alta Legibilidad (Google Fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        slate: { 900: '#0f172a', 950: '#020617' },
+                        cyan: { 400: '#22d3ee' },
+                        blue: { 500: '#3b82f6', 600: '#2563eb' },
+                    }
+                }
+            }
         }
-      }
-    }
-  }
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700\&family=Space+Grotesk:wght@600;700\&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/lucide@latest"></script>
-<style>
-  body {
-    background-color: #020617;
-    background-image:
-      radial-gradient(at 0% 0%, rgba(6, 182, 212, 0.1) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.1) 0px, transparent 50%),
-      radial-gradient(at 50% 100%, rgba(139, 92, 246, 0.08) 0px, transparent 50%);
-    background-attachment: fixed;
-  }
-  .glass-btn {
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(51, 65, 83, 0.5);
-    transition: all 0.3s ease;
-  }
-  .glass-btn:hover {
-    background: rgba(30, 41, 59, 0.8);
-    border-color: rgba(34, 211, 238, 0.4);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.15);
-  }
-  .premium-glow {
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
-  }
-  .eq-badge {
-    background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 55%, #8b5cf6 100%);
-    box-shadow: 0 0 30px rgba(34, 211, 238, 0.4);
-  }
-</style>
+    </script>
+    <style>
+        /* Estética Deep Tech / Glassmorphism */
+        body {
+            background-color: #020617;
+            background-image: radial-gradient(circle at top center, #1e293b 0%, #020617 100%);
+            min-height: 100vh;
+        }
+        
+        .glass-btn {
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(30, 41, 59, 0.8);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-btn:hover {
+            background: rgba(30, 41, 59, 0.6);
+            border-color: rgba(34, 211, 238, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(34, 211, 238, 0.15);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #22d3ee, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .orb-glow {
+            box-shadow: 0 0 60px 10px rgba(59, 130, 246, 0.3), inset 0 0 20px rgba(34, 211, 238, 0.5);
+        }
+    </style>
 </head>
-<body class="text-slate-200 antialiased min-h-screen flex flex-col items-center py-12 px-4 sm:px-6 relative overflow-hidden">
+<body class="text-slate-300 antialiased flex flex-col items-center justify-center p-6 selection:bg-cyan-500/30 selection:text-cyan-200">
 
-  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none animate-glow"></div>
+    <!-- Ambient Background Lights -->
+    <div class="fixed top-0 w-full h-[500px] bg-blue-600/5 blur-[120px] rounded-full pointer-events-none -z-10"></div>
 
-  <main class="w-full max-w-md relative z-10 flex flex-col items-center">
-
-    <!-- 1. Perfil / Marca -->
-    <div class="relative mb-6 group cursor-pointer">
-      <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500 opacity-70 blur group-hover:opacity-100 transition duration-500"></div>
-      <div class="eq-badge relative h-24 w-24 rounded-full flex items-center justify-center overflow-hidden">
-        <span class="font-display font-bold text-2xl text-slate-950">5<span class="text-slate-900">=</span>D</span>
-      </div>
-    </div>
-
-    <h1 class="font-display text-2xl font-bold text-white mb-1">5=D</h1>
-    <p class="text-sm text-cyan-400 font-medium mb-3">Optimización Paramétrica & Economía Conductual</p>
-    <p class="text-sm text-slate-400 text-center mb-8 px-4 leading-relaxed">
-      Demanda + Densidad + Diseño + Datos = Decisión. Fundado por Jose Luis Murguía, Consultor de Negocios & Data Scientist.
-    </p>
-
-    <!-- 2. Enlaces de Alta Prioridad (Lead Magnets & MVP) -->
-    <div class="w-full space-y-4 mb-8">
-
-      <a href="index.html" class="glass-btn relative w-full flex items-center justify-between p-4 rounded-xl group overflow-hidden premium-glow">
-        <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-        <div class="flex items-center gap-3 relative z-10">
-          <div class="h-10 w-10 rounded-lg bg-cyan-400/10 flex items-center justify-center text-cyan-400">
-            <i data-lucide="grid-2x2" class="h-5 w-5"></i>
-          </div>
-          <div class="text-left">
-            <h2 class="text-base font-semibold text-white group-hover:text-cyan-300 transition-colors">Matriz de Márgenes 5=D</h2>
-            <p class="text-xs text-slate-400">Descarga gratuita (Excel/Sheets)</p>
-          </div>
+    <main class="w-full max-w-md mx-auto flex flex-col items-center z-10 pt-8 pb-12">
+        
+        <!-- Avatar / Logo Orb -->
+        <div class="w-24 h-24 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center mb-6 orb-glow relative">
+            <div class="absolute inset-1 rounded-full bg-slate-950 flex items-center justify-center">
+                <span class="font-heading font-bold text-2xl text-white tracking-tighter">5=D</span>
+            </div>
         </div>
-        <i data-lucide="arrow-up-right" class="h-5 w-5 text-slate-500 group-hover:text-cyan-400 transition-colors relative z-10"></i>
-      </a>
 
-      <a href="georacle.html" class="glass-btn w-full flex items-center justify-between p-4 rounded-xl group">
-        <div class="flex items-center gap-3">
-          <div class="h-10 w-10 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400">
-            <i data-lucide="compass" class="h-5 w-5"></i>
-          </div>
-          <div class="text-left">
-            <h2 class="text-base font-semibold text-white group-hover:text-purple-300 transition-colors">Georacle MVP</h2>
-            <p class="text-xs text-slate-400">Inteligencia Espacial y Expansión</p>
-          </div>
+        <!-- Header Info -->
+        <div class="text-center mb-10 w-full">
+            <h1 class="font-heading font-bold text-2xl text-white mb-2">SISTEMA 5=D</h1>
+            <h2 class="text-sm font-medium gradient-text mb-4 tracking-wide uppercase">Optimización Paramétrica & Economía Conductual</h2>
+            <p class="text-sm text-slate-400 leading-relaxed px-4">
+                Modelos econométricos y teoría de sistemas complejos aplicados al retail físico.
+            </p>
         </div>
-        <i data-lucide="arrow-up-right" class="h-5 w-5 text-slate-500 group-hover:text-purple-400 transition-colors"></i>
-      </a>
 
-      <a href="#" class="glass-btn w-full flex items-center justify-between p-4 rounded-xl group">
-        <div class="flex items-center gap-3">
-          <div class="h-10 w-10 rounded-lg bg-teal-500/10 flex items-center justify-center text-teal-400">
-            <i data-lucide="crosshair" class="h-5 w-5"></i>
-          </div>
-          <div class="text-left">
-            <h2 class="text-base font-semibold text-white group-hover:text-teal-300 transition-colors">Consultoría 5=D</h2>
-            <p class="text-xs text-slate-400">Ingeniería de Menús & Flujos de Inventario</p>
-          </div>
+        <!-- Links Container -->
+        <div class="w-full flex flex-col gap-4 mb-10">
+            
+            <!-- Link 1: Calculadora (Lead Magnet) -->
+            <a href="/index.html" class="glass-btn rounded-xl p-4 flex items-center group cursor-pointer relative overflow-hidden text-decoration-none">
+                <div class="w-12 h-12 rounded-lg bg-cyan-950/50 border border-cyan-900/50 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-900/80 transition-colors shrink-0">
+                    <i data-lucide="calculator" class="w-5 h-5"></i>
+                </div>
+                <div class="ml-4 flex-1">
+                    <h3 class="font-heading font-semibold text-white text-[15px] mb-0.5 group-hover:text-cyan-300 transition-colors">Calculadora Paramétrica 5=D</h3>
+                    <p class="text-xs text-slate-400">Software gratuito (Excel/Sheets)</p>
+                </div>
+                <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-600 group-hover:text-cyan-400 transition-colors"></i>
+            </a>
+
+            <!-- Link 2: Georacle MVP -->
+            <a href="/georacle.html" class="glass-btn rounded-xl p-4 flex items-center group cursor-pointer relative overflow-hidden text-decoration-none">
+                <div class="w-12 h-12 rounded-lg bg-blue-950/50 border border-blue-900/50 flex items-center justify-center text-blue-400 group-hover:bg-blue-900/80 transition-colors shrink-0">
+                    <i data-lucide="map" class="w-5 h-5"></i>
+                </div>
+                <div class="ml-4 flex-1">
+                    <h3 class="font-heading font-semibold text-white text-[15px] mb-0.5 group-hover:text-blue-300 transition-colors">Georacle MVP</h3>
+                    <p class="text-xs text-slate-400">Inteligencia Espacial & Expansión</p>
+                </div>
+                <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-600 group-hover:text-blue-400 transition-colors"></i>
+            </a>
+
+            <!-- Link 3: Sobre el Fundador (Autoridad) -->
+            <a href="https://linkedin.com/in/tu-perfil-exacto" target="_blank" class="glass-btn rounded-xl p-4 flex items-center group cursor-pointer relative overflow-hidden text-decoration-none">
+                <div class="w-12 h-12 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-300 group-hover:bg-slate-700 transition-colors shrink-0">
+                    <i data-lucide="fingerprint" class="w-5 h-5"></i>
+                </div>
+                <div class="ml-4 flex-1">
+                    <h3 class="font-heading font-semibold text-white text-[15px] mb-0.5 group-hover:text-white transition-colors">Jose Luis Murguía | Fundador</h3>
+                    <p class="text-xs text-slate-400">Economista & Data Scientist</p>
+                </div>
+                <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-600 group-hover:text-white transition-colors"></i>
+            </a>
+
         </div>
-        <i data-lucide="arrow-up-right" class="h-5 w-5 text-slate-500 group-hover:text-teal-400 transition-colors"></i>
-      </a>
-    </div>
 
+        <!-- Divider -->
+        <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-800 to-transparent mb-8"></div>
 
-   <!-- 3. Redes y Contenido -->
-    <div class="flex items-center justify-center gap-4 w-full border-t border-slate-800/60 pt-8">
-      
-      <!-- Botón YouTube -->
-      <a href="https://www.youtube.com/@PepiiMurguia" target="_blank" rel="noopener noreferrer" class="h-12 w-12 rounded-full glass-btn flex items-center justify-center text-slate-400 hover:text-white hover:border-cyan-400 transition-all">
-        <i data-lucide="youtube" class="h-5 w-5"></i>
-      </a>
-      
-      <!-- Botón GitHub -->
-      <a href="https://github.com/JoseluisMurguia" target="_blank" rel="noopener noreferrer" class="h-12 w-12 rounded-full glass-btn flex items-center justify-center text-slate-400 hover:text-white hover:border-cyan-400 transition-all">
-        <i data-lucide="github" class="h-5 w-5"></i>
-      </a>
-      
-      <!-- Botón LinkedIn -->
-      <a href="https://www.linkedin.com/in/pepii-murguia-/" target="_blank" rel="noopener noreferrer" class="h-12 w-12 rounded-full glass-btn flex items-center justify-center text-slate-400 hover:text-white hover:border-cyan-400 transition-all">
-        <i data-lucide="linkedin" class="h-5 w-5"></i>
-      </a>
+        <!-- Social Icons Footer -->
+        <div class="flex items-center justify-center gap-6">
+            <a href="https://youtube.com/@PepiiMurguia" target="_blank" class="w-12 h-12 rounded-full border border-slate-800 bg-slate-900/50 flex items-center justify-center text-slate-400 hover:text-red-500 hover:border-red-500/50 hover:bg-slate-800 transition-all transform hover:-translate-y-1">
+                <i data-lucide="youtube" class="w-5 h-5"></i>
+            </a>
+            
+            <a href="https://linkedin.com/in/pepii-murguia-/" target="_blank" class="w-12 h-12 rounded-full border border-slate-800 bg-slate-900/50 flex items-center justify-center text-slate-400 hover:text-blue-500 hover:border-blue-500/50 hover:bg-slate-800 transition-all transform hover:-translate-y-1">
+                <i data-lucide="linkedin" class="w-5 h-5"></i>
+            </a>
+            
+            <a href="https://instagram.com/pepiimurguia/" target="_blank" class="w-12 h-12 rounded-full border border-slate-800 bg-slate-900/50 flex items-center justify-center text-slate-400 hover:text-pink-500 hover:border-pink-500/50 hover:bg-slate-800 transition-all transform hover:-translate-y-1">
+                <i data-lucide="instagram" class="w-5 h-5"></i>
+            </a>
+        </div>
 
-    </div>
+    </main>
 
-  <script>
-    lucide.createIcons();
-  </script>
+    <!-- Init Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
