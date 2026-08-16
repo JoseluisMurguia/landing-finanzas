@@ -83,6 +83,17 @@
         .orb-glow {
             box-shadow: 0 0 60px 10px rgba(59, 130, 246, 0.3), inset 0 0 20px rgba(34, 211, 238, 0.5);
         }
+
+        /* Animación de levitación para el logo */
+        @keyframes float-premium {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float-premium {
+            animation: float-premium 5s ease-in-out infinite;
+        }
+        
     </style>
 </head>
 <body class="text-slate-300 antialiased flex flex-col items-center p-6 selection:bg-cyan-500/30 selection:text-cyan-200">
@@ -105,13 +116,35 @@
         <!-- REEMPLAZA LA URL ABAJO -->
         <img src="foto-perfil.jpg" alt="José Luis Murguía" class="object-cover w-full h-full">
     </div>
-</div>
+
+            <!-- 2. LOGO 5D FLOTANTE (Reemplaza el texto "SISTEMA 5=D") -->
+        <div class="relative w-28 h-28 md:w-32 md:h-32 mb-4 mx-auto group cursor-default">
+            <!-- Contenedor con animación flotante continua -->
+            <div class="w-full h-full animate-float-premium transition-transform duration-500 ease-out group-hover:scale-110">
+                <!-- Imagen con Drop-Shadow Inteligente -->
+                <!-- El resplandor reconoce las transparencias y resalta los trazos -->
+                <img src="5D.png" alt="Logo 5=D" class="object-contain w-full h-full drop-shadow-[0_10px_15px_rgba(34,211,238,0.15)] group-hover:drop-shadow-[0_0_25px_rgba(157,49,102,0.5)] transition-all duration-700">
+            </div>
+        </div>
 <!-- Header Info -->
 <div class="mb-10 text-center">
     <h1 class="font-heading font-bold text-3xl text-white mb-2">Economía 5=D</h1>
     <h2 class="text-lg font-medium gradient-text mb-2 tracking-wide uppercase"> Investigador UAM Xochimilco </h2>
     <p class="text-sm text-slate-400">Jose Luis Murguía | Economista & Data Scientist</p>
 </div>
+
+       
+
+
+
+
+
+
+
+
+
+
+        
        
 
         <!-- Links/Cards Container -->
