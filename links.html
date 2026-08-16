@@ -93,106 +93,102 @@
     <main class="w-full max-w-md mx-auto flex flex-col items-center z-10 pt-8 pb-12">
         
         <!-- Avatar / Logo Orb -->
-        <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center mb-6 orb-glow relative">
-            <div class="absolute inset-1 rounded-full bg-slate-950 flex items-center justify-center">
-                <span class="font-heading font-bold text-xl md:text-2xl text-white tracking-tighter">5=D</span>
+       <!-- Foto de Portada / Avatar con Brillo -->
+<div class="relative w-24 h-24 mb-6 rounded-full orb-glow">
+    <!-- Reemplaza "URL_O_RUTA_DE_TU_FOTO.jpg" con tu imagen -->
+<img src="foto-perfil.jpg" alt="Foto de José Luis Murguía" class="object-cover w-full h-full rounded-full border-4 border-slate-950">
+</div>
+
+<!-- Header Info -->
+<div class="mb-10 text-center">
+    <h1 class="font-heading font-bold text-3xl text-white mb-2">SISTEMA 5=D</h1>
+    <h2 class="text-lg font-medium gradient-text mb-2 tracking-wide uppercase">Optimización Paramétrica & Economía Conductual</h2>
+    <p class="text-sm text-slate-400">Jose Luis Murguía | Economista & Data Scientist</p>
+</div>
+       
+
+        <!-- Links/Cards Container -->
+<div class="w-full flex flex-col gap-6 mb-12">
+
+    <!-- 1. Actualización Semanal (Violeta) -->
+    <a href="https://www.anthropic.com/path-to-hope" target="_blank" class="glass-btn rounded-xl p-5 block group cursor-pointer relative overflow-hidden border border-violet-900/50 shadow-lg hover:border-violet-500/50">
+        <!-- Indicador 'Nuevo' -->
+        <div class="absolute top-2 right-2 flex items-center gap-1.5">
+            <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-violet-500"></span>
+            </span>
+            <span class="text-[10px] font-mono text-violet-400 uppercase tracking-widest">Nuevo</span>
+        </div>
+        <!-- Contenido -->
+        <div class="flex items-start gap-4 mb-4">
+            <div class="shrink-0 text-violet-400"><i data-lucide="brain-circuit" class="w-6 h-6"></i></div>
+            <div>
+                <h3 class="font-heading font-semibold text-white text-[16px] mb-1 group-hover:text-violet-300">🟣 🧠 Implementando Anthropic IA</h3>
+                <p class="text-sm text-slate-400">Lectura de la semana: Modelos complejos y LLMs.</p>
             </div>
         </div>
-
-        <!-- Header Info -->
-        <div class="text-center mb-10 w-full">
-            <h1 class="font-heading font-bold text-2xl text-white mb-2">SISTEMA 5=D</h1>
-            <h2 class="text-sm font-medium gradient-text mb-4 tracking-wide uppercase">Optimización Paramétrica & Economía Conductual</h2>
-            <p class="text-sm text-slate-400 leading-relaxed px-4">
-                Jose Luis Murguía | Economista & Data Scientist.
-            </p>
+        <!-- Botón CTA Centrado -->
+        <div class="text-center">
+            <button class="bg-violet-600/60 hover:bg-violet-600 text-white rounded-full px-6 py-2.5 text-sm font-semibold flex items-center gap-2 mx-auto">
+                Leer ahora →
+            </button>
         </div>
+    </a>
 
-        <!-- Links Container -->
-        <div class="w-full flex flex-col gap-4">
-            
-            <!-- 1. SLOT DE ACTUALIZACIÓN SEMANAL (HOT-SWAP) -->
-            <!-- Instrucción: Cambia el 'href' de abajo cada semana con tu nuevo artículo o publicación -->
-            <a href="https://www.anthropic.com/path-to-hope" target="_blank" class="glass-btn glass-btn-featured rounded-xl p-4 flex items-center group cursor-pointer relative overflow-hidden text-decoration-none">
-                <div class="absolute top-2 right-2 flex items-center gap-1.5">
-                    <span class="relative flex h-2 w-2">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-2 w-2 bg-violet-500"></span>
-                    </span>
-                    <span class="text-[10px] font-mono text-violet-400 uppercase tracking-widest">Nuevo</span>
-                </div>
-                
-                <div class="w-12 h-12 rounded-lg bg-violet-950/50 border border-violet-900/50 flex items-center justify-center text-violet-400 group-hover:bg-violet-900/80 transition-colors shrink-0">
-                    <i data-lucide="brain-circuit" class="w-5 h-5"></i>
-                </div>
-                <div class="ml-4 flex-1 pr-8">
-                    <h3 class="font-heading font-semibold text-white text-[15px] mb-0.5 group-hover:text-violet-300 transition-colors">Implementando Anthropic IA</h3>
-                    <p class="text-xs text-slate-400">Lectura de la semana: Modelos complejos y LLMs.</p>
-                </div>
-            </a>
+    <!-- 2. Herramienta Principal (Cian) -->
+    <a href="https://joseluismurguia.tech/calculadora.html" class="glass-btn rounded-xl p-5 block group cursor-pointer relative overflow-hidden border border-cyan-900/50 shadow-lg hover:border-cyan-500/50">
+        <!-- Contenido -->
+        <div class="flex items-start gap-4 mb-4">
+            <div class="shrink-0 text-cyan-400"><i data-lucide="calculator" class="w-6 h-6"></i></div>
+            <div>
+                <h3 class="font-heading font-semibold text-white text-[16px] mb-1 group-hover:text-cyan-300">🟣 🧮 Calculadora Paramétrica 5=D</h3>
+                <p class="text-sm text-slate-400">Ingeniería de menús & Food Cost (Gratis)</p>
+            </div>
+        </div>
+        <!-- Botón CTA Centrado -->
+        <div class="text-center">
+            <button class="bg-cyan-600/60 hover:bg-cyan-600 text-white rounded-full px-6 py-2.5 text-sm font-semibold flex items-center gap-2 mx-auto">
+                Calcular ahora →
+            </button>
+        </div>
+    </a>
 
-            <!-- 2. HERRAMIENTA PRINCIPAL: CALCULADORA -->
-            <!-- Instrucción: Sustituye el href por el link DIRECTO de tu landing de la calculadora o el form -->
-            <a href="https://joseluismurguia.tech/calculadora.html" class="glass-btn rounded-xl p-4 flex items-center group cursor-pointer relative overflow-hidden text-decoration-none border-cyan-900/40 hover:border-cyan-500/50">
-                <div class="w-12 h-12 rounded-lg bg-cyan-950/50 border border-cyan-900/50 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-900/80 transition-colors shrink-0">
-                    <i data-lucide="calculator" class="w-5 h-5"></i>
-                </div>
-                <div class="ml-4 flex-1">
-                    <h3 class="font-heading font-semibold text-white text-[15px] mb-0.5 group-hover:text-cyan-300 transition-colors">Calculadora Paramétrica 5=D</h3>
-                    <p class="text-xs text-slate-400">Ingeniería de menús & Food Cost (Gratis)</p>
-                </div>
-                <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-600 group-hover:text-cyan-400 transition-colors"></i>
-            </a>
+    <!-- 3. Herramienta Secundaria (Azul) -->
+    <a href="/georacle.html" class="glass-btn rounded-xl p-5 block group cursor-pointer relative overflow-hidden border border-blue-900/50 shadow-lg hover:border-blue-500/50">
+        <!-- Contenido -->
+        <div class="flex items-start gap-4 mb-4">
+            <div class="shrink-0 text-blue-400"><i data-lucide="map" class="w-6 h-6"></i></div>
+            <div>
+                <h3 class="font-heading font-semibold text-white text-[16px] mb-1 group-hover:text-blue-300">🟣 🗺 Georacle MVP</h3>
+                <p class="text-sm text-slate-400">Inteligencia Espacial & Expansión</p>
+            </div>
+        </div>
+        <!-- Botón CTA Centrado -->
+        <div class="text-center">
+            <button class="bg-blue-600/60 hover:bg-blue-600 text-white rounded-full px-6 py-2.5 text-sm font-semibold flex items-center gap-2 mx-auto">
+                Ver Georacle →
+            </button>
+        </div>
+    </a>
 
-            <!-- 3. HERRAMIENTA SECUNDARIA: GEORACLE -->
-            <a href="/georacle.html" class="glass-btn rounded-xl p-4 flex items-center group cursor-pointer relative overflow-hidden text-decoration-none">
-                <div class="w-12 h-12 rounded-lg bg-blue-950/50 border border-blue-900/50 flex items-center justify-center text-blue-400 group-hover:bg-blue-900/80 transition-colors shrink-0">
-                    <i data-lucide="map" class="w-5 h-5"></i>
-                </div>
-                <div class="ml-4 flex-1">
-                    <h3 class="font-heading font-semibold text-white text-[15px] mb-0.5 group-hover:text-blue-300 transition-colors">Georacle MVP</h3>
-                    <p class="text-xs text-slate-400">Inteligencia Espacial & Expansión</p>
-                </div>
-                <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-600 group-hover:text-blue-400 transition-colors"></i>
-            </a>
-
-            <!-- Separador Lógico -->
-            <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-800 to-transparent my-2"></div>
-
+</div>
             <!-- 4. NODO: REPOSITORIOS GITHUB -->
-            <a href="https://github.com/JoseluisMurguia" target="_blank" class="glass-btn rounded-xl p-4 flex items-center group cursor-pointer relative overflow-hidden text-decoration-none">
-                <div class="w-12 h-12 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 group-hover:bg-slate-800 transition-colors shrink-0">
-                    <i data-lucide="github" class="w-5 h-5"></i>
-                </div>
-                <div class="ml-4 flex-1">
-                    <h3 class="font-heading font-semibold text-white text-[15px] mb-0.5 transition-colors">Repositorios & Código</h3>
-                    <p class="text-xs text-slate-400">Data Science, Python & R Scripts</p>
-                </div>
-            </a>
-
-            <!-- 5. NODO: YOUTUBE (ENSAYOS Y ANÁLISIS) -->
-            <a href="https://youtube.com/@PepiiMurguia" target="_blank" class="glass-btn rounded-xl p-4 flex items-center group cursor-pointer relative overflow-hidden text-decoration-none">
-                <div class="w-12 h-12 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 group-hover:text-red-400 group-hover:bg-slate-800 transition-colors shrink-0">
-                    <i data-lucide="youtube" class="w-5 h-5"></i>
-                </div>
-                <div class="ml-4 flex-1">
-                    <h3 class="font-heading font-semibold text-white text-[15px] mb-0.5 transition-colors">Análisis en Video</h3>
-                    <p class="text-xs text-slate-400">Casos de estudio y sistemas complejos</p>
-                </div>
-            </a>
-
-            <!-- 6. NODO: LINKEDIN (PERFIL PROFESIONAL) -->
-            <a href="https://linkedin.com/in/pepii-murguia-/" target="_blank" class="glass-btn rounded-xl p-4 flex items-center group cursor-pointer relative overflow-hidden text-decoration-none">
-                <div class="w-12 h-12 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 group-hover:text-blue-400 group-hover:bg-slate-800 transition-colors shrink-0">
-                    <i data-lucide="linkedin" class="w-5 h-5"></i>
-                </div>
-                <div class="ml-4 flex-1">
-                    <h3 class="font-heading font-semibold text-white text-[15px] mb-0.5 transition-colors">Red Profesional</h3>
-                    <p class="text-xs text-slate-400">Conecta conmigo en LinkedIn</p>
-                </div>
-            </a>
-
-        </div>
+          <!-- Redes Sociales (Horizontales, tipo Reference) -->
+<div class="flex gap-2 mb-10">
+    <a href="https://github.com/JoseluisMurguia" target="_blank" class="glass-btn rounded-full px-4 py-2 flex items-center gap-2 group cursor-pointer border border-slate-800 text-sm">
+        <i data-lucide="github" class="w-4 h-4 text-slate-400 group-hover:text-violet-300"></i>
+        <span class="text-white">@JoseluisMurguia</span>
+    </a>
+    <a href="https://youtube.com/@PepiiMurguia" target="_blank" class="glass-btn rounded-full px-4 py-2 flex items-center gap-2 group cursor-pointer border border-slate-800 text-sm">
+        <i data-lucide="youtube" class="w-4 h-4 text-slate-400 group-hover:text-red-400"></i>
+        <span class="text-white">@PepiiMurguia</span>
+    </a>
+    <a href="https://linkedin.com/in/pepii-murguia-/" target="_blank" class="glass-btn rounded-full px-4 py-2 flex items-center gap-2 group cursor-pointer border border-slate-800 text-sm">
+        <i data-lucide="linkedin" class="w-4 h-4 text-slate-400 group-hover:text-blue-400"></i>
+        <span class="text-white">José Luis Murguía</span>
+    </a>
+</div>
     </main>
 
     <!-- Init Icons -->
