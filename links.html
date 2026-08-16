@@ -60,7 +60,6 @@
             box-shadow: 0 10px 30px -10px rgba(34, 211, 238, 0.15);
         }
 
-        /* Variante especial para el Link Semanal */
         .glass-btn-featured {
             background: rgba(23, 15, 42, 0.6);
             border: 1px solid rgba(139, 92, 246, 0.4);
@@ -93,175 +92,151 @@
         .animate-float-premium {
             animation: float-premium 5s ease-in-out infinite;
         }
-        
     </style>
 </head>
-<body class="text-slate-300 antialiased flex flex-col items-center p-6 selection:bg-cyan-500/30 selection:text-cyan-200">
+<body class="text-slate-300 antialiased flex flex-col items-center p-4 md:p-6 selection:bg-cyan-500/30 selection:text-cyan-200">
 
-    <!-- Ambient Background Lights -->
+    <!-- Luces de fondo ambientales -->
     <div class="fixed top-0 w-full h-[500px] bg-blue-600/5 blur-[120px] rounded-full pointer-events-none -z-10"></div>
 
-    <main class="w-full max-w-md mx-auto flex flex-col items-center z-10 pt-8 pb-12">
+    <main class="w-full max-w-xl mx-auto flex flex-col items-center z-10 pt-6 pb-12">
         
-        <!-- Avatar / Logo Orb -->
-<!-- Opción 2: Anillos Orbitales -->
-<div class="relative w-32 h-32 md:w-40 md:h-40 mb-8 flex items-center justify-center mx-auto">
-    <!-- Anillo exterior rotando a la derecha -->
-    <div class="absolute inset-0 rounded-full border-[3px] border-cyan-500/20 border-t-cyan-400 animate-[spin_4s_linear_infinite]"></div>
-    <!-- Anillo interior rotando a la izquierda -->
-    <div class="absolute inset-2 rounded-full border-[3px] border-violet-500/20 border-b-violet-500 animate-[spin_3s_linear_infinite_reverse]"></div>
-    
-    <!-- Foto Central -->
-    <div class="absolute w-[85%] h-[85%] z-10 rounded-full border-4 border-slate-900 shadow-[0_0_25px_rgba(59,130,246,0.5)] overflow-hidden">
-        <!-- REEMPLAZA LA URL ABAJO -->
-        <img src="foto-perfil.jpg" alt="José Luis Murguía" class="object-cover w-full h-full">
-    </div>
+        <!-- 1. TU FOTO DE PERFIL (Con anillos orbitales) -->
+        <div class="relative w-32 h-32 md:w-40 md:h-40 mb-6 flex items-center justify-center mx-auto">
+            <!-- Anillo exterior rotando a la derecha -->
+            <div class="absolute inset-0 rounded-full border-[3px] border-cyan-500/20 border-t-cyan-400 animate-[spin_4s_linear_infinite]"></div>
+            <!-- Anillo interior rotando a la izquierda -->
+            <div class="absolute inset-2 rounded-full border-[3px] border-violet-500/20 border-b-violet-500 animate-[spin_3s_linear_infinite_reverse]"></div>
+            
+            <!-- Foto Central -->
+            <div class="absolute w-[85%] h-[85%] z-10 rounded-full border-4 border-slate-900 shadow-[0_0_25px_rgba(59,130,246,0.5)] overflow-hidden">
+                <img src="foto-perfil.jpg" alt="José Luis Murguía" class="object-cover w-full h-full">
+            </div>
+        </div>
 
-            <!-- 2. LOGO 5D FLOTANTE (Reemplaza el texto "SISTEMA 5=D") -->
-        <div class="relative w-28 h-28 md:w-32 md:h-32 mb-4 mx-auto group cursor-default">
+        <!-- 2. LOGO 5D FLOTANTE -->
+        <div class="relative w-24 h-24 md:w-28 md:h-28 mb-4 mx-auto group cursor-default">
             <!-- Contenedor con animación flotante continua -->
             <div class="w-full h-full animate-float-premium transition-transform duration-500 ease-out group-hover:scale-110">
                 <!-- Imagen con Drop-Shadow Inteligente -->
-                <!-- El resplandor reconoce las transparencias y resalta los trazos -->
                 <img src="5D.png" alt="Logo 5=D" class="object-contain w-full h-full drop-shadow-[0_10px_15px_rgba(34,211,238,0.15)] group-hover:drop-shadow-[0_0_25px_rgba(157,49,102,0.5)] transition-all duration-700">
             </div>
         </div>
-<!-- Header Info -->
-<div class="mb-10 text-center">
-    <h2 class="text-lg font-medium gradient-text mb-2 tracking-wide uppercase"> Investigador UAM Xochimilco </h2>
-    <p class="text-sm text-slate-400">Jose Luis Murguía | Economista & Data Scientist</p>
-</div>
 
-       
-
-
-
-
-
-
-
-
-
-
-        
-       
-
-        <!-- Links/Cards Container -->
-<!-- SLOT SEMANAL DUAL (A la misma altura) -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
-
-    <!-- BOTÓN 1: Carta del Dr. Tzili -->
-    <a href="https://www.unla.edu.ar/centros/centro-de-estudios-de-investigacion-sino-latinoamericano/cartas-del-ceisil" target="_blank" class="glass-btn rounded-xl p-4 flex flex-col justify-between group cursor-pointer relative overflow-hidden border border-violet-900/50 shadow-lg hover:border-violet-500/50 h-full bg-violet-950/20">
-        <!-- Indicador Carta 6 -->
-        <div class="absolute top-2 right-2 flex items-center gap-1 bg-violet-900/60 px-2 py-0.5 rounded-full border border-violet-700/50">
-            <span class="text-[9px] font-mono text-violet-300 uppercase tracking-wider">Carta 6 • Agosto</span>
+        <!-- 3. HEADER INFO -->
+        <div class="mb-6 text-center">
+            <h2 class="text-lg font-medium gradient-text mb-2 tracking-wide uppercase"> Investigador UAM Xochimilco </h2>
+            <p class="text-sm text-slate-400">Jose Luis Murguía | Economista & Data Scientist</p>
         </div>
-        
-        <!-- Contenido -->
-        <div class="mb-4 mt-3">
-            <div class="flex items-start gap-3 mb-2">
-                <div class="shrink-0 text-violet-400 mt-0.5"><i data-lucide="globe-2" class="w-5 h-5"></i></div>
-                <h3 class="font-heading font-semibold text-white text-[14px] leading-tight group-hover:text-violet-300 transition-colors">Geopolítica: China vs EE.UU.</h3>
+
+        <!-- 4. REDES SOCIALES (Movidas arriba y ajustadas para celular) -->
+        <div class="flex flex-wrap justify-center gap-3 w-full mb-10 px-2">
+            <a href="https://github.com/JoseluisMurguia" target="_blank" class="glass-btn rounded-full px-4 py-2 flex items-center gap-2 group cursor-pointer border border-slate-800 text-sm">
+                <i data-lucide="github" class="w-4 h-4 text-slate-400 group-hover:text-violet-300"></i>
+                <span class="text-white">@JoseluisMurguia</span>
+            </a>
+            <a href="https://youtube.com/@PepiiMurguia" target="_blank" class="glass-btn rounded-full px-4 py-2 flex items-center gap-2 group cursor-pointer border border-slate-800 text-sm">
+                <i data-lucide="youtube" class="w-4 h-4 text-slate-400 group-hover:text-red-400"></i>
+                <span class="text-white">@PepiiMurguia</span>
+            </a>
+            <a href="https://linkedin.com/in/pepii-murguia-/" target="_blank" class="glass-btn rounded-full px-4 py-2 flex items-center gap-2 group cursor-pointer border border-slate-800 text-sm">
+                <i data-lucide="linkedin" class="w-4 h-4 text-slate-400 group-hover:text-blue-400"></i>
+                <span class="text-white">José Luis Murguía</span>
+            </a>
+        </div>
+
+        <!-- 5. CONTENEDOR PRINCIPAL DE ENLACES (Aquí se arregla el amontonamiento) -->
+        <div class="w-full flex flex-col gap-6">
+
+            <!-- SLOT SEMANAL DUAL (A la misma altura) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+
+                <!-- BOTÓN 1: Carta del Dr. Tzili -->
+                <a href="https://www.unla.edu.ar/centros/centro-de-estudios-de-investigacion-sino-latinoamericano/cartas-del-ceisil" target="_blank" class="glass-btn rounded-xl p-4 flex flex-col justify-between group cursor-pointer relative overflow-hidden border border-violet-900/50 shadow-lg hover:border-violet-500/50 h-full bg-violet-950/20">
+                    <div class="absolute top-2 right-2 flex items-center gap-1 bg-violet-900/60 px-2 py-0.5 rounded-full border border-violet-700/50">
+                        <span class="text-[9px] font-mono text-violet-300 uppercase tracking-wider">Carta 6 • Agosto</span>
+                    </div>
+                    
+                    <div class="mb-4 mt-3">
+                        <div class="flex items-start gap-3 mb-2">
+                            <div class="shrink-0 text-violet-400 mt-0.5"><i data-lucide="globe-2" class="w-5 h-5"></i></div>
+                            <h3 class="font-heading font-semibold text-white text-[14px] leading-tight group-hover:text-violet-300 transition-colors">Geopolítica: China vs EE.UU.</h3>
+                        </div>
+                        <p class="text-[12px] text-slate-400 leading-relaxed font-medium">
+                            ¿América Latina como simple tablero de ajedrez? El Dr. Tzili advierte sobre el riesgo de una nueva "dependencia periférica" y urge a aprovechar estratégicamente el nearshoring.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-auto">
+                        <button class="w-full bg-violet-600/60 hover:bg-violet-600 text-white rounded-full py-2 text-xs font-semibold flex items-center justify-center gap-2 transition-colors">
+                            Leer Artículo <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+                        </button>
+                    </div>
+                </a>
+
+                <!-- BOTÓN 2: Dollar Street -->
+                <a href="https://www.gapminder.org/dollar-street" target="_blank" class="glass-btn rounded-xl p-4 flex flex-col justify-between group cursor-pointer relative overflow-hidden border border-violet-900/50 shadow-lg hover:border-violet-500/50 h-full bg-violet-950/20">
+                    <div class="absolute top-2 right-2 flex items-center gap-1.5 bg-violet-900/60 px-2 py-0.5 rounded-full border border-violet-700/50">
+                        <span class="relative flex h-1.5 w-1.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-violet-500"></span>
+                        </span>
+                        <span class="text-[9px] font-mono text-violet-300 uppercase tracking-wider">Visualizar</span>
+                    </div>
+                    
+                    <div class="mb-4 mt-3">
+                        <div class="flex items-start gap-3 mb-2">
+                            <div class="shrink-0 text-violet-400 mt-0.5"><i data-lucide="scale" class="w-5 h-5"></i></div>
+                            <h3 class="font-heading font-semibold text-white text-[14px] leading-tight group-hover:text-violet-300 transition-colors">Brechas de Desigualdad</h3>
+                        </div>
+                        <p class="text-[12px] text-slate-400 leading-relaxed font-medium">
+                            Desarrollo económico real. Explora cómo se marcan las diferencias y contrasta la vida en el Sur Global vs Norte Global.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-auto">
+                        <button class="w-full bg-violet-600/60 hover:bg-violet-600 text-white rounded-full py-2 text-xs font-semibold flex items-center justify-center gap-2 transition-colors">
+                            Ver Herramienta <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+                        </button>
+                    </div>
+                </a>
+
             </div>
-            <!-- 10 Palabras Clave Exactas -->
-            <p class="text-[12px] text-slate-400 leading-relaxed font-medium">
-                ¿América Latina como simple tablero de ajedrez? El Dr. Tzili advierte sobre el riesgo de una nueva "dependencia periférica" y urge a aprovechar estratégicamente el nearshoring.
-            </p>
-        </div>
-        
-        <!-- Botón CTA Inferior -->
-        <div class="mt-auto">
-            <button class="w-full bg-violet-600/60 hover:bg-violet-600 text-white rounded-full py-2 text-xs font-semibold flex items-center justify-center gap-2 transition-colors">
-                Leer Artículo <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
-            </button>
-        </div>
-    </a>
 
-    <!-- BOTÓN 2: Dollar Street -->
-    <a href="https://www.gapminder.org/dollar-street" target="_blank" class="glass-btn rounded-xl p-4 flex flex-col justify-between group cursor-pointer relative overflow-hidden border border-violet-900/50 shadow-lg hover:border-violet-500/50 h-full bg-violet-950/20">
-        <!-- Indicador Pulso -->
-        <div class="absolute top-2 right-2 flex items-center gap-1.5 bg-violet-900/60 px-2 py-0.5 rounded-full border border-violet-700/50">
-            <span class="relative flex h-1.5 w-1.5">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-violet-500"></span>
-            </span>
-            <span class="text-[9px] font-mono text-violet-300 uppercase tracking-wider">Visualizar</span>
-        </div>
-        
-        <!-- Contenido -->
-        <div class="mb-4 mt-3">
-            <div class="flex items-start gap-3 mb-2">
-                <div class="shrink-0 text-violet-400 mt-0.5"><i data-lucide="scale" class="w-5 h-5"></i></div>
-                <h3 class="font-heading font-semibold text-white text-[14px] leading-tight group-hover:text-violet-300 transition-colors">Brechas de Desigualdad</h3>
-            </div>
-            <!-- Descripción -->
-            <p class="text-[12px] text-slate-400 leading-relaxed font-medium">
-                Desarrollo económico real. Explora cómo se marcan las diferencias y contrasta la vida en el Sur Global vs Norte Global.
-            </p>
-        </div>
-        
-        <!-- Botón CTA Inferior -->
-        <div class="mt-auto">
-            <button class="w-full bg-violet-600/60 hover:bg-violet-600 text-white rounded-full py-2 text-xs font-semibold flex items-center justify-center gap-2 transition-colors">
-                Ver Herramienta <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
-            </button>
-        </div>
-    </a>
+            <!-- Herramienta Principal (Cian) -->
+            <a href="https://joseluismurguia.tech/calculadora.html" class="glass-btn rounded-xl p-5 block group cursor-pointer relative overflow-hidden border border-cyan-900/50 shadow-lg hover:border-cyan-500/50">
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="shrink-0 text-cyan-400"><i data-lucide="calculator" class="w-6 h-6"></i></div>
+                    <div>
+                        <h3 class="font-heading font-semibold text-white text-[16px] mb-1 group-hover:text-cyan-300">🟣 🧮 Calculadora Paramétrica 5=D</h3>
+                        <p class="text-sm text-slate-400">Ingeniería de menús & Food Cost (Gratis)</p>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="bg-cyan-600/60 hover:bg-cyan-600 text-white rounded-full px-6 py-2.5 text-sm font-semibold flex items-center gap-2 mx-auto">
+                        Calcular ahora →
+                    </button>
+                </div>
+            </a>
 
-</div>
-    <!-- 2. Herramienta Principal (Cian) -->
-    <a href="https://joseluismurguia.tech/calculadora.html" class="glass-btn rounded-xl p-5 block group cursor-pointer relative overflow-hidden border border-cyan-900/50 shadow-lg hover:border-cyan-500/50">
-        <!-- Contenido -->
-        <div class="flex items-start gap-4 mb-4">
-            <div class="shrink-0 text-cyan-400"><i data-lucide="calculator" class="w-6 h-6"></i></div>
-            <div>
-                <h3 class="font-heading font-semibold text-white text-[16px] mb-1 group-hover:text-cyan-300">🟣 🧮 Calculadora Paramétrica 5=D</h3>
-                <p class="text-sm text-slate-400">Ingeniería de menús & Food Cost (Gratis)</p>
-            </div>
-        </div>
-        <!-- Botón CTA Centrado -->
-        <div class="text-center">
-            <button class="bg-cyan-600/60 hover:bg-cyan-600 text-white rounded-full px-6 py-2.5 text-sm font-semibold flex items-center gap-2 mx-auto">
-                Calcular ahora →
-            </button>
-        </div>
-    </a>
+            <!-- Herramienta Secundaria (Azul) -->
+            <a href="/georacle.html" class="glass-btn rounded-xl p-5 block group cursor-pointer relative overflow-hidden border border-blue-900/50 shadow-lg hover:border-blue-500/50">
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="shrink-0 text-blue-400"><i data-lucide="map" class="w-6 h-6"></i></div>
+                    <div>
+                        <h3 class="font-heading font-semibold text-white text-[16px] mb-1 group-hover:text-blue-300">🟣 🗺 Georacle MVP</h3>
+                        <p class="text-sm text-slate-400">Inteligencia Espacial & Expansión</p>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="bg-blue-600/60 hover:bg-blue-600 text-white rounded-full px-6 py-2.5 text-sm font-semibold flex items-center gap-2 mx-auto">
+                        Ver Georacle →
+                    </button>
+                </div>
+            </a>
 
-    <!-- 3. Herramienta Secundaria (Azul) -->
-    <a href="/georacle.html" class="glass-btn rounded-xl p-5 block group cursor-pointer relative overflow-hidden border border-blue-900/50 shadow-lg hover:border-blue-500/50">
-        <!-- Contenido -->
-        <div class="flex items-start gap-4 mb-4">
-            <div class="shrink-0 text-blue-400"><i data-lucide="map" class="w-6 h-6"></i></div>
-            <div>
-                <h3 class="font-heading font-semibold text-white text-[16px] mb-1 group-hover:text-blue-300">🟣 🗺 Georacle MVP</h3>
-                <p class="text-sm text-slate-400">Inteligencia Espacial & Expansión</p>
-            </div>
-        </div>
-        <!-- Botón CTA Centrado -->
-        <div class="text-center">
-            <button class="bg-blue-600/60 hover:bg-blue-600 text-white rounded-full px-6 py-2.5 text-sm font-semibold flex items-center gap-2 mx-auto">
-                Ver Georacle →
-            </button>
-        </div>
-    </a>
+        </div> <!-- Cierre del Contenedor Principal de Enlaces -->
 
-</div>
-            <!-- 4. NODO: REPOSITORIOS GITHUB -->
-          <!-- Redes Sociales (Horizontales, tipo Reference) -->
-<div class="flex gap-2 mb-10">
-    <a href="https://github.com/JoseluisMurguia" target="_blank" class="glass-btn rounded-full px-4 py-2 flex items-center gap-2 group cursor-pointer border border-slate-800 text-sm">
-        <i data-lucide="github" class="w-4 h-4 text-slate-400 group-hover:text-violet-300"></i>
-        <span class="text-white">@JoseluisMurguia</span>
-    </a>
-    <a href="https://youtube.com/@PepiiMurguia" target="_blank" class="glass-btn rounded-full px-4 py-2 flex items-center gap-2 group cursor-pointer border border-slate-800 text-sm">
-        <i data-lucide="youtube" class="w-4 h-4 text-slate-400 group-hover:text-red-400"></i>
-        <span class="text-white">@PepiiMurguia</span>
-    </a>
-    <a href="https://linkedin.com/in/pepii-murguia-/" target="_blank" class="glass-btn rounded-full px-4 py-2 flex items-center gap-2 group cursor-pointer border border-slate-800 text-sm">
-        <i data-lucide="linkedin" class="w-4 h-4 text-slate-400 group-hover:text-blue-400"></i>
-        <span class="text-white">José Luis Murguía</span>
-    </a>
-</div>
     </main>
 
     <!-- Init Icons -->
