@@ -93,12 +93,19 @@
     <main class="w-full max-w-md mx-auto flex flex-col items-center z-10 pt-8 pb-12">
         
         <!-- Avatar / Logo Orb -->
-       <!-- Foto de Portada / Avatar con Brillo -->
-<div class="relative w-24 h-24 mb-6 rounded-full orb-glow">
-    <!-- Reemplaza "URL_O_RUTA_DE_TU_FOTO.jpg" con tu imagen -->
-<img src="foto-perfil.jpg">
+<!-- Opción 3: Radar Espacial -->
+<div class="relative w-32 h-32 md:w-40 md:h-40 mb-8 flex items-center justify-center mx-auto">
+    <!-- Ondas de pulso -->
+    <div class="absolute inset-0 rounded-full bg-cyan-500/20 animate-ping opacity-75"></div>
+    <div class="absolute inset-[-15px] rounded-full border border-cyan-500/20"></div>
+    <div class="absolute inset-[-30px] rounded-full border border-blue-500/10 hidden md:block"></div>
+    
+    <!-- Contenedor Principal -->
+    <div class="relative w-full h-full rounded-full p-1 bg-gradient-to-b from-slate-800 to-slate-950 shadow-[0_0_30px_rgba(34,211,238,0.3)] z-10">
+        <!-- REEMPLAZA LA URL ABAJO -->
+        <img src="foto-perfil.jpg" alt="José Luis Murguía" class="object-cover w-full h-full rounded-full border-2 border-slate-800/50">
+    </div>
 </div>
-
 <!-- Header Info -->
 <div class="mb-10 text-center">
     <h1 class="font-heading font-bold text-3xl text-white mb-2">Economía 5=D</h1>
