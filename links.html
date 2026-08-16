@@ -93,17 +93,17 @@
     <main class="w-full max-w-md mx-auto flex flex-col items-center z-10 pt-8 pb-12">
         
         <!-- Avatar / Logo Orb -->
-<!-- Opción 3: Radar Espacial -->
+<!-- Opción 2: Anillos Orbitales -->
 <div class="relative w-32 h-32 md:w-40 md:h-40 mb-8 flex items-center justify-center mx-auto">
-    <!-- Ondas de pulso -->
-    <div class="absolute inset-0 rounded-full bg-cyan-500/20 animate-ping opacity-75"></div>
-    <div class="absolute inset-[-15px] rounded-full border border-cyan-500/20"></div>
-    <div class="absolute inset-[-30px] rounded-full border border-blue-500/10 hidden md:block"></div>
+    <!-- Anillo exterior rotando a la derecha -->
+    <div class="absolute inset-0 rounded-full border-[3px] border-cyan-500/20 border-t-cyan-400 animate-[spin_4s_linear_infinite]"></div>
+    <!-- Anillo interior rotando a la izquierda -->
+    <div class="absolute inset-2 rounded-full border-[3px] border-violet-500/20 border-b-violet-500 animate-[spin_3s_linear_infinite_reverse]"></div>
     
-    <!-- Contenedor Principal -->
-    <div class="relative w-full h-full rounded-full p-1 bg-gradient-to-b from-slate-800 to-slate-950 shadow-[0_0_30px_rgba(34,211,238,0.3)] z-10">
+    <!-- Foto Central -->
+    <div class="absolute w-[85%] h-[85%] z-10 rounded-full border-4 border-slate-900 shadow-[0_0_25px_rgba(59,130,246,0.5)] overflow-hidden">
         <!-- REEMPLAZA LA URL ABAJO -->
-        <img src="foto-perfil.jpg" alt="José Luis Murguía" class="object-cover w-full h-full rounded-full border-2 border-slate-800/50">
+        <img src="foto-perfil.jpg" alt="José Luis Murguía" class="object-cover w-full h-full">
     </div>
 </div>
 <!-- Header Info -->
