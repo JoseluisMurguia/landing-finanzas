@@ -123,11 +123,16 @@
    <!-- Navigation -->
     <nav class="fixed w-full top-0 z-50 glass-panel border-b-0 border-slate-800/50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-            <!-- Logo -->
-            <div class="font-heading font-bold text-xl tracking-tighter text-white flex items-center gap-2">
-                <i data-lucide="network" class="text-cyan-400 h-6 w-6"></i>
-                5=D <span class="text-slate-500 font-mono text-sm ml-2 font-normal hidden sm:inline-block">| emprenDe</span>
-            </div>
+           <!-- Logo 5D Personalizado -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 relative">
+                    <!-- Tu imagen 5D con brillo reactivo al hover -->
+                    <img src="5D.png" alt="Logo 5=D" class="object-contain w-full h-full drop-shadow-[0_0_8px_rgba(34,211,238,0.4)] group-hover:drop-shadow-[0_0_15px_rgba(157,49,102,0.7)] transition-all duration-300 group-hover:scale-110">
+                </div>
+                <div class="font-heading font-bold text-lg tracking-tighter text-white flex items-center">
+                    <span class="text-slate-500 font-mono text-xs font-normal hidden sm:inline-block border-l border-slate-700 pl-3 ml-1">SISTEMAS & DATA</span>
+                </div>
+            </a>
             
             <!-- Links del Ecosistema -->
             <div class="flex items-center gap-6">
@@ -162,19 +167,35 @@
 <!-- 1. HERO SECTION: EL LABORATORIO INTERACTIVO -->
     <section class="relative pt-32 pb-20 max-w-7xl mx-auto px-6 min-h-screen flex flex-col justify-center">
         
-        <!-- Header de Filosofía -->
-        <div class="text-center mb-16 observe-me">
+        <!-- Header de Filosofía + Perfil del Arquitecto -->
+        <div class="text-center mb-16 observe-me flex flex-col items-center">
+            
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border-cyan-500/30 text-cyan-400 text-xs font-mono mb-6">
                 <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
                 FILOSOFÍA_5=D // INIT
             </div>
+            
             <h1 class="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white leading-[1.1] mb-6">
                 Tu proyecto es un <br class="hidden md:block">
                 <span class="gradient-text">Sistema Operativo.</span>
             </h1>
-            <p class="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+            
+            <p class="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed mb-8">
                 Una carrera tech, un restaurante físico o tu propio aprendizaje comparten la misma física: requieren arquitectura, flujos optimizados y algoritmos de decisión. <strong class="text-white font-normal">Interactúa con el sistema:</strong>
             </p>
+
+            <!-- Mini-Perfil / Foto de Autor -->
+            <div class="flex items-center justify-center gap-4 bg-slate-900/50 border border-slate-800 rounded-full px-2 py-2 pr-6 shadow-lg shadow-cyan-900/10">
+                <div class="relative w-12 h-12 rounded-full p-[2px] bg-gradient-to-tr from-cyan-400 via-blue-600 to-violet-500 shadow-[0_0_15px_rgba(34,211,238,0.3)]">
+                    <!-- REEMPLAZA "TU_FOTO.jpg" con el nombre de tu archivo -->
+                    <img src="foto-perfil.jpg" alt="José Luis Murguía" class="object-cover w-full h-full rounded-full border border-slate-950">
+                </div>
+                <div class="text-left">
+                    <p class="text-sm font-bold text-white leading-tight">José Luis Murguía</p>
+                    <p class="text-[10px] font-mono text-cyan-400 uppercase tracking-wider mt-0.5">Arquitecto de Sistemas</p>
+                </div>
+            </div>
+
         </div>
 
         <!-- Grid de Tarjetas Interactivas -->
