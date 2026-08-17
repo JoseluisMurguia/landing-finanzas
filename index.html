@@ -253,151 +253,128 @@
     <!-- Divider -->
     <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent"></div>
 
-    <!-- 2. EL MOTOR DE CRECIMIENTO (La Ecuación) -->
-    <section class="py-24 relative max-w-7xl mx-auto px-6">
-        <div class="text-center max-w-3xl mx-auto mb-16 observe-me">
-            <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-6">El Motor de Crecimiento</h2>
-            <p class="text-slate-400">El éxito no es un fenómeno aleatorio. Es el resultado de la calibración exacta de 5 variables independientes proyectadas en el tiempo. Esta es nuestra Función de Producción.</p>
-        </div>
+   <!-- 2. INGENIERÍA INVERSA: LA ANATOMÍA DE UN PROYECTO -->
+    <section class="py-24 relative max-w-7xl mx-auto px-6 border-y border-slate-800/50 bg-slate-900/20">
+        <!-- Background Decorativo -->
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(30,41,59,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(30,41,59,0.3)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none -z-10"></div>
 
-        <!-- Renderizado de LaTeX conceptual vía HTML/Tailwind -->
-        <div class="glass-panel max-w-4xl mx-auto rounded-2xl p-8 md:p-12 border border-slate-800 mb-16 observe-me text-center flex flex-col items-center justify-center overflow-x-auto">
-            <div class="font-mono text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white flex items-baseline">
-                <span class="text-cyan-400 mr-4">R</span>
-                <span class="text-slate-500 mr-2">=</span>
-                <span class="text-violet-400 mr-1">f</span>
-                <span class="text-slate-400">(</span>
-                Es<span class="text-slate-600 text-2xl md:text-4xl">,</span> 
-                In<span class="text-slate-600 text-2xl md:text-4xl">,</span> 
-                Ha<span class="text-slate-600 text-2xl md:text-4xl">,</span> 
-                If<span class="text-slate-600 text-2xl md:text-4xl">,</span> 
-                Te
-                <span class="text-slate-400">)</span>
-                <sup class="text-cyan-400 text-2xl md:text-4xl ml-1">T</sup>
+        <div class="text-center mb-16 observe-me">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border-violet-500/30 text-violet-400 text-xs font-mono mb-4">
+                <span class="w-2 h-2 rounded-full bg-violet-400"></span>
+                FASE_02 // INGENIERÍA INVERSA
             </div>
-            <p class="mt-6 text-sm font-mono text-slate-500 uppercase tracking-widest">
-                Resultado = (Estructura, Incentivos, Hábitos, Información, Tecnología) <span class="lowercase">exp(tiempo)</span>
+            <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-4">Desensamblando el Éxito</h2>
+            <p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-base">
+                Un restaurante rentable o una startup exitosa no son magia; son un conjunto de APIs físicas interactuando en tiempo real. No somos "cloud kitchens", creamos espacios físicos con identidad. Así es como traducimos el ladrillo, el emplatado y el servicio a código puro.
             </p>
         </div>
 
-        <!-- 5 Variables Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 observe-me">
-            <!-- Es -->
-            <div class="glass-panel p-6 rounded-xl border border-slate-800 hover:border-cyan-500/50 transition-colors group">
-                <div class="w-10 h-10 bg-slate-900 rounded border border-slate-700 flex items-center justify-center mb-4 text-cyan-400 group-hover:scale-110 transition-transform">
-                    <i data-lucide="boxes" class="w-5 h-5"></i>
-                </div>
-                <h3 class="font-heading font-bold text-white mb-2 flex items-center justify-between">
-                    Estructura <span class="font-mono text-xs text-cyan-500">Es</span>
-                </h3>
-                <p class="text-sm text-slate-400">Logística espacial, flujos de espacio físicos y diagramas de espagueti para eficiencia cinemática.</p>
-            </div>
-            <!-- In -->
-            <div class="glass-panel p-6 rounded-xl border border-slate-800 hover:border-violet-500/50 transition-colors group">
-                <div class="w-10 h-10 bg-slate-900 rounded border border-slate-700 flex items-center justify-center mb-4 text-violet-400 group-hover:scale-110 transition-transform">
-                    <i data-lucide="target" class="w-5 h-5"></i>
-                </div>
-                <h3 class="font-heading font-bold text-white mb-2 flex items-center justify-between">
-                    Incentivos <span class="font-mono text-xs text-violet-500">In</span>
-                </h3>
-                <p class="text-sm text-slate-400">Economía del comportamiento y <em>Nudges</em> para orientar la arquitectura de decisión del cliente y staff.</p>
-            </div>
-            <!-- Ha -->
-            <div class="glass-panel p-6 rounded-xl border border-slate-800 hover:border-blue-500/50 transition-colors group">
-                <div class="w-10 h-10 bg-slate-900 rounded border border-slate-700 flex items-center justify-center mb-4 text-blue-400 group-hover:scale-110 transition-transform">
-                    <i data-lucide="repeat" class="w-5 h-5"></i>
-                </div>
-                <h3 class="font-heading font-bold text-white mb-2 flex items-center justify-between">
-                    Hábitos <span class="font-mono text-xs text-blue-500">Ha</span>
-                </h3>
-                <p class="text-sm text-slate-400">Sistematización de rutinas operativas. Eliminar la fricción entre la orden y la entrega física.</p>
-            </div>
-            <!-- If -->
-            <div class="glass-panel p-6 rounded-xl border border-slate-800 hover:border-cyan-500/50 transition-colors group">
-                <div class="w-10 h-10 bg-slate-900 rounded border border-slate-700 flex items-center justify-center mb-4 text-cyan-400 group-hover:scale-110 transition-transform">
-                    <i data-lucide="database" class="w-5 h-5"></i>
-                </div>
-                <h3 class="font-heading font-bold text-white mb-2 flex items-center justify-between">
-                    Información <span class="font-mono text-xs text-cyan-500">If</span>
-                </h3>
-                <p class="text-sm text-slate-400">Análisis de datos, recolección vía hardware NFC, y simulación de métricas en tiempo real.</p>
-            </div>
-            <!-- Te -->
-            <div class="glass-panel p-6 rounded-xl border border-slate-800 hover:border-violet-500/50 transition-colors group md:col-span-3 lg:col-span-1">
-                <div class="w-10 h-10 bg-slate-900 rounded border border-slate-700 flex items-center justify-center mb-4 text-violet-400 group-hover:scale-110 transition-transform">
-                    <i data-lucide="cpu" class="w-5 h-5"></i>
-                </div>
-                <h3 class="font-heading font-bold text-white mb-2 flex items-center justify-between">
-                    Tecnología <span class="font-mono text-xs text-violet-500">Te</span>
-                </h3>
-                <p class="text-sm text-slate-400">Integración de herramientas (Python, SQL) y puntos de contacto físico-digitales sin fricción.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. EL MANIFIESTO EPISTÉMICO -->
-    <section class="py-24 relative bg-slate-900/30 border-y border-slate-800/50">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+        <div class="space-y-8 max-w-5xl mx-auto">
             
-            <!-- Abstract Visual -->
-            <div class="relative h-[400px] w-full rounded-2xl border border-slate-800 glass-panel overflow-hidden observe-me flex items-center justify-center">
-                <!-- Grid background -->
-                <div class="absolute inset-0 bg-[linear-gradient(rgba(30,41,59,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(30,41,59,0.5)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
-                
-                <!-- Central Node -->
-                <div class="absolute w-16 h-16 bg-cyan-500/20 border border-cyan-400 rounded-full flex items-center justify-center z-10 shadow-[0_0_30px_rgba(34,211,238,0.3)]">
-                    <div class="w-8 h-8 bg-cyan-400 rounded-full animate-pulse-glow"></div>
+            <!-- MÓDULO A: INTELIGENCIA ESPACIAL -->
+            <div class="glass-panel rounded-2xl border border-slate-800 overflow-hidden flex flex-col md:flex-row observe-me group hover:border-blue-500/30 transition-all duration-300 shadow-lg">
+                <!-- Visión Emprendedor -->
+                <div class="p-8 md:w-[55%] flex flex-col justify-center bg-slate-900/80 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
+                    <h3 class="font-mono text-blue-500 text-[10px] tracking-widest mb-2 uppercase">Módulo 01 // El Hardware Físico</h3>
+                    <h4 class="font-heading text-xl font-bold text-white mb-3">Expansión & Inteligencia Espacial</h4>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                        <strong class="text-slate-300">El Problema:</strong> Abrir un local a ciegas cuesta miles de pesos. Depender del "tráfico visible" es una métrica vanidosa. Modelamos la viabilidad cruzando demanda, densidad de tráfico y auditando nodos poblacionales masivos (ej. Iztapalapa) para asegurar tu posicionamiento comercial geográfico.
+                    </p>
+                    <a href="georacle.html" class="inline-flex items-center gap-2 text-xs font-semibold text-blue-400 hover:text-blue-300 transition-colors w-max">
+                        <i data-lucide="map" class="w-4 h-4"></i> Explorar GeoOracle MVP
+                    </a>
                 </div>
-                
-                <!-- SVG Network Lines -->
-                <svg class="absolute inset-0 w-full h-full stroke-slate-700/50" style="stroke-width: 1px;">
-                    <line x1="50%" y1="50%" x2="20%" y2="25%" class="animate-[pulse_3s_infinite]" />
-                    <line x1="50%" y1="50%" x2="80%" y2="30%" class="animate-[pulse_4s_infinite_1s]" />
-                    <line x1="50%" y1="50%" x2="30%" y2="80%" class="animate-[pulse_3.5s_infinite_0.5s]" />
-                    <line x1="50%" y1="50%" x2="70%" y2="75%" class="animate-[pulse_4.5s_infinite_1.5s]" />
-                </svg>
-                
-                <!-- Peripheral Nodes -->
-                <div class="absolute top-[25%] left-[20%] w-8 h-8 bg-slate-800 border border-slate-600 rounded-full -translate-x-1/2 -translate-y-1/2 flex items-center justify-center text-[10px] font-mono text-slate-400">M1</div>
-                <div class="absolute top-[30%] left-[80%] w-8 h-8 bg-slate-800 border border-slate-600 rounded-full -translate-x-1/2 -translate-y-1/2 flex items-center justify-center text-[10px] font-mono text-slate-400">M2</div>
-                <div class="absolute top-[80%] left-[30%] w-8 h-8 bg-slate-800 border border-slate-600 rounded-full -translate-x-1/2 -translate-y-1/2 flex items-center justify-center text-[10px] font-mono text-slate-400">M3</div>
-                <div class="absolute top-[75%] left-[70%] w-8 h-8 bg-slate-800 border border-slate-600 rounded-full -translate-x-1/2 -translate-y-1/2 flex items-center justify-center text-[10px] font-mono text-slate-400">E</div>
+                <!-- Visión Tech (Código) -->
+                <div class="p-6 md:w-[45%] bg-[#0d1117] border-t md:border-t-0 md:border-l border-slate-800 flex flex-col justify-center">
+                    <div class="flex items-center gap-1.5 mb-3">
+                        <div class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></div>
+                        <span class="text-[10px] font-mono text-slate-500 ml-2">georacle_spatial_query.sql</span>
+                    </div>
+                    <pre class="text-[11px] font-mono leading-relaxed overflow-x-auto text-slate-300"><code class="language-sql"><span class="text-slate-500">-- PostGIS: Extracción de nodos de viabilidad comercial</span>
+<span class="text-violet-400">SELECT</span> barrio, ST_Area(geometria) <span class="text-violet-400">AS</span> area,
+       densidad_trafico, indice_competencia
+<span class="text-violet-400">FROM</span> data_urbana_cdmx
+<span class="text-violet-400">WHERE</span> intersec_comercial <span class="text-cyan-400">=</span> <span class="text-amber-300">TRUE</span>
+  <span class="text-violet-400">AND</span> poblacion_flotante <span class="text-cyan-400">></span> <span class="text-amber-300">50000</span>
+  <span class="text-violet-400">AND</span> st_dwithin(ubicacion, central_node, <span class="text-amber-300">2000</span>)
+<span class="text-violet-400">ORDER BY</span> viabilidad_score <span class="text-violet-400">DESC</span>;</code></pre>
+                </div>
             </div>
 
-            <!-- Copy -->
-            <div class="observe-me" style="animation-delay: 0.2s;">
-                <h2 class="font-heading text-3xl font-bold text-white mb-6">La Complejidad Aplicada al Retail Gastronómico</h2>
-                <p class="text-slate-400 mb-8">
-                    La mayoría de los restaurantes fracasan por una mala interdefinibilidad de componentes frente a shocks exógenos. Nosotros no damos "tips" motivacionales. Intervenimos el sistema en 3 dimensiones matemáticas:
-                </p>
-                
-                <div class="space-y-6">
-                    <!-- Micro -->
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-cyan-900/50 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-mono text-sm mt-1">1</div>
-                        <div>
-                            <h4 class="text-white font-semibold mb-1">Nivel Micro (Arquitectura de Decisión)</h4>
-                            <p class="text-sm text-slate-400">Aplicamos psicología del consumidor y <em>nudges</em> para reestructurar la ingeniería de menú, anclando precios y direccionando el flujo de demanda hacia platos de alto margen de contribución.</p>
-                        </div>
+            <!-- MÓDULO B: INGENIERÍA DE MENÚS -->
+            <div class="glass-panel rounded-2xl border border-slate-800 overflow-hidden flex flex-col md:flex-row-reverse observe-me group hover:border-cyan-500/30 transition-all duration-300 shadow-lg">
+                <!-- Visión Emprendedor -->
+                <div class="p-8 md:w-[55%] flex flex-col justify-center bg-slate-900/80 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 md:left-0 w-1 h-full bg-cyan-400"></div>
+                    <h3 class="font-mono text-cyan-400 text-[10px] tracking-widest mb-2 uppercase">Módulo 02 // El Backend Lógico</h3>
+                    <h4 class="font-heading text-xl font-bold text-white mb-3">Rentabilidad & Food Cost</h4>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                        <strong class="text-slate-300">El Problema:</strong> Los precios de los insumos cambian a diario. Si no costeas con exactitud, la inflación se come tu margen de contribución. Aplicamos lógica paramétrica (FIFO) para auditar tus platillos estrella y evitar fugas ocultas de capital en tiempo real.
+                    </p>
+                    <a href="calculadora.html" class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors w-max">
+                        <i data-lucide="calculator" class="w-4 h-4"></i> Ejecutar Calculadora 5=D
+                    </a>
+                </div>
+                <!-- Visión Tech (Código) -->
+                <div class="p-6 md:w-[45%] bg-[#0d1117] border-t md:border-t-0 md:border-r border-slate-800 flex flex-col justify-center">
+                    <div class="flex items-center gap-1.5 mb-3">
+                        <div class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></div>
+                        <span class="text-[10px] font-mono text-slate-500 ml-2">menu_engineering.py</span>
                     </div>
-                    <!-- Meso -->
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-900/50 border border-blue-500/30 flex items-center justify-center text-blue-400 font-mono text-sm mt-1">2</div>
-                        <div>
-                            <h4 class="text-white font-semibold mb-1">Nivel Meso (Eficiencia Cinemática)</h4>
-                            <p class="text-sm text-slate-400">Mapeo de flujos de espacio físico. Optimizamos la densidad del salón y los diagramas de espagueti en cocina para reducir el tiempo de ciclo operativo.</p>
-                        </div>
-                    </div>
-                    <!-- Macro -->
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-violet-900/50 border border-violet-500/30 flex items-center justify-center text-violet-400 font-mono text-sm mt-1">3</div>
-                        <div>
-                            <h4 class="text-white font-semibold mb-1">Nivel Macro (Blindaje contra Entropía)</h4>
-                            <p class="text-sm text-slate-400">Modelado predictivo frente a la <strong>"Tacoflación"</strong> (inflación de insumos clave) y fallas de suministro global. Creamos elasticidad operativa basada en datos, no en esperanza.</p>
-                        </div>
-                    </div>
+                    <pre class="text-[11px] font-mono leading-relaxed overflow-x-auto text-slate-300"><code class="language-python"><span class="text-violet-400">def</span> <span class="text-blue-400">calcular_margen_dinamico</span>(receta_id, db_inventario):
+    <span class="text-slate-500"># Calcula el Food Cost usando método FIFO contra inflación</span>
+    costo_real = db_inventario.get_fifo_cost(receta_id)
+    precio_venta = menu_actual.get_precio(receta_id)
+    
+    margen_contribucion = precio_venta - costo_real
+    
+    <span class="text-violet-400">if</span> (margen_contribucion / precio_venta) <span class="text-cyan-400"><</span> <span class="text-amber-300">0.30</span>:
+        <span class="text-violet-400">return</span> <span class="text-emerald-300">"Alerta: Reestructurar Pricing de Platillo"</span>
+    <span class="text-violet-400">return</span> <span class="text-emerald-300">"Rentabilidad Óptima"</span></code></pre>
                 </div>
             </div>
+
+            <!-- MÓDULO C: TEORÍA DE REDES -->
+            <div class="glass-panel rounded-2xl border border-slate-800 overflow-hidden flex flex-col md:flex-row observe-me group hover:border-violet-500/30 transition-all duration-300 shadow-lg">
+                <!-- Visión Emprendedor -->
+                <div class="p-8 md:w-[55%] flex flex-col justify-center bg-slate-900/80 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-violet-500"></div>
+                    <h3 class="font-mono text-violet-500 text-[10px] tracking-widest mb-2 uppercase">Módulo 03 // El Ancho de Banda</h3>
+                    <h4 class="font-heading text-xl font-bold text-white mb-3">Flujo Cinemático (Operaciones)</h4>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                        <strong class="text-slate-300">El Problema:</strong> En horas pico, la cocina colapsa y los meseros se estorban. Usamos teoría de redes para mapear los flujos físicos del local, detectar cuellos de botella espaciales y acelerar los tiempos de servicio sin sacrificar la exclusividad de la dinámica del lugar.
+                    </p>
+                    <a href="#auditoria" class="inline-flex items-center gap-2 text-xs font-semibold text-violet-400 hover:text-violet-300 transition-colors w-max">
+                        <i data-lucide="network" class="w-4 h-4"></i> Solicitar Auditoría Operativa
+                    </a>
+                </div>
+                <!-- Visión Tech (Código) -->
+                <div class="p-6 md:w-[45%] bg-[#0d1117] border-t md:border-t-0 md:border-l border-slate-800 flex flex-col justify-center">
+                    <div class="flex items-center gap-1.5 mb-3">
+                        <div class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></div>
+                        <span class="text-[10px] font-mono text-slate-500 ml-2">cinematic_efficiency.r</span>
+                    </div>
+                    <pre class="text-[11px] font-mono leading-relaxed overflow-x-auto text-slate-300"><code class="language-r"><span class="text-slate-500"># Modelado espacial de rutas de servicio usando R</span>
+<span class="text-violet-400">library</span>(igraph)
+
+<span class="text-slate-500"># Construir grafo: nodos = mesas/cocina, edges = trayectos</span>
+rutas_grafo <span class="text-cyan-400"><-</span> graph_from_data_frame(trayectos_meseros)
+
+<span class="text-slate-500"># Detectar el "cuello de botella" físico (Intermediación)</span>
+centralidad_paso <span class="text-cyan-400"><-</span> betweenness(rutas_grafo, directed<span class="text-cyan-400">=</span><span class="text-amber-300">TRUE</span>)
+nodos_criticos <span class="text-cyan-400"><-</span> <span class="text-blue-400">which</span>(centralidad_paso <span class="text-cyan-400">></span> umbral_saturacion)
+
+<span class="text-blue-400">print</span>(<span class="text-emerald-300">"Rediseñar arquitectura del salón en nodos críticos"</span>)</code></pre>
+                </div>
+            </div>
+
         </div>
     </section>
 
