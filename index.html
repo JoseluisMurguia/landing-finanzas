@@ -86,6 +86,32 @@
         ::-webkit-scrollbar-track { background: #020617; }
         ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #334155; }
+
+        /* Animaciones para las Tarjetas Lógicas */
+        .slider-tech {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 4px;
+            background: #1e293b;
+            border-radius: 2px;
+            outline: none;
+        }
+        .slider-tech::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #22d3ee;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(34, 211, 238, 0.5);
+        }
+        .flee-button:hover {
+            transform: translate(20px, -10px) rotate(5deg);
+            background-color: rgba(225, 29, 72, 0.2) !important;
+            border-color: rgba(225, 29, 72, 0.5) !important;
+            color: #f43f5e !important;
+        }
     </style>
 </head>
 <body class="text-slate-300 antialiased overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-200">
@@ -93,8 +119,7 @@
     <!-- Global Glowing Orbs (Background) -->
     <div class="fixed top-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
     <div class="fixed bottom-0 right-0 w-[600px] h-[600px] bg-violet-600/10 rounded-full blur-[150px] translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
-
-    <!-- Navigation -->
+    
    <!-- Navigation -->
     <nav class="fixed w-full top-0 z-50 glass-panel border-b-0 border-slate-800/50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -134,139 +159,94 @@
         </div>
     </nav>
 
-   <!-- 1. HERO SECTION (Product-Led Growth Gateway) -->
-    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center min-h-screen">
-        <div class="z-10 observe-me">
+<!-- 1. HERO SECTION: EL LABORATORIO INTERACTIVO -->
+    <section class="relative pt-32 pb-20 max-w-7xl mx-auto px-6 min-h-screen flex flex-col justify-center">
+        
+        <!-- Header de Filosofía -->
+        <div class="text-center mb-16 observe-me">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border-cyan-500/30 text-cyan-400 text-xs font-mono mb-6">
                 <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-                SISTEMA_V3.0 // OPERACIONES B2B
+                FILOSOFÍA_5=D // INIT
             </div>
-            <h1 class="font-heading font-bold text-5xl lg:text-6xl text-white leading-[1.1] mb-6">
-                Deja de operar a ciegas. <br>
-                <span class="gradient-text">La intuición no paga nóminas.</span>
+            <h1 class="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white leading-[1.1] mb-6">
+                Tu proyecto es un <br class="hidden md:block">
+                <span class="gradient-text">Sistema Operativo.</span>
             </h1>
-            <p class="text-lg text-slate-400 mb-8 max-w-xl leading-relaxed">
-                El fracaso en retail gastronómico no es mala suerte; es entropía. El modelo <strong>5=D</strong> cruza <span class="text-slate-200">Demanda, Densidad, Diseño y Datos</span> para blindar tu operación física.
+            <p class="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                Una carrera tech, un restaurante físico o tu propio aprendizaje comparten la misma física: requieren arquitectura, flujos optimizados y algoritmos de decisión. <strong class="text-white font-normal">Interactúa con el sistema:</strong>
             </p>
-            
-            <div class="glass-panel p-6 rounded-xl border border-slate-800 shadow-2xl relative overflow-hidden group">
-                <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-violet-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="relative z-10 flex flex-col gap-4">
-                    <div>
-                        <h3 class="font-heading text-xl text-white font-semibold mb-2 flex items-center gap-2">
-                            <i data-lucide="cpu" class="w-5 h-5 text-cyan-400"></i>
-                            Motor de Ingeniería de Menús
-                        </h3>
-                        <p class="text-sm text-slate-400 leading-relaxed">
-                            Abandona los Excel obsoletos. Evalúa tu Food Cost y detecta fugas de margen en tiempo real mediante nuestra calculadora paramétrica.
-                        </p>
-                    </div>
-                    
-                    <!-- Redirección a la Calculadora -->
-                    <a href="calculadora.html" class="inline-flex items-center justify-center w-full sm:w-auto gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold px-6 py-3.5 rounded-lg transition-all shadow-[0_0_20px_rgba(34,211,238,0.2)] hover:shadow-[0_0_30px_rgba(34,211,238,0.4)]">
-                        <i data-lucide="terminal" class="w-5 h-5"></i>
-                        Inicializar Calculadora
-                    </a>
-                    <p class="text-[10px] font-mono text-slate-500 uppercase tracking-wider mt-1">
-                        > Ejecución en navegador. Cero instalación requerida.
-                    </p>
-                </div>
-            </div>
         </div>
 
-        <!-- Dashboard Mockup UI (Right Side) -->
-        <div class="relative z-10 lg:ml-auto w-full max-w-lg animate-float observe-me" style="animation-delay: 0.2s;">
-            <!-- UI Frame -->
-            <div class="glass-panel rounded-2xl border border-slate-700 p-1 shadow-2xl shadow-cyan-900/20">
-                <div class="bg-slate-900 rounded-xl overflow-hidden">
-                    <!-- Browser/App header -->
-                    <div class="flex items-center px-4 py-3 border-b border-slate-800 bg-slate-950/50">
-                        <div class="flex gap-1.5">
-                            <div class="w-3 h-3 rounded-full bg-slate-700"></div>
-                            <div class="w-3 h-3 rounded-full bg-slate-700"></div>
-                            <div class="w-3 h-3 rounded-full bg-slate-700"></div>
-                        </div>
-                        <div class="mx-auto bg-slate-800/50 rounded text-xs font-mono text-slate-500 px-8 py-1">
-                            modulo_calculadora_v1.exe
-                        </div>
-                    </div>
-                    <!-- Dashboard Content -->
-                    <div class="p-6">
-                        <div class="flex justify-between items-end mb-6">
-                            <div>
-                                <p class="text-xs font-mono text-slate-500 uppercase tracking-wider mb-1">RevPASH Actual</p>
-                                <div class="font-mono text-3xl font-bold text-white flex items-center gap-2">
-                                    $<span id="counter-revpash">0</span>
-                                    <span class="text-sm font-sans text-cyan-400 font-medium px-2 py-0.5 bg-cyan-400/10 rounded flex items-center">
-                                        <i data-lucide="trending-up" class="w-3 h-3 mr-1"></i> +14.2%
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="text-right">
-                                <p class="text-xs font-mono text-slate-500 uppercase tracking-wider mb-1">Índice Entropía</p>
-                                <div class="font-mono text-xl text-violet-400">0.84 <span class="text-xs text-slate-600">/ 1.0</span></div>
-                            </div>
-                        </div>
-
-                        <!-- Matrix Grid -->
-                        <div class="grid grid-cols-2 gap-3 mb-6 relative">
-                            <div class="absolute inset-0 border border-dashed border-slate-700/50 pointer-events-none"></div>
-                            
-                            <div class="bg-cyan-500/5 border border-cyan-500/20 rounded p-3 relative group">
-                                <i data-lucide="star" class="w-4 h-4 text-cyan-400 absolute top-2 right-2"></i>
-                                <div class="text-xs text-cyan-400 font-mono mb-2">CUADRANTE_ESTRELLA</div>
-                                <div class="space-y-1.5">
-                                    <div class="w-full bg-slate-800 rounded-full h-1.5"><div class="bg-cyan-400 h-1.5 rounded-full" style="width: 85%"></div></div>
-                                    <div class="w-full bg-slate-800 rounded-full h-1.5"><div class="bg-cyan-400 h-1.5 rounded-full" style="width: 70%"></div></div>
-                                </div>
-                            </div>
-
-                            <div class="bg-slate-800/20 border border-slate-800 rounded p-3 relative">
-                                <div class="text-xs text-slate-400 font-mono mb-2">CUADRANTE_CABALLO</div>
-                                <div class="space-y-1.5">
-                                    <div class="w-full bg-slate-800 rounded-full h-1.5"><div class="bg-slate-500 h-1.5 rounded-full" style="width: 90%"></div></div>
-                                    <div class="w-full bg-slate-800 rounded-full h-1.5"><div class="bg-slate-500 h-1.5 rounded-full" style="width: 40%"></div></div>
-                                </div>
-                            </div>
-
-                            <div class="bg-slate-800/20 border border-slate-800 rounded p-3 relative">
-                                <div class="text-xs text-slate-400 font-mono mb-2">CUADRANTE_ROMPE</div>
-                                <div class="space-y-1.5">
-                                    <div class="w-full bg-slate-800 rounded-full h-1.5"><div class="bg-slate-500 h-1.5 rounded-full" style="width: 30%"></div></div>
-                                    <div class="w-full bg-slate-800 rounded-full h-1.5"><div class="bg-slate-500 h-1.5 rounded-full" style="width: 85%"></div></div>
-                                </div>
-                            </div>
-
-                            <div class="bg-rose-500/5 border border-rose-500/20 rounded p-3 relative">
-                                <i data-lucide="alert-triangle" class="w-4 h-4 text-rose-400 absolute top-2 right-2"></i>
-                                <div class="text-xs text-rose-400 font-mono mb-2">CUADRANTE_PERRO</div>
-                                <div class="space-y-1.5">
-                                    <div class="w-full bg-slate-800 rounded-full h-1.5"><div class="bg-rose-400 h-1.5 rounded-full" style="width: 20%"></div></div>
-                                    <div class="w-full bg-slate-800 rounded-full h-1.5"><div class="bg-rose-400 h-1.5 rounded-full" style="width: 15%"></div></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- CLI output fake -->
-                        <div class="bg-slate-950 rounded p-3 font-mono text-[10px] text-slate-500">
-                            > Simulando estructura de costos...<br>
-                            > Aplicando heurística BCG...<br>
-                            > <span class="text-cyan-400">Listo para input de usuario.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Grid de Tarjetas Interactivas -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 observe-me" style="animation-delay: 0.2s;">
             
-            <!-- Floating badge -->
-            <div class="absolute -bottom-6 -left-6 glass-panel border border-slate-700 px-4 py-3 rounded-lg shadow-xl animate-float-delayed flex items-center gap-3">
-                <div class="bg-violet-500/20 p-2 rounded text-violet-400">
-                    <i data-lucide="git-merge" class="w-5 h-5"></i>
+            <!-- TARJETA 1: El Algoritmo de los Hábitos -->
+            <div class="glass-panel p-6 rounded-2xl border border-slate-800 flex flex-col h-full group hover:border-cyan-500/40 transition-colors">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-heading font-semibold text-white flex items-center gap-2">
+                        <i data-lucide="trending-up" class="w-4 h-4 text-cyan-400"></i> Interés Compuesto
+                    </h3>
+                    <span class="text-[10px] font-mono text-cyan-500 bg-cyan-950/30 px-2 py-0.5 rounded">HÁBITOS</span>
                 </div>
-                <div>
-                    <p class="text-xs font-mono text-slate-400">Matriz de Decisión</p>
-                    <p class="text-sm font-bold text-white text-center">Interactiva</p>
+                <p class="text-xs text-slate-400 mb-6">La consistencia vence a la intensidad. Mueve el control para ver el impacto matemático de ser 1% mejor (o peor) al día durante un año.</p>
+                
+                <div class="mt-auto bg-slate-900/50 p-4 rounded-xl border border-slate-800">
+                    <div class="flex justify-between text-xs font-mono text-slate-500 mb-2">
+                        <span>-1% Diario</span>
+                        <span>+1% Diario</span>
+                    </div>
+                    <input type="range" min="-1" max="1" value="0" step="0.1" class="slider-tech mb-4" id="habit-slider">
+                    <div class="flex items-end justify-between">
+                        <div>
+                            <p class="text-[10px] font-mono text-slate-500">Resultado = <span id="habit-formula">(1.00)^365</span></p>
+                        </div>
+                        <div class="text-2xl font-mono font-bold text-cyan-400" id="habit-output">1.00x</div>
+                    </div>
                 </div>
             </div>
+
+            <!-- TARJETA 2: La Entropía Operativa -->
+            <div class="glass-panel p-6 rounded-2xl border border-slate-800 flex flex-col h-full group hover:border-violet-500/40 transition-colors">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-heading font-semibold text-white flex items-center gap-2">
+                        <i data-lucide="activity" class="w-4 h-4 text-violet-400"></i> Entropía Operativa
+                    </h3>
+                    <span class="text-[10px] font-mono text-violet-500 bg-violet-950/30 px-2 py-0.5 rounded">SISTEMAS ABIERTOS</span>
+                </div>
+                <p class="text-xs text-slate-400 mb-6">Todo sistema sin energía o datos colapsa en el caos. Evita que tu operación se degrade inyectando inteligencia al sistema.</p>
+                
+                <div class="mt-auto bg-slate-900/50 p-4 rounded-xl border border-slate-800 text-center">
+                    <div class="w-full h-2 bg-slate-800 rounded-full mb-4 overflow-hidden">
+                        <div id="entropy-bar" class="h-full bg-cyan-400 transition-all duration-75" style="width: 100%;"></div>
+                    </div>
+                    <button id="inject-btn" class="w-full bg-violet-600/20 hover:bg-violet-600/40 text-violet-300 border border-violet-500/50 rounded-lg py-2 text-xs font-mono transition-colors flex items-center justify-center gap-2">
+                        <i data-lucide="database-zap" class="w-3 h-3"></i> [ Inyectar Datos ]
+                    </button>
+                </div>
+            </div>
+
+            <!-- TARJETA 3: Fricción Conductual -->
+            <div class="glass-panel p-6 rounded-2xl border border-slate-800 flex flex-col h-full group hover:border-blue-500/40 transition-colors">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-heading font-semibold text-white flex items-center gap-2">
+                        <i data-lucide="mouse-pointer-click" class="w-4 h-4 text-blue-400"></i> Fricción (Nudges)
+                    </h3>
+                    <span class="text-[10px] font-mono text-blue-500 bg-blue-950/30 px-2 py-0.5 rounded">ECONOMÍA CONDUCTUAL</span>
+                </div>
+                <p class="text-xs text-slate-400 mb-6">La ley del menor esfuerzo. Un mal diseño físico (en tu local) o digital (en tu web) destruye las conversiones. Intenta "comprar" abajo.</p>
+                
+                <div class="mt-auto bg-slate-900/50 p-4 rounded-xl border border-slate-800 flex gap-2">
+                    <!-- Botón con Fricción -->
+                    <button class="flex-1 bg-slate-800 text-slate-500 border border-slate-700 rounded-lg py-2 text-xs transition-all duration-300 flee-button flex items-center justify-center gap-1 relative z-10">
+                        <i data-lucide="alert-circle" class="w-3 h-3"></i> Fricción
+                    </button>
+                    <!-- Botón Optimizado -->
+                    <button class="flex-1 bg-blue-600 hover:bg-blue-500 text-white shadow-[0_0_15px_rgba(59,130,246,0.3)] rounded-lg py-2 text-xs font-semibold transition-all flex items-center justify-center gap-1 relative z-0">
+                        <i data-lucide="check-circle-2" class="w-3 h-3"></i> Optimizado
+                    </button>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -557,6 +537,76 @@
         document.querySelectorAll('.observe-me').forEach((el) => {
             observer.observe(el);
         });
+        // --- LOGICA DEL LABORATORIO INTERACTIVO ---
+        
+        // 1. Tarjeta: Algoritmo de Hábitos (Interés Compuesto)
+        const slider = document.getElementById('habit-slider');
+        const output = document.getElementById('habit-output');
+        const formula = document.getElementById('habit-formula');
+        
+        if(slider && output && formula) {
+            slider.addEventListener('input', (e) => {
+                const val = parseFloat(e.target.value);
+                const base = 1 + (val / 100);
+                const result = Math.pow(base, 365);
+                
+                formula.innerText = `(${base.toFixed(2)})^365`;
+                output.innerText = result.toFixed(2) + 'x';
+
+                // Cambiar color visualmente según si es mejora o empeoramiento
+                if (val < 0) {
+                    output.classList.replace('text-cyan-400', 'text-rose-400');
+                    output.classList.replace('text-white', 'text-rose-400');
+                } else if (val === 0) {
+                    output.classList.replace('text-cyan-400', 'text-white');
+                    output.classList.replace('text-rose-400', 'text-white');
+                } else {
+                    output.classList.replace('text-rose-400', 'text-cyan-400');
+                    output.classList.replace('text-white', 'text-cyan-400');
+                }
+            });
+        }
+
+        // 2. Tarjeta: Entropía Operativa (Simulación de sistema cerrado)
+        const entropyBar = document.getElementById('entropy-bar');
+        const injectBtn = document.getElementById('inject-btn');
+        let entropyLevel = 100;
+        let entropyInterval;
+
+        if(entropyBar && injectBtn) {
+            // Función que drena la barra constantemente
+            entropyInterval = setInterval(() => {
+                if(entropyLevel > 2) {
+                    entropyLevel -= 0.3; // Velocidad de degradación
+                }
+                entropyBar.style.width = entropyLevel + '%';
+                
+                // Cambiar a color de alerta si baja mucho
+                if(entropyLevel < 25) {
+                    entropyBar.classList.replace('bg-cyan-400', 'bg-rose-500');
+                }
+            }, 50);
+
+            // Botón para resetear la entropía
+            injectBtn.addEventListener('click', () => {
+                entropyLevel = 100;
+                entropyBar.style.width = '100%';
+                entropyBar.classList.replace('bg-rose-500', 'bg-cyan-400');
+                
+                // Pequeña animación visual en el botón
+                injectBtn.innerHTML = '<i data-lucide="check" class="w-3 h-3"></i> [ Datos Integrados ]';
+                injectBtn.classList.replace('text-violet-300', 'text-emerald-400');
+                injectBtn.classList.replace('border-violet-500/50', 'border-emerald-500/50');
+                lucide.createIcons(); // Recargar el nuevo icono
+
+                setTimeout(() => {
+                    injectBtn.innerHTML = '<i data-lucide="database-zap" class="w-3 h-3"></i> [ Inyectar Datos ]';
+                    injectBtn.classList.replace('text-emerald-400', 'text-violet-300');
+                    injectBtn.classList.replace('border-emerald-500/50', 'border-violet-500/50');
+                    lucide.createIcons();
+                }, 1000);
+            });
+        }
     </script>
 </body>
 </html>
