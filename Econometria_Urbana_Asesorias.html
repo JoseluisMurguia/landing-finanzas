@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootcamp Inteligencia Territorial | emprenDe & GeoOracle</title>
+    
+    <!-- Tema Lux de Bootswatch (Bootstrap) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/lux/bootstrap.min.css">
+    <!-- FontAwesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Highlight.js para código R/Python/PostGIS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    
+    <style>
+        :root {
+            --primary-dark: #111827;
+            --accent-blue: #2563eb;
+            --accent-cyan: #06b6d4;
+            --surface-gray: #f9fafb;
+        }
+
+        body { 
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: #ffffff;
+            color: #374151;
+            padding-bottom: 80px;
+        }
+
+        /* Hero Section Premium */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #1f2937 100%);
+            color: white;
+            padding: 100px 0 80px;
+            margin-bottom: 60px;
+            border-bottom: 4px solid var(--accent-blue);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            background: radial-gradient(circle at right, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-title { font-weight: 800; letter-spacing: -1px; font-size: 3.5rem; }
+        .hero-subtitle { color: #9ca3af; font-size: 1.25rem; font-weight: 300; }
+        .brand-badge { background: rgba(37, 99, 235, 0.2); border: 1px solid var(--accent-blue); color: #bfdbfe; padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; letter-spacing: 1px;}
+
+        /* Tipografía y Secciones */
+        .section-title { color: var(--primary-dark); font-weight: 700; margin-top: 60px; margin-bottom: 30px; display: flex; align-items: center; gap: 10px; }
+        .section-title i { color: var(--accent-blue); }
+        .lead-text { font-size: 1.15rem; line-height: 1.8; color: #4b5563; margin-bottom: 1.5rem; }
+
+        /* Contenedor Científico (Ecuaciones y Gráficos) */
+        .math-box {
+            background-color: var(--surface-gray);
+            border-left: 4px solid var(--accent-cyan);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 30px 0;
+            font-family: 'Cambria Math', serif;
+            overflow-x: auto;
+        }
+
+        /* Mapa y Visualización */
+        .viz-container {
+            position: relative;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+            margin: 40px 0;
+            transition: transform 0.3s ease;
+        }
+        .viz-container:hover { transform: translateY(-5px); }
+        .viz-container img { width: 100%; border-radius: 8px; }
+        .viz-overlay { position: absolute; top: 30px; right: 30px; background: rgba(255,255,255,0.9); padding: 10px 15px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+
+        /* Tarjetas de Syllabus (Sustituyendo Tablas) */
+        .syllabus-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; }
+        .module-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .module-card:hover { border-color: var(--accent-blue); box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1); }
+        .module-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--accent-blue); }
+        .module-number { font-size: 0.85rem; color: var(--accent-blue); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: block; }
+        .module-title { font-weight: 700; color: var(--primary-dark); margin-bottom: 15px; font-size: 1.2rem; }
+        .module-desc { color: #6b7280; font-size: 0.95rem; line-height: 1.6; margin: 0;}
+
+        /* Bloque de Código */
+        pre { border-radius: 8px; margin: 20px 0; box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); }
+        
+        .cta-section { background: var(--surface-gray); padding: 60px 40px; border-radius: 16px; text-align: center; margin-top: 80px; border: 1px solid #e5e7eb; }
+    </style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<div class="hero-section text-center">
+    <div class="container">
+        <span class="brand-badge mb-3 d-inline-block"><i class="fas fa-satellite-dish me-2"></i>emprenDe | GeoOracle</span>
+        <h1 class="hero-title mt-2">Inteligencia Territorial y<br><span style="color: var(--accent-cyan);">Econometría Urbana</span></h1>
+        <p class="hero-subtitle mt-4 mx-auto" style="max-width: 700px;">
+            Bootcamp 1 a 1: De la visualización descriptiva con PostGIS a la inferencia causal aplicada en Python y R.
+        </p>
+    </div>
+</div>
+
+<div class="container" style="max-width: 900px;">
+    
+    <!-- Sección 1 -->
+    <h2 class="section-title"><i class="fas fa-city"></i> 1. El Paradigma: La Ciudad como Sistema Vivo</h2>
+    <p class="lead-text">
+        Has llegado a un punto en tu trayectoria donde mapear la realidad ya no es suficiente; el siguiente nivel exige probar matemáticamente cómo esa realidad se transforma y reacciona ante choques externos.
+    </p>
+    <p class="lead-text">
+        Tu intuición analítica es tu mayor activo. Entiendes perfectamente que los proyectos de infraestructura, los desplazamientos por gentrificación y la dinámica comercial no ocurren en el vacío geográfico. Sin embargo, las herramientas tradicionales limitan tu investigación a hacer mapas descriptivos. Te dicen <em>dónde</em> están las cosas, pero no te permiten probar <em>por qué</em> suceden ni <em>cómo</em> se contagian espacialmente.
+    </p>
+    <p class="lead-text fw-bold text-dark">
+        El objetivo de esta inmersión tecnológica es darte la arquitectura para que pases de la observación a la predicción causal.
+    </p>
+
+    <!-- Sección 2 -->
+    <h2 class="section-title"><i class="fas fa-project-diagram"></i> 2. Arquitectura del Efecto Derrame</h2>
+    <p class="lead-text">
+        Para ilustrar este salto metodológico, modelaremos la dinámica comercial de la CDMX. No asumiremos la presión urbana por juicio experto; extraeremos datos espaciales y construiremos una matriz de pesos espaciales ($W$) para cuantificar el <strong>Efecto Derrame (Spatial Spillover)</strong> desde los corredores centrales de alta densidad (Roma-Condesa) hasta los nodos poblacionales de mayor peso en el oriente (Iztapalapa).
+    </p>
+
+    <!-- Caja de Rigor Matemático -->
+    <div class="math-box">
+        <h5 class="fw-bold mb-3" style="color: var(--primary-dark); font-family: 'Inter', sans-serif; font-size: 1rem;"><i class="fas fa-calculator me-2"></i>Spatial Autoregressive Model (SAR)</h5>
+        <p class="mb-0 text-center">
+            $$ y = \rho W y + X \beta + \epsilon $$
+        </p>
+        <p class="mt-3 mb-0 small text-muted font-monospace text-center">
+            Donde ρ captura la intensidad del contagio espacial y W define la topología de la red urbana.
+        </p>
+    </div>
+
+    <!-- Visor de Código -->
+    <p class="fw-bold mt-4 mb-2">Ingeniería de Características Espaciales (Pipeline en R)</p>
+    <pre><code class="language-r">library(osmdata)
+library(sf)
+library(spdep) # Para matrices de pesos espaciales
+
+# 1. Extracción de infraestructura y nodos de demanda
+bbox_cdmx <- c(xmin = -99.20, ymin = 19.30, xmax = -99.00, ymax = 19.50)
+query_osm <- opq(bbox = bbox_cdmx) %>%
+  add_osm_feature(key = "amenity", value = "restaurant") %>%
+  osmdata_sf()
+
+puntos_comerciales <- query_osm$osm_points
+
+# 2. Construcción de topología y matriz de rezago
+malla_hex <- st_make_grid(puntos_comerciales, cellsize = 0.005, square = FALSE) %>% st_sf()
+malla_hex$densidad <- lengths(st_intersects(malla_hex, puntos_comerciales))
+
+# Generación de la Matriz W (Vecindad Reina)
+vecinos <- poly2nb(malla_hex, queen = TRUE)
+W_matrix <- nb2listw(vecinos, style = "W", zero.policy = TRUE)</code></pre>
+
+    <!-- Visualización -->
+    <div class="viz-container">
+        <div class="viz-overlay text-success"><i class="fas fa-check-circle me-1"></i>Moran's I: p-value < 0.001</div>
+        <!-- IMPORTANTE: Cambia el src por el de tu imagen generada -->
+        <img src="image_fa06b5.png" alt="Aglomeración Comercial en Malla Hexagonal - Efecto Derrame" style="background: #f3f4f6; min-height: 300px; display: flex; align-items: center; justify-content: center; color: #9ca3af;">
+        <p class="text-muted mt-3 mb-0 small"><i class="fas fa-info-circle me-1"></i><em>Rechazo de la hipótesis nula de aleatoriedad espacial. El polo central genera un campo gravitacional que eleva el valor del suelo y desplaza las fronteras comerciales.</em></p>
+    </div>
+
+    <!-- Sección 3 -->
+    <h2 class="section-title"><i class="fas fa-layer-group"></i> 3. Syllabus de Transferencia Tecnológica</h2>
+    <p class="lead-text">
+        Una currícula intensiva de 12 semanas dividida en <em>Sprints</em>. Cada línea de código y cada query de PostgreSQL que ejecutes estará conectada directamente a tu investigación.
+    </p>
+
+    <div class="syllabus-grid">
+        <div class="module-card">
+            <span class="module-number">Semanas 1-3</span>
+            <h4 class="module-title">Infraestructura y Datos Espaciales</h4>
+            <p class="module-desc">Despliegue de bases de datos espaciales con PostGIS. Limpieza paramétrica, proyecciones geométricas y manejo eficiente de grandes volúmenes de datos.</p>
+        </div>
+        <div class="module-card">
+            <span class="module-number">Semanas 4-6</span>
+            <h4 class="module-title">Topología y Diagnóstico Espacial</h4>
+            <p class="module-desc">Definición de contigüidad (Reina/Torre), cálculo de matrices de pesos y pruebas formales de autocorrelación espacial (Índice de Moran local y global).</p>
+        </div>
+        <div class="module-card">
+            <span class="module-number">Semanas 7-9</span>
+            <h4 class="module-title">Inferencia Causal (SAR / SEM)</h4>
+            <p class="module-desc">Estimación de Modelos de Rezago y Error Espacial. Interpretación de impactos directos, indirectos (spillovers) y totales en ecosistemas urbanos.</p>
+        </div>
+        <div class="module-card">
+            <span class="module-number">Semanas 10-12</span>
+            <h4 class="module-title">Modelado GWR y Portafolio Final</h4>
+            <p class="module-desc">Regresión Geográficamente Ponderada (GWR) para entender la heterogeneidad espacial. Cierre con un modelo matemático irrefutable de tu autoría.</p>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+        <h2 class="fw-bold text-dark mb-3">El Entregable Final</h2>
+        <p class="lead text-muted mb-4 mx-auto" style="max-width: 600px;">
+            Al terminar este programa, entregarás un modelo econométrico robusto que demuestre cuantitativamente el impacto territorial de la ciudad sobre sus sistemas socioeconómicos y ecológicos.
+        </p>
+        <button class="btn btn-primary btn-lg px-5" style="background-color: var(--accent-blue); border: none;"><i class="fas fa-rocket me-2"></i>Iniciar Proceso de Admisión</button>
+    </div>
+
+</div>
+
+<!-- Scripts necesarios -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.css"></script>
+<!-- MathJax para renderizar ecuaciones LaTeX -->
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- Highlight.js para el formateo de código -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/r.min.js"></script>
+<script>
+    // Inicializar Highlight.js
+    hljs.highlightAll();
+</script>
+</body>
+</html>
