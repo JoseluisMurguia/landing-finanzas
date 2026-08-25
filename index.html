@@ -450,13 +450,38 @@ nodos_criticos <span class="text-cyan-400"><-</span> <span class="text-blue-400"
                 <strong class="text-white font-normal bg-slate-800/50 px-2 py-1 rounded">Si nuestros modelos de datos no detectan fugas de rentabilidad estructurales equivalentes a por lo menos el triple de lo que cuesta nuestra intervención, el diagnóstico es 100% gratuito.</strong>
             </p>
             
-            <a href="mailto:consultoria@5d-emprende.com?subject=Solicitud%20Auditor%C3%ADa%20RevPASH" 
-               class="inline-flex items-center justify-center gap-3 bg-white text-slate-950 font-bold text-lg px-8 py-4 rounded-xl hover:bg-cyan-50 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]">
-                Solicitar Auditoría 5=D
-                <i data-lucide="arrow-right" class="w-5 h-5"></i>
-            </a>
-            <p class="mt-4 text-xs font-mono text-slate-500 uppercase tracking-widest">Cupos limitados por trimestre geográfico (CDMX).</p>
-        </div>
+           <!-- Formulario de Captación 5=D -->
+            <form id="form-auditoria" action="TU_ENDPOINT_AQUI" method="POST" class="glass-panel p-8 rounded-2xl border border-slate-800 max-w-md mx-auto mt-8 flex flex-col gap-5 text-left relative z-10 shadow-2xl">
+                
+                <input type="hidden" name="_subject" value="Nuevo Lead B2B: Auditoría 5=D">
+                <input type="text" name="_gotcha" style="display:none" class="hidden">
+
+                <div>
+                    <label class="block text-[10px] font-mono text-cyan-400 mb-1.5 uppercase tracking-wider">Identificador / Nombre</label>
+                    <input type="text" name="name" required class="w-full bg-slate-900/60 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all text-sm" placeholder="Ej. Juan Pérez">
+                </div>
+
+                <div>
+                    <label class="block text-[10px] font-mono text-cyan-400 mb-1.5 uppercase tracking-wider">Punto de Contacto / Email</label>
+                    <input type="email" name="email" required class="w-full bg-slate-900/60 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all text-sm" placeholder="juan@empresa.com">
+                </div>
+
+                <div>
+                    <label class="block text-[10px] font-mono text-cyan-400 mb-1.5 uppercase tracking-wider">Fricción Operativa (Diagnóstico)</label>
+                    <textarea name="message" required rows="3" class="w-full bg-slate-900/60 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all text-sm resize-none" placeholder="Describe brevemente el principal cuello de botella en tu operación..."></textarea>
+                </div>
+
+                <button type="submit" id="btn-submit" class="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white rounded-lg px-6 py-3 text-sm font-semibold flex items-center justify-center gap-2 mt-2 transition-all shadow-[0_0_15px_rgba(34,211,238,0.2)] hover:shadow-[0_0_25px_rgba(34,211,238,0.4)]">
+                    <span>Inicializar Solicitud</span> <i data-lucide="send" class="w-4 h-4"></i>
+                </button>
+
+                <!-- Mensaje de éxito oculto -->
+                <div id="form-success" class="hidden text-center mt-2 border border-emerald-500/30 bg-emerald-950/20 py-3 rounded-lg">
+                    <p class="text-xs font-mono text-emerald-400 flex items-center justify-center gap-2">
+                        <i data-lucide="check-circle-2" class="w-4 h-4"></i> Datos recibidos. Sistema en línea.
+                    </p>
+                </div>
+            </form>
     </section>
 
     <!-- Footer -->
@@ -565,7 +590,50 @@ nodos_criticos <span class="text-cyan-400"><-</span> <span class="text-blue-400"
             });
         }
 
+        // --- LÓGICA DEL FORMULARIO (Envío Silencioso) ---
+        const formAuditoria = document.getElementById('form-auditoria');
+        const btnSubmit = document.getElementById('btn-submit');
+        const formSuccess = document.getElementById('form-success');
+
+        if (formAuditoria) {
+            formAuditoria.addEventListener('submit', async function(e) {
+                e.preventDefault(); // Evita que la página te lleve a Formspree
+                
+                // Cambiamos el estado del botón a "Cargando"
+                const btnText = btnSubmit.querySelector('span');
+                btnText.innerText = 'Procesando...';
+                btnSubmit.disabled = true;
+                btnSubmit.classList.add('opacity-50', 'cursor-not-allowed');
+                
+                try {
+                    const response = await fetch(formAuditoria.action, {
+                        method: 'POST',
+                        body: new FormData(formAuditoria),
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    
+                    if (response.ok) {
+                        // Si todo sale bien: limpiamos formulario, ocultamos botón y mostramos éxito
+                        formAuditoria.reset();
+                        btnSubmit.classList.add('hidden');
+                        formSuccess.classList.remove('hidden');
+                        lucide.createIcons(); // Recarga los iconos por si acaso
+                    } else {
+                        // Si Formspree rechaza por alguna razón
+                        btnText.innerText = 'Error en el sistema';
+                        btnSubmit.disabled = false;
+                        btnSubmit.classList.remove('opacity-50', 'cursor-not-allowed');
+                    }
+                } catch (error) {
+                    // Si el usuario no tiene internet
+                    btnText.innerText = 'Error de conexión';
+                    btnSubmit.disabled = false;
+                    btnSubmit.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+            });
+        }
         // 2. Tarjeta: Entropía Operativa (Simulación de sistema cerrado)
+        
         const entropyBar = document.getElementById('entropy-bar');
         const injectBtn = document.getElementById('inject-btn');
         let entropyLevel = 100;
@@ -606,5 +674,7 @@ nodos_criticos <span class="text-cyan-400"><-</span> <span class="text-blue-400"
             });
         }
     </script>
+    
+
 </body>
 </html>
