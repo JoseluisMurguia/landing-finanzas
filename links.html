@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>5=D | Enlaces Oficiales</title>
-    
-    <!-- Tipografía de Alta Legibilidad (Google Fonts) -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="5=D — Investigación aplicada, datos, experimentación e inteligencia artificial para convertir problemas reales en mejores decisiones y riqueza sostenible.">
+  <title>5=D | De la intuición al método</title>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Roboto+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -16,346 +17,444 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Tailwind Config -->
+    <!-- Tailwind Config & Custom CSS -->
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         heading: ['Space Grotesk', 'sans-serif'],
+                        mono: ['Roboto Mono', 'monospace'],
                     },
                     colors: {
-                        slate: { 900: '#0f172a', 950: '#020617' },
-                        cyan: { 400: '#22d3ee' },
+                        slate: { 850: '#151e2e', 900: '#0f172a', 950: '#020617' },
+                        cyan: { 400: '#22d3ee', 500: '#06b6d4' },
                         blue: { 500: '#3b82f6', 600: '#2563eb' },
-                        violet: { 400: '#a78bfa', 500: '#8b5cf6' }
+                        violet: { 500: '#8b5cf6', 600: '#7c3aed' },
                     },
                     animation: {
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-up': 'fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                        'pulse-glow': 'pulseGlow 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.4' },
+                            '50%': { opacity: '0.8' },
+                        }
                     }
                 }
             }
         }
     </script>
     <style>
-        /* Estética Deep Tech / Glassmorphism */
+        /* Cyber-academic dot grid background */
         body {
-            background-color: #020617;
-            background-image: radial-gradient(circle at top center, #1e293b 0%, #020617 100%);
-            min-height: 100vh;
+            background-color: #020617; /* slate-950 */
+            background-image: radial-gradient(circle at center, #1e293b 1px, transparent 1px);
+            background-size: 24px 24px;
         }
         
-        .glass-btn {
-            background: rgba(15, 23, 42, 0.4);
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.6);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(30, 41, 59, 0.8);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .glass-btn:hover {
-            background: rgba(30, 41, 59, 0.6);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px -10px rgba(34, 211, 238, 0.15);
-        }
-
-        .glass-btn-featured {
-            background: rgba(23, 15, 42, 0.6);
-            border: 1px solid rgba(139, 92, 246, 0.4);
-            box-shadow: 0 0 20px -5px rgba(139, 92, 246, 0.2);
-        }
-        
-        .glass-btn-featured:hover {
-            background: rgba(30, 20, 50, 0.8);
-            border-color: rgba(167, 139, 250, 0.6);
-            box-shadow: 0 10px 30px -10px rgba(139, 92, 246, 0.3);
         }
 
         .gradient-text {
-            background: linear-gradient(135deg, #22d3ee, #3b82f6);
+            background: linear-gradient(135deg, #22d3ee, #8b5cf6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .orb-glow {
-            box-shadow: 0 0 60px 10px rgba(59, 130, 246, 0.3), inset 0 0 20px rgba(34, 211, 238, 0.5);
-        }
+        .observe-me { opacity: 0; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #334155; }
 
-        /* Animación de levitación para el logo */
-        @keyframes float-premium {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-            100% { transform: translateY(0px); }
+        /* Animaciones para las Tarjetas Lógicas */
+        .slider-tech {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 4px;
+            background: #1e293b;
+            border-radius: 2px;
+            outline: none;
         }
-        .animate-float-premium {
-            animation: float-premium 5s ease-in-out infinite;
+        .slider-tech::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #22d3ee;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(34, 211, 238, 0.5);
+        }
+        .flee-button:hover {
+            transform: translate(20px, -10px) rotate(5deg);
+            background-color: rgba(225, 29, 72, 0.2) !important;
+            border-color: rgba(225, 29, 72, 0.5) !important;
+            color: #f43f5e !important;
         }
     </style>
 </head>
-<body class="text-slate-300 antialiased flex flex-col items-center p-4 md:p-6 selection:bg-cyan-500/30 selection:text-cyan-200">
+<body class="text-slate-300 antialiased overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-200">
 
-    <!-- Luces de fondo ambientales -->
-    <div class="fixed top-0 w-full h-[500px] bg-blue-600/5 blur-[120px] rounded-full pointer-events-none -z-10"></div>
-
-    <main class="w-full max-w-xl mx-auto flex flex-col items-center z-10 pt-6 pb-12">
-        
-        <!-- 1. TU FOTO DE PERFIL (Con anillos orbitales) -->
-        <div class="relative w-32 h-32 md:w-40 md:h-40 mb-6 flex items-center justify-center mx-auto">
-            <!-- Anillo exterior rotando a la derecha -->
-            <div class="absolute inset-0 rounded-full border-[3px] border-cyan-500/20 border-t-cyan-400 animate-[spin_4s_linear_infinite]"></div>
-            <!-- Anillo interior rotando a la izquierda -->
-            <div class="absolute inset-2 rounded-full border-[3px] border-violet-500/20 border-b-violet-500 animate-[spin_3s_linear_infinite_reverse]"></div>
-            
-            <!-- Foto Central -->
-            <div class="absolute w-[85%] h-[85%] z-10 rounded-full border-4 border-slate-900 shadow-[0_0_25px_rgba(59,130,246,0.5)] overflow-hidden">
-                <img src="foto-perfil.jpg" alt="José Luis Murguía" class="object-cover w-full h-full">
-            </div>
-        </div>
-
-        <!-- 2. LOGO 5D FLOTANTE -->
-        <div class="relative w-24 h-24 md:w-28 md:h-28 mb-4 mx-auto group cursor-default">
-            <!-- Contenedor con animación flotante continua -->
-            <div class="w-full h-full animate-float-premium transition-transform duration-500 ease-out group-hover:scale-110">
-                <!-- Imagen con Drop-Shadow Inteligente -->
-                <img src="5D.png" alt="Logo 5=D" class="object-contain w-full h-full drop-shadow-[0_10px_15px_rgba(34,211,238,0.15)] group-hover:drop-shadow-[0_0_25px_rgba(157,49,102,0.5)] transition-all duration-700">
-            </div>
-        </div>
-
-        <!-- 3. HEADER INFO -->
-        <div class="mb-6 text-center">
-            <h2 class="text-lg font-medium gradient-text mb-2 tracking-wide uppercase"> Investigador UAM Xochimilco </h2>
-            <p class="text-sm text-slate-400">Jose Luis Murguía | Economista & Data Scientist</p>
-        </div>
-
-        <!-- 4. REDES SOCIALES (Con identidad de marca y brillo interactivo) -->
-        <div class="flex flex-wrap justify-center gap-3 w-full mb-10 px-2">
-            
-            <!-- GitHub (Gris/Blanco) -->
-            <a href="https://github.com/JoseluisMurguia" target="_blank" class="glass-btn rounded-full px-4 py-2 flex items-center gap-2 group cursor-pointer border border-slate-700 bg-slate-900/40 hover:border-slate-400 hover:bg-slate-800 hover:shadow-[0_0_15px_rgba(255,255,255,0.15)] transition-all duration-300">
-                <i data-lucide="github" class="w-4 h-4 text-slate-400 group-hover:text-white transition-colors"></i>
-                <span class="text-sm text-slate-300 group-hover:text-white transition-colors">@JoseluisMurguia</span>
+    <!-- Global Glowing Orbs (Background) -->
+    <div class="fixed top-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+    <div class="fixed bottom-0 right-0 w-[600px] h-[600px] bg-violet-600/10 rounded-full blur-[150px] translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+    
+   <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 glass-panel border-b-0 border-slate-800/50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+           <!-- Logo 5D Personalizado -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 relative">
+                    <!-- Tu imagen 5D con brillo reactivo al hover -->
+                    <img src="5D.png" alt="Logo 5=D" class="object-contain w-full h-full drop-shadow-[0_0_8px_rgba(34,211,238,0.4)] group-hover:drop-shadow-[0_0_15px_rgba(157,49,102,0.7)] transition-all duration-300 group-hover:scale-110">
+                </div>
+                <div class="font-heading font-bold text-lg tracking-tighter text-white flex items-center">
+                    <span class="text-slate-500 font-mono text-xs font-normal hidden sm:inline-block border-l border-slate-700 pl-3 ml-1">SISTEMAS & DATA</span>
+                </div>
             </a>
             
-            <!-- YouTube (Rojo) -->
-            <a href="https://youtube.com/@PepiiMurguia" target="_blank" class="glass-btn rounded-full px-4 py-2 flex items-center gap-2 group cursor-pointer border border-red-900/40 bg-red-950/10 hover:border-red-500/50 hover:bg-red-950/30 hover:shadow-[0_0_15px_rgba(239,68,68,0.25)] transition-all duration-300">
-                <i data-lucide="youtube" class="w-4 h-4 text-red-500/80 group-hover:text-red-500 transition-colors"></i>
-                <span class="text-sm text-slate-300 group-hover:text-white transition-colors">@PepiiMurguia</span>
-            </a>
-            
-            <!-- LinkedIn (Azul) -->
-            <a href="https://linkedin.com/in/pepii-murguia-/" target="_blank" class="glass-btn rounded-full px-4 py-2 flex items-center gap-2 group cursor-pointer border border-blue-900/40 bg-blue-950/10 hover:border-blue-500/50 hover:bg-blue-950/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.25)] transition-all duration-300">
-                <i data-lucide="linkedin" class="w-4 h-4 text-blue-500/80 group-hover:text-blue-400 transition-colors"></i>
-                <span class="text-sm text-slate-300 group-hover:text-white transition-colors">José Luis Murguía</span>
-            </a>
-
-        </div>
-        <!-- 5. CONTENEDOR PRINCIPAL DE ENLACES (Aquí se arregla el amontonamiento) -->
-        <div class="w-full flex flex-col gap-6">
-
-            <!-- SLOT SEMANAL DUAL (Data Storytelling & Simulaciones) -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
-
-   <!-- BOTÓN 1: Lectura (Dan Koe) -->
-    <a href="https://letters.thedankoe.com/p/how-to-fix-your-entire-life-in-1" target="_blank" class="glass-btn rounded-xl p-4 flex flex-col justify-between group cursor-pointer relative overflow-hidden border border-violet-900/50 shadow-lg hover:border-violet-500/50 h-full bg-violet-950/20">
-        <!-- Indicador -->
-        <div class="absolute top-2 right-2 flex items-center gap-1 bg-violet-900/60 px-2 py-0.5 rounded-full border border-violet-700/50">
-            <span class="text-[9px] font-mono text-violet-300 uppercase tracking-wider">Lectura Semanal</span>
-        </div>
-        
-        <!-- Contenido -->
-        <div class="mb-4 mt-3">
-            <div class="flex items-start gap-3 mb-2">
-                <div class="shrink-0 text-violet-400 mt-0.5"><i data-lucide="brain-circuit" class="w-5 h-5"></i></div>
-                <h3 class="font-heading font-semibold text-white text-[14px] leading-tight group-hover:text-violet-300 transition-colors">Arquitectura Personal</h3>
-            </div>
-            <!-- Resumen / Hook -->
-            <p class="text-[12px] text-slate-400 leading-relaxed font-medium">
-                Dan Koe destila cómo reconstruir tu vida en 1 año. Olvida la motivación barata; aprende a construir sistemas, enfoque profundo y creación de valor. Un clásico.
-            </p>
-        </div>
-        
-        <!-- Botón CTA Inferior -->
-        <div class="mt-auto">
-            <button class="w-full bg-violet-600/60 hover:bg-violet-600 text-white rounded-full py-2 text-xs font-semibold flex items-center justify-center gap-2 transition-colors">
-                Leer Ensayo <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
-            </button>
-        </div>
-    </a>
-    <!-- BOTÓN 2: Human Terrain (Inteligencia Espacial) -->
-    <a href="https://pudding.cool/2018/10/city_3d/" target="_blank" class="glass-btn rounded-xl p-4 flex flex-col justify-between group cursor-pointer relative overflow-hidden border border-violet-900/50 shadow-lg hover:border-violet-500/50 h-full bg-violet-950/20">
-        <!-- Indicador Pulso -->
-        <div class="absolute top-2 right-2 flex items-center gap-1.5 bg-violet-900/60 px-2 py-0.5 rounded-full border border-violet-700/50">
-            <span class="relative flex h-1.5 w-1.5">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-violet-500"></span>
-            </span>
-            <span class="text-[9px] font-mono text-violet-300 uppercase tracking-wider">Data Viz 3D</span>
-        </div>
-        
-        <!-- Contenido -->
-        <div class="mb-4 mt-3">
-            <div class="flex items-start gap-3 mb-2">
-                <div class="shrink-0 text-violet-400 mt-0.5"><i data-lucide="layers" class="w-5 h-5"></i></div>
-                <h3 class="font-heading font-semibold text-white text-[14px] leading-tight group-hover:text-violet-300 transition-colors">Human Terrain</h3>
-            </div>
-            <!-- Descripción -->
-            <p class="text-[12px] text-slate-400 leading-relaxed font-medium">
-                Explora la densidad urbana del mundo renderizada como "montañas de personas". Así es como se ve la verdadera topografía comercial.
-            </p>
-        </div>
-        
-        <!-- Botón CTA Inferior -->
-        <div class="mt-auto">
-            <button class="w-full bg-violet-600/60 hover:bg-violet-600 text-white rounded-full py-2 text-xs font-semibold flex items-center justify-center gap-2 transition-colors">
-                Explorar Mapa 3D <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
-            </button>
-        </div>
-    </a>
-
-</div>
-
-            <!-- SLOT SEMANAL DUAL (A la misma altura) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
-
-                <!-- BOTÓN 1: Carta del Dr. Tzili -->
-                <a href="https://www.unla.edu.ar/centros/centro-de-estudios-de-investigacion-sino-latinoamericano/cartas-del-ceisil" target="_blank" class="glass-btn rounded-xl p-4 flex flex-col justify-between group cursor-pointer relative overflow-hidden border border-violet-900/50 shadow-lg hover:border-violet-500/50 h-full bg-violet-950/20">
-                    <div class="absolute top-2 right-2 flex items-center gap-1 bg-violet-900/60 px-2 py-0.5 rounded-full border border-violet-700/50">
-                        <span class="text-[9px] font-mono text-violet-300 uppercase tracking-wider">Carta 6 • Agosto</span>
-                    </div>
-                    
-                    <div class="mb-4 mt-3">
-                        <div class="flex items-start gap-3 mb-2">
-                            <div class="shrink-0 text-violet-400 mt-0.5"><i data-lucide="globe-2" class="w-5 h-5"></i></div>
-                            <h3 class="font-heading font-semibold text-white text-[14px] leading-tight group-hover:text-violet-300 transition-colors">Geopolítica: China vs EE.UU.</h3>
-                        </div>
-                        <p class="text-[12px] text-slate-400 leading-relaxed font-medium">
-                            ¿América Latina como simple tablero de ajedrez? El Dr. Tzili advierte sobre el riesgo de una nueva "dependencia periférica" y urge a aprovechar estratégicamente el nearshoring.
-                        </p>
-                    </div>
-                    
-                    <div class="mt-auto">
-                        <button class="w-full bg-violet-600/60 hover:bg-violet-600 text-white rounded-full py-2 text-xs font-semibold flex items-center justify-center gap-2 transition-colors">
-                            Leer Artículo <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
-                        </button>
-                    </div>
+            <!-- Links del Ecosistema -->
+            <div class="flex items-center gap-6">
+                <!-- Georacle -->
+                <a href="georacle.html" class="hidden md:flex items-center gap-2 text-sm font-mono text-slate-400 hover:text-violet-400 transition-colors group">
+                    <i data-lucide="compass" class="h-4 w-4 group-hover:animate-pulse"></i>
+                    Georacle <span class="text-[10px] text-slate-500">· Econometria Espacial</span>
+                </a>
+                
+                <!-- Calculadora -->
+                <a href="calculadora.html" class="hidden md:flex items-center gap-2 text-sm font-mono text-slate-400 hover:text-cyan-400 transition-colors group">
+                    <i data-lucide="terminal" class="h-4 w-4 group-hover:animate-pulse"></i>
+                    Calculadora Gastro
                 </a>
 
-                <!-- BOTÓN 2: Dollar Street -->
-                <a href="https://www.gapminder.org/dollar-street" target="_blank" class="glass-btn rounded-xl p-4 flex flex-col justify-between group cursor-pointer relative overflow-hidden border border-violet-900/50 shadow-lg hover:border-violet-500/50 h-full bg-violet-950/20">
-                    <div class="absolute top-2 right-2 flex items-center gap-1.5 bg-violet-900/60 px-2 py-0.5 rounded-full border border-violet-700/50">
-                        <span class="relative flex h-1.5 w-1.5">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-violet-500"></span>
-                        </span>
-                        <span class="text-[9px] font-mono text-violet-300 uppercase tracking-wider">Visualizar</span>
-                    </div>
-                    
-                    <div class="mb-4 mt-3">
-                        <div class="flex items-start gap-3 mb-2">
-                            <div class="shrink-0 text-violet-400 mt-0.5"><i data-lucide="scale" class="w-5 h-5"></i></div>
-                            <h3 class="font-heading font-semibold text-white text-[14px] leading-tight group-hover:text-violet-300 transition-colors">Brechas de Desigualdad</h3>
-                        </div>
-                        <p class="text-[12px] text-slate-400 leading-relaxed font-medium">
-                            Desarrollo económico real. Explora cómo se marcan las diferencias y contrasta la vida en el Sur Global vs Norte Global.
-                        </p>
-                    </div>
-                    
-                    <div class="mt-auto">
-                        <button class="w-full bg-violet-600/60 hover:bg-violet-600 text-white rounded-full py-2 text-xs font-semibold flex items-center justify-center gap-2 transition-colors">
-                            Ver Herramienta <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
-                        </button>
-                    </div>
-                </a>
+                <!-- Separador visual discreto -->
+                <div class="hidden md:block w-px h-4 bg-slate-700"></div>
 
+                <!-- CTA Core -->
+                <a href="#auditoria" class="hidden md:inline-flex items-center gap-2 text-sm font-mono text-cyan-400 hover:text-cyan-300 transition-colors">
+                    [ Iniciar ] <i data-lucide="chevron-right" class="h-4 w-4"></i>
+                </a>
+                
+                <!-- Menú Mobile (Icono Hamburguesa) -->
+                <button class="md:hidden text-slate-400 hover:text-white">
+                    <i data-lucide="menu" class="h-6 w-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+<!-- 1. HERO SECTION: EL LABORATORIO INTERACTIVO -->
+    <section class="relative pt-32 pb-20 max-w-7xl mx-auto px-6 min-h-screen flex flex-col justify-center">
+        
+        <!-- Header de Filosofía + Perfil del Arquitecto -->
+        <div class="text-center mb-16 observe-me flex flex-col items-center">
+            
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border-cyan-500/30 text-cyan-400 text-xs font-mono mb-6">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                5=D · Investigación aplicada · Economía · Datos · IA
+            </div>
+            
+            <h1 class="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white leading-[1.1] mb-6">
+                De la intuición <br class="hidden md:block">
+                <span class="gradient-text">al método.</span>
+            </h1>
+            
+            <p class="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed mb-8">
+                Investigación, datos y experimentación para convertir problemas reales —personales, empresariales y sociales— en mejores decisiones, proyectos y nuevas formas de crear riqueza.   </p>
+
+            <!-- Mini-Perfil (Botón hacia página de Links) -->
+            <!-- IMPORTANTE: Cambia "tus-enlaces.html" por el nombre real de tu página de links -->
+            <a href="links.html" class="inline-flex items-center justify-center gap-3 bg-slate-900/50 border border-slate-800 rounded-full px-2 py-2 pr-6 shadow-lg shadow-cyan-900/10 hover:border-cyan-500/50 hover:bg-slate-800/80 hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
+                <div class="relative w-11 h-11 rounded-full p-[2px] bg-gradient-to-tr from-cyan-400 via-blue-600 to-violet-500 shadow-[0_0_10px_rgba(34,211,238,0.2)] group-hover:shadow-[0_0_20px_rgba(34,211,238,0.5)] transition-shadow">
+                    <!-- REEMPLAZA "foto-perfil.jpg" con tu foto -->
+                    <img src="foto-perfil.jpg" alt="Pepii" class="object-cover w-full h-full rounded-full border-2 border-slate-950">
+                </div>
+                <div class="text-left font-heading font-bold text-white text-base tracking-wide group-hover:text-cyan-300 transition-colors">
+                    Pepii
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Grid de Tarjetas Interactivas -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 observe-me" style="animation-delay: 0.2s;">
+            
+            <!-- TARJETA 1: El Algoritmo de los Hábitos -->
+            <div class="glass-panel p-6 rounded-2xl border border-slate-800 flex flex-col h-full group hover:border-cyan-500/40 transition-colors">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-heading font-semibold text-white flex items-center gap-2">
+                        <i data-lucide="trending-up" class="w-4 h-4 text-cyan-400"></i> Interés Compuesto
+                    </h3>
+                    <span class="text-[10px] font-mono text-cyan-500 bg-cyan-950/30 px-2 py-0.5 rounded">HÁBITOS</span>
+                </div>
+                <p class="text-xs text-slate-400 mb-6">La consistencia vence a la intensidad. Mueve el control para ver el impacto matemático de ser 1% mejor (o peor) al día durante un año.</p>
+                
+                <div class="mt-auto bg-slate-900/50 p-4 rounded-xl border border-slate-800">
+                    <div class="flex justify-between text-xs font-mono text-slate-500 mb-2">
+                        <span>-1% Diario</span>
+                        <span>+1% Diario</span>
+                    </div>
+                    <input type="range" min="-1" max="1" value="0" step="0.1" class="slider-tech mb-4" id="habit-slider">
+                    <div class="flex items-end justify-between">
+                        <div>
+                            <p class="text-[10px] font-mono text-slate-500">Resultado = <span id="habit-formula">(1.00)^365</span></p>
+                        </div>
+                        <div class="text-2xl font-mono font-bold text-cyan-400" id="habit-output">1.00x</div>
+                    </div>
+                </div>
             </div>
 
-          <!-- Herramienta Principal (Cian) -->
-            <a href="https://joseluismurguia.tech/calculadora.html" class="glass-btn rounded-xl p-5 block group cursor-pointer relative overflow-hidden border border-cyan-900/50 shadow-lg hover:border-cyan-500/50 bg-cyan-950/10">
-                <!-- Contenido Principal -->
-                <div class="flex items-start gap-4 mb-3">
-                    <div class="shrink-0 text-cyan-400 mt-1"><i data-lucide="calculator" class="w-6 h-6"></i></div>
-                    <div>
-                        <h3 class="font-heading font-semibold text-white text-[16px] mb-1 group-hover:text-cyan-300 transition-colors">Calculadora Paramétrica 5=D</h3>
-                        <h4 class="text-xs font-mono text-cyan-500 uppercase tracking-wider mb-2">Ingeniería de Menús</h4>
-                        <p class="text-[13px] text-slate-400 leading-relaxed">
-                            Toma el control matemático de tus márgenes. Evalúa el costo real de tus platillos para identificar fugas ocultas de capital, clasificar tus productos estrella y estructurar un menú estratégicamente rentable.
-                        </p>
-                    </div>
+            <!-- TARJETA 2: La Entropía Operativa -->
+            <div class="glass-panel p-6 rounded-2xl border border-slate-800 flex flex-col h-full group hover:border-violet-500/40 transition-colors">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-heading font-semibold text-white flex items-center gap-2">
+                        <i data-lucide="activity" class="w-4 h-4 text-violet-400"></i> Entropía Operativa
+                    </h3>
+                    <span class="text-[10px] font-mono text-violet-500 bg-violet-950/30 px-2 py-0.5 rounded">SISTEMAS ABIERTOS</span>
                 </div>
+                <p class="text-xs text-slate-400 mb-6">Todo sistema sin energía o datos colapsa en el caos. Evita que tu operación se degrade inyectando inteligencia al sistema.</p>
                 
-                <!-- Beneficios (Tags visuales) -->
-                <div class="flex flex-wrap gap-2 mb-5 md:pl-10">
-                    <span class="text-[10px] bg-cyan-900/30 text-cyan-300 px-2 py-1 rounded border border-cyan-800/50">Control de Food Cost</span>
-                    <span class="text-[10px] bg-cyan-900/30 text-cyan-300 px-2 py-1 rounded border border-cyan-800/50">Optimización de Precios</span>
-                </div>
-
-                <!-- Botón CTA Centrado y Potenciado -->
-                <div class="text-center">
-                    <button class="w-full sm:w-auto bg-cyan-600/80 hover:bg-cyan-500 text-white rounded-full px-8 py-2.5 text-sm font-semibold flex items-center justify-center gap-2 mx-auto transition-all shadow-[0_0_15px_rgba(34,211,238,0.2)] group-hover:shadow-[0_0_25px_rgba(34,211,238,0.4)]">
-                        Evaluar mi menú ahora <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                <div class="mt-auto bg-slate-900/50 p-4 rounded-xl border border-slate-800 text-center">
+                    <div class="w-full h-2 bg-slate-800 rounded-full mb-4 overflow-hidden">
+                        <div id="entropy-bar" class="h-full bg-cyan-400 transition-all duration-75" style="width: 100%;"></div>
+                    </div>
+                    <button id="inject-btn" class="w-full bg-violet-600/20 hover:bg-violet-600/40 text-violet-300 border border-violet-500/50 rounded-lg py-2 text-xs font-mono transition-colors flex items-center justify-center gap-2">
+                        <i data-lucide="database-zap" class="w-3 h-3"></i> [ Inyectar Datos ]
                     </button>
                 </div>
-            </a>
-           <!-- Herramienta Secundaria (Azul) -->
-            <a href="/georacle.html" class="glass-btn rounded-xl p-5 block group cursor-pointer relative overflow-hidden border border-blue-900/50 shadow-lg hover:border-blue-500/50 bg-blue-950/10">
-                <!-- Contenido Principal -->
-                <div class="flex items-start gap-4 mb-3">
-                    <div class="shrink-0 text-blue-400 mt-1"><i data-lucide="map" class="w-6 h-6"></i></div>
-                    <div>
-                        <h3 class="font-heading font-semibold text-white text-[16px] mb-1 group-hover:text-blue-300 transition-colors">GeoOracle MVP</h3>
-                        <h4 class="text-xs font-mono text-blue-500 uppercase tracking-wider mb-2">Inteligencia Espacial</h4>
-                        <p class="text-[13px] text-slate-400 leading-relaxed">
-                            El éxito de una experiencia comercial física y sensorial depende de su entorno. Modelamos la viabilidad de tus próximas aperturas analizando densidades de tráfico urbano y auditando con precisión nodos poblacionales masivos —como Iztapalapa y otras zonas estratégicas—. Expande tu negocio con certeza geoespacial, no con intuición.
-                        </p>
-                    </div>
-                </div>
+            </div>
 
-                <!-- Mentoría 1 a 1 (Esmeralda) -->
-            <a href="/Econometria_Urbana_Asesorias.html" class="glass-btn rounded-xl p-5 block group cursor-pointer relative overflow-hidden border border-emerald-900/50 shadow-lg hover:border-emerald-500/50 bg-emerald-950/10">
-                <!-- Contenido Principal -->
-                <div class="flex items-start gap-4 mb-3">
-                    <div class="shrink-0 text-emerald-400 mt-1"><i data-lucide="network" class="w-6 h-6"></i></div>
-                    <div>
-                        <h3 class="font-heading font-semibold text-white text-[16px] mb-1 group-hover:text-emerald-300 transition-colors">Bootcamp 1 a 1: Inteligencia Territorial</h3>
-                        <h4 class="text-xs font-mono text-emerald-500 uppercase tracking-wider mb-2">Mentoría en Econometría Urbana</h4>
-                        <p class="text-[13px] text-slate-400 leading-relaxed">
-                            Pasa de la simple observación descriptiva a la <strong class="text-slate-200">predicción causal</strong>. Te guiaré paso a paso para transferirte mi stack tecnológico. Acelera tu curva de aprendizaje y domina la arquitectura matemática de la ciudad para respaldar tus proyectos con evidencia empírica irrefutable.
-                        </p>
-                    </div>
+            <!-- TARJETA 3: Fricción Conductual -->
+            <div class="glass-panel p-6 rounded-2xl border border-slate-800 flex flex-col h-full group hover:border-blue-500/40 transition-colors">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-heading font-semibold text-white flex items-center gap-2">
+                        <i data-lucide="mouse-pointer-click" class="w-4 h-4 text-blue-400"></i> Fricción (Nudges)
+                    </h3>
+                    <span class="text-[10px] font-mono text-blue-500 bg-blue-950/30 px-2 py-0.5 rounded">ECONOMÍA CONDUCTUAL</span>
                 </div>
+                <p class="text-xs text-slate-400 mb-6">La ley del menor esfuerzo. Un mal diseño físico (en tu local) o digital (en tu web) destruye las conversiones. Intenta "comprar" abajo.</p>
                 
-                <!-- Beneficios (Tags visuales) -->
-                <div class="flex flex-wrap gap-2 mb-5 md:pl-10">
-                    <span class="text-[10px] bg-emerald-900/30 text-emerald-300 px-2 py-1 rounded border border-emerald-800/50">Inferencia Causal</span>
-                    <span class="text-[10px] bg-emerald-900/30 text-emerald-300 px-2 py-1 rounded border border-emerald-800/50">R, Python & PostGIS</span>
-                    <span class="text-[10px] bg-emerald-900/30 text-emerald-300 px-2 py-1 rounded border border-emerald-800/50">1-on-1</span>
-                </div>
-
-                <!-- Botón CTA Centrado y Potenciado -->
-                <div class="text-center">
-                    <button class="w-full sm:w-auto bg-emerald-600/80 hover:bg-emerald-500 text-white rounded-full px-8 py-2.5 text-sm font-semibold flex items-center justify-center gap-2 mx-auto transition-all shadow-[0_0_15px_rgba(16,185,129,0.2)] group-hover:shadow-[0_0_25px_rgba(16,185,129,0.4)]">
-                        Aplicar a la Mentoría <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                <div class="mt-auto bg-slate-900/50 p-4 rounded-xl border border-slate-800 flex gap-2">
+                    <!-- Botón con Fricción -->
+                    <button class="flex-1 bg-slate-800 text-slate-500 border border-slate-700 rounded-lg py-2 text-xs transition-all duration-300 flee-button flex items-center justify-center gap-1 relative z-10">
+                        <i data-lucide="alert-circle" class="w-3 h-3"></i> Fricción
+                    </button>
+                    <!-- Botón Optimizado -->
+                    <button class="flex-1 bg-blue-600 hover:bg-blue-500 text-white shadow-[0_0_15px_rgba(59,130,246,0.3)] rounded-lg py-2 text-xs font-semibold transition-all flex items-center justify-center gap-1 relative z-0">
+                        <i data-lucide="check-circle-2" class="w-3 h-3"></i> Optimizado
                     </button>
                 </div>
-            </a>
-                
-                <!-- Beneficios (Tags visuales) -->
-                <div class="flex flex-wrap gap-2 mb-5 md:pl-10">
-                    <span class="text-[10px] bg-blue-900/30 text-blue-300 px-2 py-1 rounded border border-blue-800/50">Viabilidad Comercial</span>
-                    <span class="text-[10px] bg-blue-900/30 text-blue-300 px-2 py-1 rounded border border-blue-800/50">Densidad de Tráfico</span>
-                </div>
+            </div>
 
-                <!-- Botón CTA Centrado y Potenciado -->
-                <div class="text-center">
-                    <button class="w-full sm:w-auto bg-blue-600/80 hover:bg-blue-500 text-white rounded-full px-8 py-2.5 text-sm font-semibold flex items-center justify-center gap-2 mx-auto transition-all shadow-[0_0_15px_rgba(59,130,246,0.2)] group-hover:shadow-[0_0_25px_rgba(59,130,246,0.4)]">
-                        Explorar el mapa ahora <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </button>
-                </div>
-            </a>
+        </div>
+    </section>
 
-             <!-- Formulario de Captación 5=D -->
+    <!-- Divider -->
+    <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent"></div>
+
+   <!-- 2. INGENIERÍA INVERSA: LA ANATOMÍA DE UN PROYECTO -->
+    <section class="py-24 relative max-w-7xl mx-auto px-6 border-y border-slate-800/50 bg-slate-900/20">
+        <!-- Background Decorativo -->
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(30,41,59,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(30,41,59,0.3)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none -z-10"></div>
+
+        <div class="text-center mb-16 observe-me">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel border-violet-500/30 text-violet-400 text-xs font-mono mb-4">
+                <span class="w-2 h-2 rounded-full bg-violet-400"></span>
+               Manifiesto
+            </div>
+            <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-4">El conocimiento vale más cuando puede convertirse en acción.</h2>
+            <p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-base">
+               Creo que muchas personas no carecen de talento. Carecen de sistemas.
+
+Creo que muchos negocios no carecen de esfuerzo. Carecen de información para saber qué esfuerzo genera valor.
+
+Vender no siempre significa ganar. Trabajar más no necesariamente significa progresar. La intuición puede iniciar un proyecto, pero no debería ser la única herramienta para dirigirlo.
+
+Los datos no sustituyen el criterio humano: pueden hacerlo más preciso. La inteligencia artificial no debería limitarse a automatizar tareas: puede ampliar nuestras capacidades.
+
+5=D existe para aprender, comprender, sorprender, emprender y trascender. Para convertir preguntas en investigación, investigación en experimentos y experimentos en conocimiento que genere nuevas posibilidades.
+            </p>
+        </div>
+
+        <div class="space-y-8 max-w-5xl mx-auto">
+            
+            <!-- MÓDULO A: INTELIGENCIA ESPACIAL -->
+            <div class="glass-panel rounded-2xl border border-slate-800 overflow-hidden flex flex-col md:flex-row observe-me group hover:border-blue-500/30 transition-all duration-300 shadow-lg">
+                <!-- Visión Emprendedor -->
+                <div class="p-8 md:w-[55%] flex flex-col justify-center bg-slate-900/80 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
+                    <h3 class="font-mono text-blue-500 text-[10px] tracking-widest mb-2 uppercase">El sistema 5=D</h3>
+                    <h4 class="font-heading text-xl font-bold text-white mb-3">Cinco movimientos. Una disciplina.</h4>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                        <strong class="text-slate-300">5=D no es solamente una marca. Es una forma de estructurar el aprendizaje y la creación de valor: pasar de adquirir conocimiento a utilizarlo para transformar una realidad concreta.
+                    <a href="georacle.html" class="inline-flex items-center gap-2 text-xs font-semibold text-blue-400 hover:text-blue-300 transition-colors w-max">
+                        <i data-lucide="map" class="w-4 h-4"></i> Explorar GeoOracle MVP
+                    </a>
+                </div>
+                <!-- Visión Tech (Código) -->
+                <div class="p-6 md:w-[45%] bg-[#0d1117] border-t md:border-t-0 md:border-l border-slate-800 flex flex-col justify-center">
+                    <div class="flex items-center gap-1.5 mb-3">
+                        <div class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></div>
+                        <span class="text-[10px] font-mono text-slate-500 ml-2">georacle_spatial_query.sql</span>
+                    </div>
+                    <pre class="text-[11px] font-mono leading-relaxed overflow-x-auto text-slate-300"><code class="language-sql"><span class="text-slate-500">-- PostGIS: Extracción de nodos de viabilidad comercial</span>
+<span class="text-violet-400">SELECT</span> barrio, ST_Area(geometria) <span class="text-violet-400">AS</span> area,
+       densidad_trafico, indice_competencia
+<span class="text-violet-400">FROM</span> data_urbana_cdmx
+<span class="text-violet-400">WHERE</span> intersec_comercial <span class="text-cyan-400">=</span> <span class="text-amber-300">TRUE</span>
+  <span class="text-violet-400">AND</span> poblacion_flotante <span class="text-cyan-400">></span> <span class="text-amber-300">50000</span>
+  <span class="text-violet-400">AND</span> st_dwithin(ubicacion, central_node, <span class="text-amber-300">2000</span>)
+<span class="text-violet-400">ORDER BY</span> viabilidad_score <span class="text-violet-400">DESC</span>;</code></pre>
+                </div>
+            </div>
+
+            <!-- MÓDULO B: INGENIERÍA DE MENÚS -->
+            <div class="glass-panel rounded-2xl border border-slate-800 overflow-hidden flex flex-col md:flex-row-reverse observe-me group hover:border-cyan-500/30 transition-all duration-300 shadow-lg">
+                <!-- Visión Emprendedor -->
+                <div class="p-8 md:w-[55%] flex flex-col justify-center bg-slate-900/80 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 md:left-0 w-1 h-full bg-cyan-400"></div>
+                    <h3 class="font-mono text-cyan-400 text-[10px] tracking-widest mb-2 uppercase">Método 5=D</h3>
+                    <h4 class="font-heading text-xl font-bold text-white mb-3">Convertir problemas en proyectos.</h4>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                        <strong class="text-slate-300">Una pregunta importante merece algo más que una opinión. El método organiza el paso desde la concepción de un problema hasta la evidencia necesaria para decidir si iterar, abandonar o escalar.
+                    </p>
+                    <a href="calculadora.html" class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors w-max">
+                        <i data-lucide="calculator" class="w-4 h-4"></i> Ejecutar Calculadora 5=D
+                    </a>
+                </div>
+                <!-- Visión Tech (Código) -->
+                <div class="p-6 md:w-[45%] bg-[#0d1117] border-t md:border-t-0 md:border-r border-slate-800 flex flex-col justify-center">
+                    <div class="flex items-center gap-1.5 mb-3">
+                        <div class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></div>
+                        <span class="text-[10px] font-mono text-slate-500 ml-2">menu_engineering.py</span>
+                    </div>
+                    <pre class="text-[11px] font-mono leading-relaxed overflow-x-auto text-slate-300"><code class="language-python"><span class="text-violet-400">def</span> <span class="text-blue-400">calcular_margen_dinamico</span>(receta_id, db_inventario):
+    <span class="text-slate-500"># Calcula el Food Cost usando método FIFO contra inflación</span>
+    costo_real = db_inventario.get_fifo_cost(receta_id)
+    precio_venta = menu_actual.get_precio(receta_id)
+    
+    margen_contribucion = precio_venta - costo_real
+    
+    <span class="text-violet-400">if</span> (margen_contribucion / precio_venta) <span class="text-cyan-400"><</span> <span class="text-amber-300">0.30</span>:
+        <span class="text-violet-400">return</span> <span class="text-emerald-300">"Alerta: Reestructurar Pricing de Platillo"</span>
+    <span class="text-violet-400">return</span> <span class="text-emerald-300">"Rentabilidad Óptima"</span></code></pre>
+                </div>
+            </div>
+
+            <!-- MÓDULO C: TEORÍA DE REDES -->
+            <div class="glass-panel rounded-2xl border border-slate-800 overflow-hidden flex flex-col md:flex-row observe-me group hover:border-violet-500/30 transition-all duration-300 shadow-lg">
+                <!-- Visión Emprendedor -->
+                <div class="p-8 md:w-[55%] flex flex-col justify-center bg-slate-900/80 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-violet-500"></div>
+                    <h3 class="font-mono text-violet-500 text-[10px] tracking-widest mb-2 uppercase">¿Para quién?</h3>
+                    <h4 class="font-heading text-xl font-bold text-white mb-3">Problemas diferentes. Mismo método.</h4>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                        <strong class="text-slate-300">El punto de partida son personas y negocios reales. Especialmente quienes están comenzando su vida laboral, emprendiendo o intentando adaptarse a una economía transformada por los datos y la IA.
+                    </p>
+                    <a href="#auditoria" class="inline-flex items-center gap-2 text-xs font-semibold text-violet-400 hover:text-violet-300 transition-colors w-max">
+                        <i data-lucide="network" class="w-4 h-4"></i> Solicitar 
+                    </a>
+                </div>
+                <!-- Visión Tech (Código) -->
+                <div class="p-6 md:w-[45%] bg-[#0d1117] border-t md:border-t-0 md:border-l border-slate-800 flex flex-col justify-center">
+                    <div class="flex items-center gap-1.5 mb-3">
+                        <div class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></div>
+                        <span class="text-[10px] font-mono text-slate-500 ml-2">cinematic_efficiency.r</span>
+                    </div>
+                    <pre class="text-[11px] font-mono leading-relaxed overflow-x-auto text-slate-300"><code class="language-r"><span class="text-slate-500"># Modelado espacial de rutas de servicio usando R</span>
+<span class="text-violet-400">library</span>(igraph)
+
+<span class="text-slate-500"># Construir grafo: nodos = mesas/cocina, edges = trayectos</span>
+rutas_grafo <span class="text-cyan-400"><-</span> graph_from_data_frame(trayectos_meseros)
+
+<span class="text-slate-500"># Detectar el "cuello de botella" físico (Intermediación)</span>
+centralidad_paso <span class="text-cyan-400"><-</span> betweenness(rutas_grafo, directed<span class="text-cyan-400">=</span><span class="text-amber-300">TRUE</span>)
+nodos_criticos <span class="text-cyan-400"><-</span> <span class="text-blue-400">which</span>(centralidad_paso <span class="text-cyan-400">></span> umbral_saturacion)
+
+<span class="text-blue-400">print</span>(<span class="text-emerald-300">"Rediseñar arquitectura del salón en nodos críticos"</span>)</code></pre>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 4. FEATURES -->
+    <section class="py-24 max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 observe-me">
+            <span class="text-cyan-400 font-mono text-sm uppercase tracking-widest block mb-2">Sobre mí</span>
+            <h2 class="font-heading text-3xl font-bold text-white">Economía, operación, ventas y tecnología.</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 observe-me">
+            <!-- Feature 1 -->
+            <div class="p-8 rounded-2xl glass-panel border border-slate-800 hover:bg-slate-800/30 transition-colors">
+                <i data-lucide="layout-dashboard" class="w-8 h-8 text-cyan-400 mb-6"></i>
+                <h3 class="font-heading text-lg font-semibold text-white mb-3">He trabajado cerca de las personas, los clientes, las ventas y las operaciones antes de estudiar cómo funcionan los mercados desde la economía.Esa experiencia conduce a una pregunta: ¿qué sucede cuando combinamos conocimiento económico, comportamiento humano, datos, tecnología y experimentación con problemas reales?</h3>
+            </div>
+            
+            <!-- Feature 2 -->
+            <div class="p-8 rounded-2xl glass-panel border border-slate-800 hover:bg-slate-800/30 transition-colors">
+                <i data-lucide="zap" class="w-8 h-8 text-blue-400 mb-6"></i>
+                <h3 class="font-heading text-lg font-semibold text-white mb-3">El papel de 5=D</h3>
+                <p class="text-sm text-slate-400">La investigación no termina cuando encontramos un resultado. El objetivo es traducirlo: convertir teoría, datos, modelos y tecnología en herramientas que puedan utilizar personas y organizaciones concretas.</p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="p-8 rounded-2xl glass-panel border border-slate-800 hover:bg-slate-800/30 transition-colors">
+                <i data-lucide="bar-chart-3" class="w-8 h-8 text-violet-400 mb-6"></i>
+                <h3 class="font-heading text-lg font-semibold text-white mb-3">La página también es un laboratorio.</h3>
+                <p class="text-sm text-slate-400">Cada proyecto debe poder responder cinco preguntas: qué problema existe, qué creemos que lo explica, qué vamos a construir, qué evidencia obtuvimos y qué decidimos hacer después.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. FINAL CTA (Oferta Core B2B) -->
+    <section id="auditoria" class="py-24 relative overflow-hidden">
+        <!-- Background accents -->
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900/80 z-0"></div>
+        <div class="absolute left-1/2 bottom-0 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-cyan-500 to-transparent -translate-x-1/2"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 relative z-10 text-center observe-me">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900 border border-slate-700 text-slate-300 text-sm font-mono mb-8">
+                <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i> Garantía Matemática
+            </div>
+            
+            <h2 class="font-heading text-4xl md:text-5xl font-bold text-white mb-6">
+                ¿Tienes un problema? <br><span class="text-cyan-400">Convirtámoslo en una pregunta que pueda investigarse.</span>
+            </h2>
+            No necesitas tener el proyecto resuelto. Necesitamos poder describir el problema, entender el contexto y definir qué evidencia nos permitiría tomar una mejor decisión. Deja de subsidiar ineficiencias operativas con tu tiempo y dinero. Solicita una intervención presencial de reingeniería de sistemas. <br><br>
+                <strong class="text-white font-normal bg-slate-800/50 px-2 py-1 rounded">Si nuestros modelos de datos no detectan fugas de rentabilidad estructurales equivalentes a por lo menos el triple de lo que cuesta nuestra intervención, el diagnóstico es 100% gratuito.</strong>
+            </p>
+            
+           <!-- Formulario de Captación 5=D -->
             <form id="form-auditoria" action="https://formspree.io/f/maewrpwe" method="POST" class="glass-panel p-8 rounded-2xl border border-slate-800 max-w-md mx-auto mt-8 flex flex-col gap-5 text-left relative z-10 shadow-2xl">
                 
                 <input type="hidden" name="_subject" value="Nuevo Lead B2B: Auditoría 5=D">
@@ -377,7 +476,7 @@
                 </div>
 
                 <button type="submit" id="btn-submit" class="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white rounded-lg px-6 py-3 text-sm font-semibold flex items-center justify-center gap-2 mt-2 transition-all shadow-[0_0_15px_rgba(34,211,238,0.2)] hover:shadow-[0_0_25px_rgba(34,211,238,0.4)]">
-                    <span>Inicializar Solicitud</span> <i data-lucide="send" class="w-4 h-4"></i>
+                    <span>Iniciar Solicitud</span> <i data-lucide="send" class="w-4 h-4"></i>
                 </button>
 
                 <!-- Mensaje de éxito oculto -->
@@ -389,14 +488,111 @@
             </form>
     </section>
 
-            
-        </div> <!-- Cierre del Contenedor Principal de Enlaces -->
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-950 py-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-2 font-heading font-bold text-white text-xl">
+                <i data-lucide="network" class="text-slate-600 h-6 w-6"></i>
+                5=D
+            </div>
+            <div class="text-sm text-slate-500 font-mono text-center md:text-right">
+                &copy; <script>document.write(new Date().getFullYear())</script> Aprender · Comprender · Sorprender · Emprender · Trascender.<br>
+                Teoría de Sistemas Complejos Aplicada a Proyectos Cotidianos.
+            </div>
+        </div>
+    </footer>
 
-    </main>
-
-    <!-- Init Icons -->
+    <!-- JavaScript Base -->
     <script>
+        // Inicializar Iconos Lucide
         lucide.createIcons();
+
+        // Animación de contador (Mockup RevPASH)
+        const counterElement = document.getElementById('counter-revpash');
+        let currentVal = 0;
+        const targetVal = 1450; // Valor ejemplo de RevPASH
+        const duration = 2000; // ms
+        const steps = 60;
+        const stepTime = duration / steps;
+        
+        function animateCounter() {
+            let step = 0;
+            const timer = setInterval(() => {
+                step++;
+                currentVal = easeOutQuad(step, 0, targetVal, steps);
+                counterElement.innerText = currentVal.toFixed(0);
+                if (step >= steps) {
+                    clearInterval(timer);
+                    counterElement.innerText = targetVal.toLocaleString('en-US');
+                }
+            }, stepTime);
+        }
+        
+        // Easing function
+        function easeOutQuad(t, b, c, d) {
+            t /= d;
+            return -c * t * (t - 2) + b;
+        }
+
+        // Intersection Observer para Animaciones "Fade-Up" y disparar el contador
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        let counterFired = false;
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Agregar clase de animación de Tailwind
+                    entry.target.classList.add('animate-fade-up');
+                    entry.target.classList.remove('observe-me'); // Para evitar triggers múltiples
+                    
+                    // Disparar contador si es el dashboard
+                    if (!counterFired && entry.target.querySelector('#counter-revpash')) {
+                        setTimeout(animateCounter, 400); // Pequeño delay de gracia
+                        counterFired = true;
+                    }
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.observe-me').forEach((el) => {
+            observer.observe(el);
+        });
+        // --- LOGICA DEL LABORATORIO INTERACTIVO ---
+        
+        // 1. Tarjeta: Algoritmo de Hábitos (Interés Compuesto)
+        const slider = document.getElementById('habit-slider');
+        const output = document.getElementById('habit-output');
+        const formula = document.getElementById('habit-formula');
+        
+        if(slider && output && formula) {
+            slider.addEventListener('input', (e) => {
+                const val = parseFloat(e.target.value);
+                const base = 1 + (val / 100);
+                const result = Math.pow(base, 365);
+                
+                formula.innerText = `(${base.toFixed(2)})^365`;
+                output.innerText = result.toFixed(2) + 'x';
+
+                // Cambiar color visualmente según si es mejora o empeoramiento
+                if (val < 0) {
+                    output.classList.replace('text-cyan-400', 'text-rose-400');
+                    output.classList.replace('text-white', 'text-rose-400');
+                } else if (val === 0) {
+                    output.classList.replace('text-cyan-400', 'text-white');
+                    output.classList.replace('text-rose-400', 'text-white');
+                } else {
+                    output.classList.replace('text-rose-400', 'text-cyan-400');
+                    output.classList.replace('text-white', 'text-cyan-400');
+                }
+            });
+        }
 
         // --- LÓGICA DEL FORMULARIO (Envío Silencioso) ---
         const formAuditoria = document.getElementById('form-auditoria');
@@ -440,6 +636,63 @@
                 }
             });
         }
+        // 2. Tarjeta: Entropía Operativa (Simulación de sistema cerrado)
+        
+        const entropyBar = document.getElementById('entropy-bar');
+        const injectBtn = document.getElementById('inject-btn');
+        let entropyLevel = 100;
+        let entropyInterval;
+
+        if(entropyBar && injectBtn) {
+            // Función que drena la barra constantemente
+            entropyInterval = setInterval(() => {
+                if(entropyLevel > 2) {
+                    entropyLevel -= 0.3; // Velocidad de degradación
+                }
+                entropyBar.style.width = entropyLevel + '%';
+                
+                // Cambiar a color de alerta si baja mucho
+                if(entropyLevel < 25) {
+                    entropyBar.classList.replace('bg-cyan-400', 'bg-rose-500');
+                }
+            }, 50);
+
+            // Botón para resetear la entropía
+            injectBtn.addEventListener('click', () => {
+                entropyLevel = 100;
+                entropyBar.style.width = '100%';
+                entropyBar.classList.replace('bg-rose-500', 'bg-cyan-400');
+                
+                // Pequeña animación visual en el botón
+                injectBtn.innerHTML = '<i data-lucide="check" class="w-3 h-3"></i> [ Datos Integrados ]';
+                injectBtn.classList.replace('text-violet-300', 'text-emerald-400');
+                injectBtn.classList.replace('border-violet-500/50', 'border-emerald-500/50');
+                lucide.createIcons(); // Recargar el nuevo icono
+
+                setTimeout(() => {
+                    injectBtn.innerHTML = '<i data-lucide="database-zap" class="w-3 h-3"></i> [ Inyectar Datos ]';
+                    injectBtn.classList.replace('text-emerald-400', 'text-violet-300');
+                    injectBtn.classList.replace('border-emerald-500/50', 'border-violet-500/50');
+                    lucide.createIcons();
+                }, 1000);
+            });
+        }
     </script>
+    
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
