@@ -1,309 +1,651 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>5=D | Labs & Artículos</title>
-    
-    <!-- Tipografía de Alta Legibilidad -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS & Lucide Icons -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5=D · Calculadora de Fugas de Margen</title>
+<meta name="description" content="Auditoría cuantitativa de ingeniería de menús: detecta fugas de margen en tu matriz de platillos en tiempo real.">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Space Grotesk', 'sans-serif'],
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'float-premium': 'float-premium 5s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        'float-premium': {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-12px)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        /* ESTÉTICA: Fondo Dot Grid Deep Tech */
-        body {
-            background-color: #020617;
-            background-image: 
-                radial-gradient(circle at top center, rgba(30, 41, 59, 0.8) 0%, transparent 70%),
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 100% 100%, 24px 24px, 24px 24px;
-            background-position: center top, center center, center center;
-            min-height: 100vh;
-        }
-        
-        .glass-btn {
-            background: rgba(15, 23, 42, 0.4);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(30, 41, 59, 0.8);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          space: ['"Space Grotesk"', 'sans-serif'],
+          inter: ['Inter', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-        .glass-btn:hover {
-            background: rgba(30, 41, 59, 0.6);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px -10px rgba(34, 211, 238, 0.15);
-        }
+<style>
+  :root{
+    --cyan: #22d3ee;
+    --blue: #3b82f6;
+    --violet: #8b5cf6;
+    --amber: #f59e0b;
+    --red: #ef4444;
+    --emerald: #10b981;
+  }
 
-        .gradient-text {
-            background: linear-gradient(135deg, #22d3ee, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-    </style>
+  html { scroll-behavior: smooth; }
+
+  body{
+    background:
+      radial-gradient(ellipse 80% 50% at 20% -10%, rgba(59,130,246,0.16), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 100% 0%, rgba(139,92,246,0.12), transparent 60%),
+      #020617;
+  }
+
+  ::selection{ background: rgba(34,211,238,0.3); color:#fff; }
+
+  ::-webkit-scrollbar{ width:8px; height:8px; }
+  ::-webkit-scrollbar-track{ background: transparent; }
+  ::-webkit-scrollbar-thumb{ background: rgba(148,163,184,0.25); border-radius: 8px; }
+
+  .glass{
+    background: rgba(255,255,255,0.035);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.09);
+  }
+
+  .glass-strong{
+    background: rgba(15,23,42,0.55);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .field{
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.10);
+    transition: border-color .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .field:focus{
+    outline: none;
+    border-color: rgba(34,211,238,0.6);
+    box-shadow: 0 0 0 3px rgba(34,211,238,0.12), 0 0 24px -4px rgba(34,211,238,0.35);
+    background: rgba(34,211,238,0.03);
+  }
+
+  .tilt-card{
+    transform-style: preserve-3d;
+    transition: transform .15s ease-out, box-shadow .15s ease-out;
+    will-change: transform;
+  }
+
+  .num{ font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+
+  .ring-bg{ stroke: rgba(255,255,255,0.08); }
+  .ring-fg{ transition: stroke-dashoffset .8s cubic-bezier(.16,1,.3,1), stroke .5s ease; stroke-linecap: round; }
+
+  @keyframes fadeUp{
+    from{ opacity:0; transform: translateY(10px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+  .anim-in{ animation: fadeUp .5s cubic-bezier(.16,1,.3,1) both; }
+
+  @keyframes shake{
+    0%,100%{ transform: translateX(0); }
+    20%{ transform: translateX(-6px); }
+    40%{ transform: translateX(6px); }
+    60%{ transform: translateX(-4px); }
+    80%{ transform: translateX(4px); }
+  }
+  .anim-shake{ animation: shake .4s ease; }
+
+  @keyframes spin{ to{ transform: rotate(360deg); } }
+  .anim-spin{ animation: spin 0.8s linear infinite; }
+
+  @keyframes pulseGlow{
+    0%,100%{ opacity:1; }
+    50%{ opacity:.55; }
+  }
+  .anim-pulse{ animation: pulseGlow 2.4s ease-in-out infinite; }
+
+  .blur-locked{
+    filter: blur(9px) saturate(0.7);
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .overlay-enter{ animation: fadeUp .4s ease both; }
+
+  .quadrant-dot{
+    transition: cx 0.7s cubic-bezier(.16,1,.3,1), cy 0.7s cubic-bezier(.16,1,.3,1), opacity .4s ease;
+  }
+
+  .badge-dot{
+    box-shadow: 0 0 10px currentColor;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
+</style>
 </head>
-<body class="text-slate-300 antialiased selection:bg-cyan-500/30 selection:text-cyan-200 flex flex-col min-h-screen">
 
-    <!-- NAV BAR -->
-    <nav class="w-full border-b border-slate-800/50 bg-[#020617]/80 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-            <!-- Logo Izquierda -->
-            <a href="#" class="flex items-center gap-3 group">
-                <div class="w-7 h-7 relative">
-                    <img src="5D.png" alt="Logo 5=D" class="w-full h-full object-contain group-hover:scale-110 transition-transform">
+<body class="font-inter bg-slate-950 text-slate-200 antialiased min-h-screen">
+
+<!-- ============ HEADER ============ -->
+<header class="border-b border-white/5 sticky top-0 z-40 bg-slate-950/70 backdrop-blur-xl">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-400 via-blue-500 to-violet-600 flex items-center justify-center font-space font-bold text-slate-950 text-sm">5D</div>
+      <div class="leading-tight">
+        <p class="font-space font-semibold text-slate-100 text-sm tracking-wide">5=D</p>
+        <p class="text-[10px] text-slate-500 hidden sm:block font-mono tracking-wide">f(Estructura, Incentivos, Hábitos, Información, Tecnología)^Tiempo</p>
+      </div>
+    </div>
+    <span class="hidden md:inline-flex items-center gap-2 text-[11px] uppercase tracking-widest text-slate-500 border border-white/10 rounded-full px-3 py-1.5">
+      <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 anim-pulse"></span>
+      Motor de auditoría en vivo
+    </span>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="max-w-7xl mx-auto px-5 sm:px-8 pt-14 pb-10">
+  <p class="font-mono text-xs text-cyan-400 tracking-[0.25em] uppercase mb-4">Diagnóstico de Ingeniería de Menús</p>
+  <h1 class="font-space text-3xl sm:text-5xl font-semibold text-slate-50 leading-[1.08] max-w-3xl">
+    Calculadora de <span class="bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-400 bg-clip-text text-transparent">Fugas de Margen</span>
+  </h1>
+  <p class="mt-4 text-slate-400 max-w-xl text-[15px] leading-relaxed">
+    Carga la matriz de tus tres platillos de mayor rotación. El motor calcula <em class="text-slate-300 not-italic">Food Cost %</em>,
+    contribución marginal y clasificación estratégica en tiempo real — sin fricción, sin fórmulas manuales.
+  </p>
+</section>
+
+<!-- ============ MAIN SPLIT LAYOUT ============ -->
+<main class="max-w-7xl mx-auto px-5 sm:px-8 pb-24">
+  <div class="grid lg:grid-cols-2 gap-6 lg:gap-8 items-start">
+
+    <!-- ===== FASE 1 — INPUT PANEL ===== -->
+    <section aria-labelledby="fase1-title" class="glass rounded-2xl p-5 sm:p-7 lg:sticky lg:top-24">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <p class="font-mono text-[11px] text-blue-400 tracking-widest uppercase mb-1">Fase 01</p>
+          <h2 id="fase1-title" class="font-space text-xl font-semibold text-slate-100">Matriz de Platillos</h2>
+        </div>
+        <button id="btn-example" type="button" class="text-xs text-slate-400 hover:text-cyan-300 border border-white/10 hover:border-cyan-400/40 rounded-full px-3 py-1.5 transition-colors">
+          Cargar ejemplo
+        </button>
+      </div>
+
+      <form id="input-form" class="space-y-5" autocomplete="off">
+        <div class="dish-block tilt-card rounded-xl border border-white/8 bg-white/[0.015] p-4 sm:p-5" data-idx="1">
+          <p class="font-space text-sm font-medium text-slate-300 mb-3 flex items-center gap-2">
+            <span class="w-5 h-5 rounded-md bg-cyan-500/15 text-cyan-300 text-[11px] flex items-center justify-center font-mono">01</span>
+            Platillo A
+          </p>
+          <div class="grid grid-cols-2 gap-3">
+            <label class="col-span-2 block">
+              <span class="text-[11px] text-slate-500 mb-1 block">Nombre del platillo</span>
+              <input type="text" id="d1-name" placeholder="Ej. Salmón al grill" class="field w-full rounded-lg px-3 py-2.5 text-sm text-slate-100 placeholder:text-slate-600">
+            </label>
+            <label class="block">
+              <span class="text-[11px] text-slate-500 mb-1 block">Costo ingredientes ($)</span>
+              <input type="number" min="0" step="0.01" id="d1-cost" placeholder="85" class="field w-full rounded-lg px-3 py-2.5 text-sm text-slate-100 num placeholder:text-slate-600">
+            </label>
+            <label class="block">
+              <span class="text-[11px] text-slate-500 mb-1 block">Precio de venta ($)</span>
+              <input type="number" min="0" step="0.01" id="d1-price" placeholder="220" class="field w-full rounded-lg px-3 py-2.5 text-sm text-slate-100 num placeholder:text-slate-600">
+            </label>
+            <label class="col-span-2 block">
+              <span class="text-[11px] text-slate-500 mb-1 block">Volumen vendido / mes (uds.)</span>
+              <input type="number" min="0" step="1" id="d1-volume" placeholder="340" class="field w-full rounded-lg px-3 py-2.5 text-sm text-slate-100 num placeholder:text-slate-600">
+            </label>
+          </div>
+        </div>
+
+        <div class="dish-block tilt-card rounded-xl border border-white/8 bg-white/[0.015] p-4 sm:p-5" data-idx="2">
+          <p class="font-space text-sm font-medium text-slate-300 mb-3 flex items-center gap-2">
+            <span class="w-5 h-5 rounded-md bg-blue-500/15 text-blue-300 text-[11px] flex items-center justify-center font-mono">02</span>
+            Platillo B
+          </p>
+          <div class="grid grid-cols-2 gap-3">
+            <label class="col-span-2 block">
+              <span class="text-[11px] text-slate-500 mb-1 block">Nombre del platillo</span>
+              <input type="text" id="d2-name" placeholder="Ej. Risotto de hongos" class="field w-full rounded-lg px-3 py-2.5 text-sm text-slate-100 placeholder:text-slate-600">
+            </label>
+            <label class="block">
+              <span class="text-[11px] text-slate-500 mb-1 block">Costo ingredientes ($)</span>
+              <input type="number" min="0" step="0.01" id="d2-cost" placeholder="60" class="field w-full rounded-lg px-3 py-2.5 text-sm text-slate-100 num placeholder:text-slate-600">
+            </label>
+            <label class="block">
+              <span class="text-[11px] text-slate-500 mb-1 block">Precio de venta ($)</span>
+              <input type="number" min="0" step="0.01" id="d2-price" placeholder="185" class="field w-full rounded-lg px-3 py-2.5 text-sm text-slate-100 num placeholder:text-slate-600">
+            </label>
+            <label class="col-span-2 block">
+              <span class="text-[11px] text-slate-500 mb-1 block">Volumen vendido / mes (uds.)</span>
+              <input type="number" min="0" step="1" id="d2-volume" placeholder="510" class="field w-full rounded-lg px-3 py-2.5 text-sm text-slate-100 num placeholder:text-slate-600">
+            </label>
+          </div>
+        </div>
+
+        <div class="dish-block tilt-card rounded-xl border border-white/8 bg-white/[0.015] p-4 sm:p-5" data-idx="3">
+          <p class="font-space text-sm font-medium text-slate-300 mb-3 flex items-center gap-2">
+            <span class="w-5 h-5 rounded-md bg-violet-500/15 text-violet-300 text-[11px] flex items-center justify-center font-mono">03</span>
+            Platillo C
+          </p>
+          <div class="grid grid-cols-2 gap-3">
+            <label class="col-span-2 block">
+              <span class="text-[11px] text-slate-500 mb-1 block">Nombre del platillo</span>
+              <input type="text" id="d3-name" placeholder="Ej. Tártar de atún" class="field w-full rounded-lg px-3 py-2.5 text-sm text-slate-100 placeholder:text-slate-600">
+            </label>
+            <label class="block">
+              <span class="text-[11px] text-slate-500 mb-1 block">Costo ingredientes ($)</span>
+              <input type="number" min="0" step="0.01" id="d3-cost" placeholder="110" class="field w-full rounded-lg px-3 py-2.5 text-sm text-slate-100 num placeholder:text-slate-600">
+            </label>
+            <label class="block">
+              <span class="text-[11px] text-slate-500 mb-1 block">Precio de venta ($)</span>
+              <input type="number" min="0" step="0.01" id="d3-price" placeholder="240" class="field w-full rounded-lg px-3 py-2.5 text-sm text-slate-100 num placeholder:text-slate-600">
+            </label>
+            <label class="col-span-2 block">
+              <span class="text-[11px] text-slate-500 mb-1 block">Volumen vendido / mes (uds.)</span>
+              <input type="number" min="0" step="1" id="d3-volume" placeholder="95" class="field w-full rounded-lg px-3 py-2.5 text-sm text-slate-100 num placeholder:text-slate-600">
+            </label>
+          </div>
+        </div>
+      </form>
+
+      <p class="text-[11px] text-slate-600 mt-5 leading-relaxed">
+        Umbral de referencia: Food Cost objetivo ≤ 30%. Todo excedente se contabiliza como fuga de margen recuperable.
+      </p>
+    </section>
+
+    <!-- ===== FASE 2 + 3 — RESULTS / PAYWALL ===== -->
+    <section class="space-y-6">
+
+      <div>
+        <p class="font-mono text-[11px] text-cyan-400 tracking-widest uppercase mb-1">Fase 02</p>
+        <h2 class="font-space text-xl font-semibold text-slate-100 mb-4">Diagnóstico en Tiempo Real</h2>
+
+        <div id="results-empty" class="glass rounded-2xl p-8 text-center text-slate-500 text-sm">
+          Ingresa los datos de al menos un platillo para iniciar el diagnóstico.
+        </div>
+
+        <div id="results-list" class="space-y-4 hidden"></div>
+      </div>
+
+      <!-- ===== AGGREGATE / PAYWALL BLOCK ===== -->
+      <div id="aggregate-wrap" class="hidden">
+        <p class="font-mono text-[11px] text-violet-400 tracking-widest uppercase mb-1">Fase 03</p>
+        <h2 class="font-space text-xl font-semibold text-slate-100 mb-4">Reporte de Auditoría Consolidado</h2>
+
+        <div class="relative glass-strong rounded-2xl p-5 sm:p-7 overflow-hidden">
+
+          <div id="aggregate-content" class="blur-locked space-y-6">
+            <div class="grid sm:grid-cols-2 gap-6 items-center">
+              <div class="flex flex-col items-center justify-center">
+                <div class="relative w-40 h-40">
+                  <div id="donut" class="w-full h-full rounded-full" style="background: conic-gradient(#ef4444 0% 0%, rgba(255,255,255,0.08) 0% 100%);"></div>
+                  <div class="absolute inset-3 rounded-full bg-slate-950 flex flex-col items-center justify-center">
+                    <span id="donut-pct" class="font-space text-2xl font-bold text-red-400 num">0%</span>
+                    <span class="text-[10px] text-slate-500 uppercase tracking-wide">del ingreso</span>
+                  </div>
                 </div>
-                <span class="text-[10px] font-mono text-slate-500 uppercase tracking-[0.2em] border-l border-slate-700 pl-3">Sistemas & Data</span>
-            </a>
-            <!-- Links Derecha -->
-            <div class="hidden md:flex items-center gap-8 text-xs font-mono text-slate-400">
-                <a href="#labs" class="hover:text-cyan-400 transition-colors flex items-center gap-2"><i data-lucide="terminal" class="w-3 h-3"></i> >_ Labs</a>
-                <a href="#articulos" class="text-violet-400 hover:text-violet-300 transition-colors font-bold">[ Exploración ] ></a>
+              </div>
+              <div>
+                <p class="text-xs text-slate-500 uppercase tracking-widest mb-1">Fuga de margen estimada</p>
+                <p id="total-leak" class="font-space text-4xl font-bold text-red-400 num">$0</p>
+                <p class="text-xs text-slate-500 mt-1">por mes, sobre tu matriz actual</p>
+              </div>
             </div>
-        </div>
-    </nav>
 
-    <main class="w-full max-w-xl mx-auto flex flex-col items-center z-10 pt-12 pb-20 px-4">
-        
-        <!-- 1. TU FOTO DE PERFIL (Con anillos orbitales) -->
-        <div class="relative w-32 h-32 md:w-40 md:h-40 mb-6 flex items-center justify-center mx-auto">
-            <div class="absolute inset-0 rounded-full border-[3px] border-cyan-500/20 border-t-cyan-400 animate-[spin_4s_linear_infinite]"></div>
-            <div class="absolute inset-2 rounded-full border-[3px] border-violet-500/20 border-b-violet-500 animate-[spin_3s_linear_infinite_reverse]"></div>
-            <div class="absolute w-[85%] h-[85%] z-10 rounded-full border-4 border-slate-900 shadow-[0_0_25px_rgba(59,130,246,0.5)] overflow-hidden">
-                <!-- RECUERDA: La imagen "foto-perfil.jpg" debe estar en tu carpeta -->
-                <img src="foto-perfil.jpg" alt="José Luis Murguía" class="object-cover w-full h-full">
+            <div>
+              <p class="text-xs text-slate-500 uppercase tracking-widest mb-3">Matriz de Ingeniería de Menús</p>
+              <svg id="quadrant" viewBox="0 0 320 320" class="w-full max-w-sm mx-auto">
+                <line x1="160" y1="10" x2="160" y2="310" stroke="rgba(255,255,255,0.12)" stroke-dasharray="4 4"/>
+                <line x1="10" y1="160" x2="310" y2="160" stroke="rgba(255,255,255,0.12)" stroke-dasharray="4 4"/>
+                <text x="16" y="28" class="fill-emerald-400 text-[10px] font-mono">ESTRELLA</text>
+                <text x="220" y="28" class="fill-amber-400 text-[10px] font-mono">CABALLO</text>
+                <text x="16" y="302" class="fill-violet-400 text-[10px] font-mono">ROMPECABEZAS</text>
+                <text x="245" y="302" class="fill-rose-400 text-[10px] font-mono">PERRO</text>
+                <g id="quadrant-dots"></g>
+              </svg>
             </div>
-        </div>
+          </div>
 
-        <!-- 2. LOGO 5D FLOTANTE -->
-        <div class="relative w-20 h-20 mb-4 mx-auto group cursor-default">
-            <div class="w-full h-full animate-float-premium transition-transform duration-500 ease-out group-hover:scale-110">
-                <img src="5D.png" alt="Logo 5=D" class="object-contain w-full h-full drop-shadow-[0_10px_15px_rgba(34,211,238,0.15)] group-hover:drop-shadow-[0_0_25px_rgba(157,49,102,0.5)] transition-all duration-700">
+          <!-- OVERLAY -->
+          <div id="paywall-overlay" class="overlay-enter absolute inset-0 rounded-2xl flex items-center justify-center p-5">
+            <div class="absolute inset-0 bg-slate-950/55 backdrop-blur-sm rounded-2xl"></div>
+            <div class="relative w-full max-w-sm text-center">
+              <div class="w-11 h-11 mx-auto rounded-xl bg-red-500/15 border border-red-500/30 flex items-center justify-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                </svg>
+              </div>
+              <h3 class="font-space text-lg font-semibold text-slate-50 mb-2">Se han detectado fugas críticas de margen</h3>
+              <p class="text-sm text-slate-400 mb-5 leading-relaxed">
+                en tu matriz. Desbloquea el Reporte de Auditoría 5=D y descubre cómo recuperar este capital.
+              </p>
+
+              <form id="unlock-form" class="space-y-3">
+                <input type="email" id="unlock-email" required placeholder="nombre@turestaurante.com"
+                  class="field w-full rounded-lg px-4 py-3 text-sm text-slate-100 placeholder:text-slate-600 text-center">
+                <button type="submit" id="unlock-btn"
+                  class="w-full rounded-lg py-3 text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-400 hover:brightness-110 transition flex items-center justify-center gap-2">
+                  <span id="unlock-btn-label">Generar Auditoría Completa</span>
+                </button>
+                <p id="unlock-error" class="text-xs text-red-400 hidden">Ingresa un correo válido para continuar.</p>
+              </form>
+              <p class="text-[10px] text-slate-600 mt-4">Sin spam. Un reporte, directo a tu correo.</p>
             </div>
-        </div>
+          </div>
 
-        <!-- 3. HEADER INFO -->
-        <div class="mb-8 text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-btn border-cyan-500/30 text-cyan-400 text-[10px] font-mono mb-4 uppercase tracking-widest">
-                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
-                Investigación & Data
+          <!-- SUCCESS STATE -->
+          <div id="success-banner" class="hidden overlay-enter absolute inset-0 rounded-2xl bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-5">
+            <div class="text-center max-w-xs">
+              <div class="w-11 h-11 mx-auto rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+              </div>
+              <h3 class="font-space text-base font-semibold text-slate-50 mb-1.5">Reporte enviado</h3>
+              <p id="success-copy" class="text-sm text-slate-400 leading-relaxed">La Auditoría Completa 5=D fue enviada a tu correo.</p>
             </div>
-            <h1 class="font-heading text-4xl font-bold text-white mb-2">De la intuición <br><span class="gradient-text">al método.</span></h1>
-            <p class="text-sm text-slate-400 mt-4 max-w-sm mx-auto">José Luis Murguía | Economista & Investigador</p>
+          </div>
         </div>
+      </div>
 
-        <!-- 4. REDES SOCIALES -->
-        <div class="flex flex-wrap justify-center gap-3 w-full mb-12">
-            <a href="https://github.com/JoseluisMurguia" target="_blank" class="glass-btn rounded-full px-4 py-2 flex items-center gap-2 group hover:border-slate-400 hover:bg-slate-800 transition-all">
-                <i data-lucide="github" class="w-4 h-4 text-slate-400 group-hover:text-white"></i>
-                <span class="text-xs font-mono text-slate-300 group-hover:text-white">@JoseluisMurguia</span>
-            </a>
-            <a href="https://youtube.com/@PepiiMurguia" target="_blank" class="glass-btn rounded-full px-4 py-2 flex items-center gap-2 group hover:border-red-500/50 hover:bg-red-950/30 transition-all">
-                <i data-lucide="youtube" class="w-4 h-4 text-red-500/80 group-hover:text-red-500"></i>
-                <span class="text-xs font-mono text-slate-300 group-hover:text-white">@PepiiMurguia</span>
-            </a>
-            <a href="https://linkedin.com/in/pepii-murguia-/" target="_blank" class="glass-btn rounded-full px-4 py-2 flex items-center gap-2 group hover:border-blue-500/50 hover:bg-blue-950/30 transition-all">
-                <i data-lucide="linkedin" class="w-4 h-4 text-blue-500/80 group-hover:text-blue-400"></i>
-                <span class="text-xs font-mono text-slate-300 group-hover:text-white">LinkedIn</span>
-            </a>
+    </section>
+  </div>
+</main>
+
+<footer class="border-t border-white/5 py-8">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-600">
+    <p>© 5=D — Estructura · Incentivos · Hábitos · Información · Tecnología</p>
+    <p class="font-mono">Food Cost objetivo: 30% · Umbral de alerta: 33%</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  const TARGET_FC = 30;      // % objetivo de food cost
+  const WARN_FC = 28;        // umbral inferior de alerta (ámbar)
+  const ALERT_FC = 33;       // umbral de alerta crítica (rojo)
+
+  const CATS = {
+    estrella:      { label: "Estrella",         color: "#10b981", text: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/25" },
+    caballo:       { label: "Caballo de Batalla",color: "#f59e0b", text: "text-amber-400",   bg: "bg-amber-500/10",   border: "border-amber-500/25" },
+    rompecabezas:  { label: "Rompecabezas",      color: "#8b5cf6", text: "text-violet-400",  bg: "bg-violet-500/10",  border: "border-violet-500/25" },
+    perro:         { label: "Perro",             color: "#f43f5e", text: "text-rose-400",    bg: "bg-rose-500/10",    border: "border-rose-500/25" }
+  };
+
+  const currency = (n) => "$" + Math.round(n).toLocaleString("es-MX");
+  const currencyDec = (n) => "$" + n.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  let unlocked = false;
+
+  function readDish(i){
+    const name = document.getElementById(`d${i}-name`).value.trim();
+    const cost = parseFloat(document.getElementById(`d${i}-cost`).value);
+    const price = parseFloat(document.getElementById(`d${i}-price`).value);
+    const volume = parseFloat(document.getElementById(`d${i}-volume`).value);
+    const valid = !!name && isFinite(cost) && cost >= 0 && isFinite(price) && price > 0 && isFinite(volume) && volume >= 0;
+    return { idx: i, name, cost, price, volume, valid };
+  }
+
+  function computeDish(d){
+    const foodCostPct = (d.cost / d.price) * 100;
+    const marginUnit = d.price - d.cost;
+    const marginTotal = marginUnit * d.volume;
+    const revenueTotal = d.price * d.volume;
+    const excessPct = Math.max(0, foodCostPct - TARGET_FC);
+    const leak = (excessPct / 100) * d.price * d.volume;
+    return Object.assign({}, d, { foodCostPct, marginUnit, marginTotal, revenueTotal, leak });
+  }
+
+  function classify(dishes){
+    if (dishes.length === 0) return [];
+    const avgVolume = dishes.reduce((s, d) => s + d.volume, 0) / dishes.length;
+    const avgMargin = dishes.reduce((s, d) => s + d.marginUnit, 0) / dishes.length;
+    return dishes.map(d => {
+      const highPop = d.volume >= avgVolume;
+      const highProfit = d.marginUnit >= avgMargin;
+      let key;
+      if (highPop && highProfit) key = "estrella";
+      else if (highPop && !highProfit) key = "caballo";
+      else if (!highPop && highProfit) key = "rompecabezas";
+      else key = "perro";
+      return Object.assign({}, d, { catKey: key, avgVolume, avgMargin });
+    });
+  }
+
+  function fcColorClass(pct){
+    if (pct <= WARN_FC) return { ring: "#22d3ee", text: "text-cyan-300", label: "Óptimo" };
+    if (pct <= ALERT_FC) return { ring: "#f59e0b", text: "text-amber-300", label: "Atención" };
+    return { ring: "#ef4444", text: "text-red-400", label: "Fuga crítica" };
+  }
+
+  function ringMarkup(pct, color){
+    const r = 34, c = 2 * Math.PI * r;
+    const clamped = Math.max(0, Math.min(100, pct));
+    const offset = c - (clamped / 100) * c;
+    return `
+      <svg viewBox="0 0 80 80" class="w-20 h-20 -rotate-90">
+        <circle cx="40" cy="40" r="${r}" fill="none" stroke-width="7" class="ring-bg"></circle>
+        <circle cx="40" cy="40" r="${r}" fill="none" stroke-width="7" class="ring-fg"
+          stroke="${color}" stroke-dasharray="${c}" stroke-dashoffset="${offset}"></circle>
+      </svg>`;
+  }
+
+  function dishCardMarkup(d){
+    const fc = fcColorClass(d.foodCostPct);
+    const cat = CATS[d.catKey];
+    return `
+      <article class="tilt-card glass rounded-xl p-4 sm:p-5 anim-in">
+        <div class="flex items-center justify-between gap-3">
+          <div class="flex items-center gap-4 min-w-0">
+            <div class="relative shrink-0">
+              ${ringMarkup(d.foodCostPct, fc.ring)}
+              <div class="absolute inset-0 flex items-center justify-center">
+                <span class="font-space text-sm font-bold num ${fc.text}">${d.foodCostPct.toFixed(1)}%</span>
+              </div>
+            </div>
+            <div class="min-w-0">
+              <p class="font-space text-sm font-semibold text-slate-100 truncate">${escapeHtml(d.name)}</p>
+              <p class="text-[11px] ${fc.text} font-medium">${fc.label} · Food Cost</p>
+              <span class="inline-flex items-center gap-1.5 mt-1.5 text-[11px] font-medium ${cat.text} ${cat.bg} border ${cat.border} rounded-full px-2 py-0.5">
+                <span class="w-1.5 h-1.5 rounded-full badge-dot" style="background:${cat.color}; color:${cat.color};"></span>
+                ${cat.label}
+              </span>
+            </div>
+          </div>
+          <div class="text-right shrink-0">
+            <p class="text-[11px] text-slate-500 uppercase tracking-wide">Margen / mes</p>
+            <p class="font-space text-base font-bold text-slate-100 num">${currency(d.marginTotal)}</p>
+            <p class="text-[11px] text-slate-500 num">${currencyDec(d.marginUnit)} / unidad</p>
+          </div>
         </div>
+      </article>`;
+  }
 
-        <div class="w-full flex flex-col gap-10">
+  function escapeHtml(str){
+    return str.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  }
 
-            <!-- SECCIÓN: LABORATORIO (Ahora es el bloque principal) -->
-            <section id="labs" class="w-full">
-                <div class="flex items-center gap-3 mb-4 pl-2 border-l-2 border-cyan-500">
-                    <h2 class="font-mono text-sm uppercase tracking-widest text-cyan-400">Laboratorio 5=D</h2>
-                </div>
+  function renderQuadrant(dishes){
+    const svg = document.getElementById("quadrant-dots");
+    svg.innerHTML = "";
+    if (dishes.length === 0) return;
 
-                <!-- FICHA TÉCNICA: 5=Lab-20 -->
-                <a href="https://joseluismurguia.tech/calculadora.html" class="glass-btn rounded-xl p-5 md:p-6 block group bg-cyan-950/10 border-cyan-900/30 hover:border-cyan-500/50">
-                    
-                    <!-- Header del Lab -->
-                    <div class="flex items-start gap-4 mb-5">
-                        <div class="shrink-0 text-cyan-400 mt-1"><i data-lucide="flask-conical" class="w-6 h-6"></i></div>
-                        <div>
-                            <h3 class="font-heading font-semibold text-white text-[18px] mb-1 group-hover:text-cyan-300">5=Lab-20 // CalculadoraDelMargen</h3>
-                            <h4 class="text-[10px] font-mono text-cyan-500 uppercase tracking-wider">>_ Herramienta de Diagnóstico</h4>
-                        </div>
-                    </div>
+    const volumes = dishes.map(d => d.volume);
+    const margins = dishes.map(d => d.marginUnit);
+    let minV = Math.min(...volumes), maxV = Math.max(...volumes);
+    let minM = Math.min(...margins), maxM = Math.max(...margins);
+    if (minV === maxV) { minV -= 1; maxV += 1; }
+    if (minM === maxM) { minM -= 1; maxM += 1; }
 
-                    <!-- Cuerpo: Problema e Hipótesis -->
-                    <div class="space-y-4 mb-5">
-                        <div class="text-[12px] text-slate-400 leading-relaxed border-l border-slate-700 pl-3">
-                            <span class="text-slate-200 font-semibold uppercase text-[10px] tracking-wider">Problema:</span><br>
-                            El negocio vende, pero no necesariamente conoce qué productos o servicios generan mayor contribución económica.
-                        </div>
-                        <div class="text-[12px] text-slate-400 leading-relaxed border-l border-slate-700 pl-3">
-                            <span class="text-slate-200 font-semibold uppercase text-[10px] tracking-wider">Hipótesis:</span><br>
-                            La falta de información sobre el margen dificulta severamente las decisiones de precio, mix y promoción.
-                        </div>
-                    </div>
+    const pad = 40;
+    const scaleX = v => pad + ((v - minV) / (maxV - minV)) * (320 - pad * 2);
+    const scaleY = v => (320 - pad) - ((v - minM) / (maxM - minM)) * (320 - pad * 2);
 
-                    <!-- Datos I/O (Estilo Terminal) -->
-                    <div class="grid grid-cols-2 gap-3 mb-5">
-                        <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-800">
-                            <div class="text-[9px] font-mono text-slate-500 mb-1.5 uppercase tracking-wider flex items-center gap-1">
-                                <i data-lucide="download" class="w-3 h-3"></i> INPUT
-                            </div>
-                            <ul class="text-[10px] text-cyan-100 font-mono leading-relaxed space-y-0.5">
-                                <li>• Producto</li>
-                                <li>• Costo</li>
-                                <li>• Precio</li>
-                                <li>• Volumen</li>
-                            </ul>
-                        </div>
-                        <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-800">
-                            <div class="text-[9px] font-mono text-slate-500 mb-1.5 uppercase tracking-wider flex items-center gap-1">
-                                <i data-lucide="upload" class="w-3 h-3"></i> OUTPUT
-                            </div>
-                            <ul class="text-[10px] text-cyan-100 font-mono leading-relaxed space-y-0.5">
-                                <li>• Food Cost / Margen</li>
-                                <li>• Contribución Mensual</li>
-                                <li>• Clasificación BCG</li>
-                                <li>• Alertas vs Benchmark</li>
-                            </ul>
-                        </div>
-                    </div>
+    dishes.forEach((d, i) => {
+      const cat = CATS[d.catKey];
+      const cx = scaleX(d.volume);
+      const cy = scaleY(d.marginUnit);
+      const ns = "http://www.w3.org/2000/svg";
 
-                    <!-- Valor Entregado -->
-                    <div class="text-[12px] text-slate-400 leading-relaxed border-l-2 border-cyan-500/50 pl-3 bg-cyan-950/20 p-2 rounded-r-lg mb-5">
-                        <span class="text-cyan-400 font-semibold text-[10px] uppercase tracking-wider">Valor (MVP):</span><br>
-                        Visibilidad cuantitativa exacta sobre la contribución económica del mix de productos para micro y pequeños negocios.
-                    </div>
+      const circle = document.createElementNS(ns, "circle");
+      circle.setAttribute("cx", 160);
+      circle.setAttribute("cy", 160);
+      circle.setAttribute("r", 9);
+      circle.setAttribute("fill", cat.color);
+      circle.setAttribute("fill-opacity", "0.9");
+      circle.setAttribute("stroke", "#020617");
+      circle.setAttribute("stroke-width", "2");
+      circle.classList.add("quadrant-dot");
+      svg.appendChild(circle);
 
-                    <!-- Botón CTA -->
-                    <div class="text-center mt-2">
-                        <button class="w-full bg-cyan-900/40 group-hover:bg-cyan-600 text-cyan-300 group-hover:text-white border border-cyan-700/50 rounded-lg py-3 text-xs font-mono uppercase tracking-wider flex items-center justify-center gap-2 transition-all">
-                            Ejecutar 5=Lab-20 <i data-lucide="terminal" class="w-4 h-4"></i>
-                        </button>
-                    </div>
-                </a>
-            </section>
+      const label = document.createElementNS(ns, "text");
+      label.setAttribute("x", 160);
+      label.setAttribute("y", 160 - 14);
+      label.setAttribute("class", "fill-slate-400 text-[9px] font-mono");
+      label.textContent = d.name ? d.name.slice(0, 14) : `Platillo ${i+1}`;
+      svg.appendChild(label);
 
-            <!-- SECCIÓN: EXPLORACIÓN Y LECTURAS (Espacio en Blanco Preparado) -->
-            <section id="articulos" class="w-full">
-                <div class="flex items-center gap-3 mb-4 pl-2 border-l-2 border-violet-500">
-                    <h2 class="font-mono text-sm uppercase tracking-widest text-violet-400">Exploración Didáctica</h2>
-                </div>
-                
-                <!-- Tarjeta Placeholder para próximos artículos -->
-                <div class="glass-btn rounded-xl p-6 flex flex-col items-center justify-center text-center border-dashed border-slate-700 bg-transparent">
-                    <i data-lucide="file-search" class="w-8 h-8 text-slate-600 mb-3"></i>
-                    <h3 class="font-heading font-medium text-slate-400 text-sm">Módulo en actualización</h3>
-                    <p class="text-[11px] text-slate-500 mt-1">Recopilando nuevos papers y exploraciones de la semana...</p>
-                </div>
-            </section>
+      requestAnimationFrame(() => {
+        circle.setAttribute("cx", cx);
+        circle.setAttribute("cy", cy);
+        label.setAttribute("x", cx);
+        label.setAttribute("y", cy - 14);
+      });
+    });
+  }
 
-            <!-- SECCIÓN: CONTACTO / FORMSPREE -->
-            <section class="w-full mt-2">
-                <div class="flex items-center gap-3 mb-4 pl-2 border-l-2 border-slate-500">
-                    <h2 class="font-mono text-sm uppercase tracking-widest text-slate-400">Contacto Directo</h2>
-                </div>
-                
-                <form id="form-auditoria" action="https://formspree.io/f/maewrpwe" method="POST" class="glass-btn p-6 rounded-2xl flex flex-col gap-4 text-left relative shadow-xl">
-                    <input type="hidden" name="_subject" value="Nuevo Mensaje desde Links 5=D">
-                    <input type="text" name="_gotcha" style="display:none" class="hidden">
+  function renderDonut(totalLeak, totalRevenue){
+    const pct = totalRevenue > 0 ? Math.min(100, (totalLeak / totalRevenue) * 100) : 0;
+    const donut = document.getElementById("donut");
+    donut.style.background = `conic-gradient(#ef4444 0% ${pct}%, rgba(255,255,255,0.08) ${pct}% 100%)`;
+    document.getElementById("donut-pct").textContent = pct.toFixed(1) + "%";
+  }
 
-                    <div>
-                        <input type="text" name="name" required class="w-full bg-slate-900/60 border border-slate-700 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 text-xs font-mono" placeholder="Identificador / Nombre">
-                    </div>
-                    <div>
-                        <input type="email" name="email" required class="w-full bg-slate-900/60 border border-slate-700 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 text-xs font-mono" placeholder="Email de contacto">
-                    </div>
-                    <div>
-                        <textarea name="message" required rows="2" class="w-full bg-slate-900/60 border border-slate-700 rounded-lg px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 text-xs font-mono resize-none" placeholder="Motivo de contacto..."></textarea>
-                    </div>
+  function recalc(){
+    const raw = [1, 2, 3].map(readDish);
+    const validRaw = raw.filter(d => d.valid);
 
-                    <button type="submit" id="btn-submit" class="w-full bg-slate-800 hover:bg-cyan-600 text-slate-300 hover:text-white border border-slate-700 hover:border-cyan-500 rounded-lg px-6 py-2 text-xs font-mono uppercase tracking-wider flex items-center justify-center gap-2 transition-all">
-                        <span>Enviar Mensaje</span> <i data-lucide="send" class="w-3 h-3"></i>
-                    </button>
+    const emptyEl = document.getElementById("results-empty");
+    const listEl = document.getElementById("results-list");
+    const aggWrap = document.getElementById("aggregate-wrap");
 
-                    <div id="form-success" class="hidden text-center mt-2 border border-emerald-500/30 bg-emerald-950/20 py-2 rounded-lg">
-                        <p class="text-[10px] font-mono text-emerald-400 flex items-center justify-center gap-2">
-                            <i data-lucide="check-circle-2" class="w-3 h-3"></i> Mensaje enviado correctamente.
-                        </p>
-                    </div>
-                </form>
-            </section>
-            
-        </div>
-    </main>
+    if (validRaw.length === 0){
+      emptyEl.classList.remove("hidden");
+      listEl.classList.add("hidden");
+      aggWrap.classList.add("hidden");
+      return;
+    }
 
-    <footer class="mt-auto border-t border-slate-800/50 bg-[#020617] py-6 text-center">
-        <p class="text-[10px] font-mono text-slate-600 uppercase tracking-widest">© 2024 5=D Sistemas & Data</p>
-    </footer>
+    emptyEl.classList.add("hidden");
+    listEl.classList.remove("hidden");
+    aggWrap.classList.remove("hidden");
 
-    <!-- Scripts -->
-    <script>
-        lucide.createIcons();
+    const computed = validRaw.map(computeDish);
+    const classified = classify(computed);
 
-        // Envío Silencioso Formspree
-        const formAuditoria = document.getElementById('form-auditoria');
-        const btnSubmit = document.getElementById('btn-submit');
-        const formSuccess = document.getElementById('form-success');
+    listEl.innerHTML = classified.map(dishCardMarkup).join("");
 
-        if (formAuditoria) {
-            formAuditoria.addEventListener('submit', async function(e) {
-                e.preventDefault(); 
-                
-                const btnText = btnSubmit.querySelector('span');
-                btnText.innerText = 'PROCESANDO...';
-                btnSubmit.disabled = true;
-                btnSubmit.classList.add('opacity-50', 'cursor-not-allowed');
-                
-                try {
-                    const response = await fetch(formAuditoria.action, {
-                        method: 'POST',
-                        body: new FormData(formAuditoria),
-                        headers: { 'Accept': 'application/json' }
-                    });
-                    
-                    if (response.ok) {
-                        formAuditoria.reset();
-                        btnSubmit.classList.add('hidden');
-                        formSuccess.classList.remove('hidden');
-                        lucide.createIcons(); 
-                    } else {
-                        btnText.innerText = 'ERROR EN SISTEMA';
-                        btnSubmit.disabled = false;
-                        btnSubmit.classList.remove('opacity-50', 'cursor-not-allowed');
-                    }
-                } catch (error) {
-                    btnText.innerText = 'ERROR DE CONEXIÓN';
-                    btnSubmit.disabled = false;
-                    btnSubmit.classList.remove('opacity-50', 'cursor-not-allowed');
-                }
-            });
-        }
-    </script>
+    const totalLeak = computed.reduce((s, d) => s + d.leak, 0);
+    const totalRevenue = computed.reduce((s, d) => s + d.revenueTotal, 0);
+
+    document.getElementById("total-leak").textContent = currency(totalLeak);
+    renderDonut(totalLeak, totalRevenue);
+    renderQuadrant(classified);
+
+    if (unlocked){
+      document.getElementById("aggregate-content").classList.remove("blur-locked");
+    }
+  }
+
+  // ---- 3D tilt micro-interaction ----
+  function initTilt(){
+    document.querySelectorAll(".tilt-card").forEach(card => {
+      card.addEventListener("mousemove", (e) => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = `perspective(700px) rotateX(${(-y * 4).toFixed(2)}deg) rotateY(${(x * 4).toFixed(2)}deg) translateZ(0)`;
+      });
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "perspective(700px) rotateX(0deg) rotateY(0deg)";
+      });
+    });
+  }
+
+  // ---- example data ----
+  function loadExample(){
+    const examples = [
+      { name: "Salmón al grill", cost: 85, price: 220, volume: 340 },
+      { name: "Risotto de hongos", cost: 40, price: 185, volume: 510 },
+      { name: "Tártar de atún", cost: 118, price: 240, volume: 95 }
+    ];
+    examples.forEach((ex, i) => {
+      const n = i + 1;
+      document.getElementById(`d${n}-name`).value = ex.name;
+      document.getElementById(`d${n}-cost`).value = ex.cost;
+      document.getElementById(`d${n}-price`).value = ex.price;
+      document.getElementById(`d${n}-volume`).value = ex.volume;
+    });
+    recalc();
+  }
+
+  // ---- unlock flow ----
+  function initUnlock(){
+    const form = document.getElementById("unlock-form");
+    const emailInput = document.getElementById("unlock-email");
+    const errorEl = document.getElementById("unlock-error");
+    const btn = document.getElementById("unlock-btn");
+    const btnLabel = document.getElementById("unlock-btn-label");
+    const overlay = document.getElementById("paywall-overlay");
+    const success = document.getElementById("success-banner");
+    const successCopy = document.getElementById("success-copy");
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+
+      if (!emailRe.test(email)){
+        errorEl.classList.remove("hidden");
+        form.classList.add("anim-shake");
+        setTimeout(() => form.classList.remove("anim-shake"), 400);
+        return;
+      }
+      errorEl.classList.add("hidden");
+
+      btn.disabled = true;
+      btn.classList.add("opacity-80", "cursor-wait");
+      btnLabel.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 anim-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" d="M12 3a9 9 0 100 18"></path>
+        </svg> Analizando matriz...`;
+      btnLabel.classList.add("flex", "items-center", "gap-2", "justify-center");
+
+      setTimeout(() => {
+        unlocked = true;
+        overlay.classList.add("hidden");
+        successCopy.textContent = `La Auditoría Completa 5=D fue enviada a ${email}.`;
+        success.classList.remove("hidden");
+        document.getElementById("aggregate-content").classList.remove("blur-locked");
+      }, 1800);
+    });
+  }
+
+  document.getElementById("input-form").addEventListener("input", recalc);
+  document.getElementById("btn-example").addEventListener("click", loadExample);
+
+  initTilt();
+  initUnlock();
+  recalc();
+})();
+</script>
+
 </body>
 </html>
